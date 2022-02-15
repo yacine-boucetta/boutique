@@ -5,18 +5,33 @@ class Controller{
 
 
     function __construct(){
-
     }
 
-
-
-
-
-
-
-
-
+public static function index($url){
+    if ($url == '') {
+    Home::getHomePage();
+    }   
+    
+    elseif ($url[0] == 'SignUp') {
+        SignUp::signUpAction();  
+        SignUp::signUpView();
+    } 
+    elseif ($url[0] == 'SignIn') {
+        SignIn::signInAction();
+    // } elseif ($url[0] == 'product') {
+    //     require 'view/product.php';
+    // } elseif ($url[0] == 'admin') {
+    //     require 'view/admin.php';
+    // } else {
+    //     require 'view/404.php';
+    // }
+}}
 
 
 
 }
+
+
+
+
+
