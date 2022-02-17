@@ -5,7 +5,6 @@ require_once('controller/Controller.php');
 
 spl_autoload_register(function ($className) {
     $className = str_replace("\\", "/", $className);
-
     require("controller/$className.php");
 });
 

@@ -8,7 +8,8 @@ class Controller{
     }
 
 public static function index($url){
-    if ($url == '') {
+    
+    if ($url[0] == '') {
     Home::getHomePage();
     }   
     

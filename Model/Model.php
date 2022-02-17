@@ -4,11 +4,9 @@ session_start();
 class Model
 {
 
-   
     protected $db;
     function __construct()
     {
-
         try {
             $this->db = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8','root','root');
         } catch (PDOException $e) {
@@ -17,14 +15,14 @@ class Model
         }
     }
 
-    public  function checkUser($login)
+    public function checkUser($login)
     {
         $sqlinsert = "SELECT * FROM user WHERE login=:login ";
         $signIn = $this->db->prepare($sqlinsert);
         $signIn->execute(array(
-            ':login' => $login
+            ':login' => $login,
         ));
-        $checkUser = $signIn->fetch(PDO::FETCH_ASSOC);
+        $checkUser= $signIn->rowCount();
         return $checkUser;
     }
 

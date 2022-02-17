@@ -7,37 +7,32 @@ class User extends Model
     public $password;
     public $firstname;
     public $lastname;
-    public $id_droits;
+    public $email;
 
-    function __construct()
+    function __construct($login,$password,$firstname,$lastname,$email)
     {
+        $this->login=$login;
+        $this->password=$password;
+        $this->firstname=$firstname;
+        $this->lastname=$lastname;
+        $this->email=$email;
         parent::__construct($this->db);
         
     }
 
     //---------- inserer pour inscription---------
-    public function loginCount()
-    {
 
-        $sqlinsert = "SELECT *FROM utilisateurs WHERE login=:login";
+    public function setUser()
+    {
+        $sqlinsert = "INSERT INTO user (login,password,nom,prenom,email,id_droits) VALUES(:login,:password,:nom,:email,:prenom,:id_droits)";
         $signUp = $this->db->prepare($sqlinsert);
         $signUp->execute(array(
-            ":login" => $_POST['login'],
+            ":login" => $this->login,
+            ":password" => $this->password,
+            ":nom"=>$this->lastname,
+            ":prenom"=>$this->firstname,
+            ":email"=>$this->email,
+            ":id_droits"=>1
         ));
-        $count = $signUp->rowCount();
-        return $count;
-    }
-
-    public function setUser($login,$password)
-    {
-
-        $sqlinsert = "INSERT INTO utilisateurs(login,password) VALUES(:login,:password)";
-        $signUp = $this->db->prepare($sqlinsert);
-        $signUp->execute(array(
-            ":login" => $login,
-            ":password" => $password
-        ));
-        $ok = $signUp->fetch(PDO::FETCH_ASSOC);
-        return $ok;
     }
 }
