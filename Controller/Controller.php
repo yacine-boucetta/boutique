@@ -13,12 +13,11 @@ public static function index($url){
     Home::getHomePage();
     }   
     
-    elseif ($url[0] == 'SignUp') {
-        SignUp::signUpAction();  
+    elseif ($url[0] == 'SignUp') {  
         SignUp::signUpView();
     } 
     elseif ($url[0] == 'SignIn') {
-        SignIn::signInAction();
+        SignIn::signInView();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {

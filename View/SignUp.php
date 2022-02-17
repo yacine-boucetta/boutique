@@ -15,7 +15,7 @@
         <a href='./'>home</a>
         <div class="testbox">
             <form class="sign" method="post">
-<p><?php echo $message ?></p>
+<p><?php echo $message ;?></p>
                 <h2>Inscription</h2>
                 
                 <div class="item">
