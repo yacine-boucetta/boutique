@@ -6,20 +6,18 @@ public function __construct(){
 
 }
 
-public function createCart(){
-    if (isset($_POST['addProduct'])) {
-        $_SESSION['panier']=array();
-        $_SESSION['panier']['libelleProduit'] = array();
-        $_SESSION['panier']['qteProduit'] = array();
-        $_SESSION['panier']['prixProduit'] = array();
-        $_SESSION['panier']['verrou'] = false;
-    }
-
-}    
+  
 
     
    public function addProduct($libelleProduit,$qteProduit,$prixProduit){
-
+      if (isset($_POST['addProduct'])) {
+         $_SESSION['panier']=array();
+         $_SESSION['panier']['libelleProduit'] = array();
+         $_SESSION['panier']['qteProduit'] = array();
+         $_SESSION['panier']['prixProduit'] = array();
+         $_SESSION['panier']['verrou'] = false;
+         
+     }
         //Si le panier existe
         if (isset($_SESSION['panier'])){
            //Si le produit existe déjà on ajoute seulement la quantité
@@ -62,7 +60,7 @@ public function createCart(){
         else
         echo "Un problème est survenu veuillez contacter l'administrateur du site.";
      }
-     function modifierQTeArticle($libelleProduit,$qteProduit){
+     function modifierQteArticle($libelleProduit,$qteProduit){
         //Si le panier existe
         if (!empty($_SESSION['panier']))
         {
