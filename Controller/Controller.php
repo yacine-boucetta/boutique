@@ -19,6 +19,23 @@ public static function index($url){
     } 
     elseif ($url[0] == 'SignIn') {
         SignIn::signInAction();
+    }
+    elseif ($url[0] == 'Admin') {
+        Admin::adminView();
+            Product::insertProduct();
+            Admin::addCat();
+            Admin::addSubCat();
+            Admin::displayCat();
+            Admin::deleteCateg();
+            // $prod = new Product();
+            Product::deleteProducts();
+            
+            // $prod->updateProduct();
+            // $admin = new Admin();
+            // $admin->addCat(htmlspecialchars($_POST['catName']));
+            // $admin->addSubCat();
+            // $admin->displayCat();
+
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {
@@ -26,13 +43,6 @@ public static function index($url){
     // } else {
     //     require 'view/404.php';
     // }
-}}
-
-
-
 }
-
-
-
-
-
+}
+}

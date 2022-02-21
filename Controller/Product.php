@@ -4,14 +4,14 @@ require ('Model/Products.php');
 
 class Product{
 //-------------------------------------------------Verrif si les post sont vides --------------------------------------
-    public function checkPost(){
+    public static function checkPost(){
         if(empty($_POST['nom']) && empty($_POST['description']) && empty($_POST['idSousCat']) && empty($_POST['idCat']) && empty($_POST['prix']) && empty($_POST['img'])){
             $message = 'Veuillez remplir tout les champs';
             return $message;
         }
     }
 //-------------------------------------------------Verrif du prix-------------------------------------------
-    public function priceProd(){
+    public static function priceProd(){
 
         if($_POST['prix'] <= 0){
             $message = 'Veuillez ajouter un prix positif';
@@ -20,7 +20,7 @@ class Product{
 
     }
 //-------------------------------------------------Verrif de la longeuer des input -----------------------------------------
-    public function checkLenght(){
+    public static function checkLenght(){
         $nameLenght = strlen($_POST['nom']);
         $desLenght = strlen($_POST['desription']);
         if($nameLenght <=1){
@@ -71,11 +71,12 @@ class Product{
 
 //-----------------------------------------------------Update Produits----------------------------------------------------------------
 
-    public static function updateroduct(){
+    public static function updateProduct(){
             
             
         if(isset($_POST['addProd'])){
             $insert = new Product();
+            $insert->oldInfo();
             $insert->checkPost();
             $insert->priceProd();
             $insert = new Products();
@@ -86,17 +87,17 @@ class Product{
     }
 
 //-----------------------------------------------------Supression des produits--------------------------------------------------
-    public function deleteProducts($id){
-
+    public static function deleteProducts(){
+        $delete = new Products();
         if(isset($_POST['deleteProd']))
 
-        $delete = new Products();
-        $delete->deleteProd($_POST['id']);
+        
+        $delete->deleteProd($_POST['idDel']);
         echo 'coucou2';
     }
 
 }
-require('view/admin.php');
+//require('view/admin.php');
 
 
 

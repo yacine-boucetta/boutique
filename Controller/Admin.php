@@ -1,41 +1,88 @@
 <?php
 
-    require('Model/Product.php');
+    //require('Model/Products.php');
+    require('Model/Categories.php');
 
     class Admin{
 
+        public static function adminView()
+        {
+            $message = '';
+            require('view/Admin.php');
+
+        }
 
 //-------------------------------------------------Select all cat for display ---------------------------
-        public function selectCategorie(){
-            $selectCategorie = new Categories();
-            $selectCat = $selectCategorie->getCat();
-            $i = 0;
-            while($fetchCat = $selectCat){
-                $tab[$i][] = $fetchCat['id'];
-                $tab[$i][] = $fetchCat['nom'];
-                $i++;
-            }
-            return $tab;
-        }
+        // public static function selectCategorie(){
+        //     $selectCategorie = new Categories();
+        //     $selectCat = $selectCategorie->getCat();
+        //     $i = 0;
+        //     echo '<pre>';
+        //     var_dump($selectCat);
+        //     echo '</pre>';
+        //     while($fetchCat = $selectCat){
+
+        //         $tab[$i][] = $fetchCat[$i]['id'];
+        //         $tab[$i][] = $fetchCat[$i]['nom'];
+        //         $i++;
+
+        //         return $tab;
+                
+        //         var_dump($tab);
+        //     }
+            
+        // }
 //----------------------------------------------------affichage Cat -------------------------------------
-        public function diplayCat(){
-            $choice = new Admin;
-            $tab = $choice->selectCategorie();
+        public static function displayCat(){
+            //$choice = new Admin;
+            $choice = new Categories();
+            $tab = $choice->getCat();
+            //$tab = $choice->selectCategorie();
+
+            var_dump($tab);
             foreach($tab as $values){
-                echo '<option value="' . $values[0] . '">' . $values[1] . '</option>';
+                echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
+                
+                //return $result;
+                
             }
         }
 //-------------------------------------------------ajout de categorie------------------------------------------------------------
 
-        public function addCat(){
+        public static function addCat(){
             if(isset($_POST['createCat'])){
                 $create = new Categories;
                 $create->insertCat(htmlspecialchars($_POST['catName']));
-                echo 'coucou cat';
+                //echo 'coucou cat';
+            }
+//-------------------------------------------------ajouts sub cat ------------------------------------------------------------------
+        }
+        public static function addSubCat(){
+            if(isset($_POST['createSubCat'])){
+                $create = new Categories;
+                $create->insertSubCat(htmlspecialchars($_POST['catSubName']), htmlspecialchars($_POST['idCatForSub']));
+                header ('Location:./Admin');
             }
 
         }
+//------------------------------------------------Suppresion Cat------------------------------------------------------------------------------------------------
 
+        public static function deleteCateg(){
+            if(isset($_POST['deleteCat'])){
+                $delete = new Categories;
+                $delete->deleteCategories(htmlspecialchars($_POST['idDel']));
+                header ('Location:./Admin');
+            }
+        } 
+//------------------------------------------------Suppresion Cat------------------------------------------------------------------------------------------------
+
+    public static function deleteSubCateg(){
+        if(isset($_POST['deleteSubCateg'])){
+            $delete = new Categories;
+            $delete->deleteCategories(htmlspecialchars($_POST['idDel']));
+            header ('Location:./Admin');
+        }
+} 
     }
 
 ?>
