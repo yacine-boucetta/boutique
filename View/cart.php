@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,12 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    <ul><li><a href='./Product'>product</a></li>
-    <li><a href='./SignUp'>inscription</a></li>
-    <li><a href= './SignIn'>sign_in</a></li>
-    <li><a href= './Product'>product</a></li>
-    <li><a href= './Admin'>admin</a></li>
-   
-    </ul> 
+    
 </body>
 </html>
