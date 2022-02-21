@@ -47,4 +47,47 @@ class User extends Model
         $user=$signIn->fetch(PDO::FETCH_ASSOC);
         return ($user);
 }
+
+
+//------------Profil--------------------------------------------------------
+
+public function loginUpdate($login){
+    $update=$this->db->prepare("UPDATE `user` SET login=:login WHERE id= :id");
+    $update->execute(array(
+        ':login'=>$login,
+        ':id'=>$_SESSION['user']['id']
+    ));
+}
+
+public function passwordUpdate($password){
+    $update=$this->db->prepare("UPDATE `user` SET `password`=:password WHERE `id`= :id");
+    $update->execute(array(
+        ':password'=>$password,
+        ':id'=>$_SESSION['user']['id']
+    ));
+}
+
+public function emailUpdate($email){
+    $update=$this->db->prepare("UPDATE `user` SET `email`=:email WHERE `id`= :id");
+    $update->execute(array(
+        ':email'=>$email,
+        ':id'=>$_SESSION['user']['id']
+    ));
+}
+
+public function firstNamedUpdate($firstName){
+    $update=$this->db->prepare("UPDATE `user` SET `firstName`=:firstname WHERE `id`= :id");
+    $update->execute(array(
+        ':firstname'=>$firstName,
+        ':id'=>$_SESSION['user']['id']
+    ));
+}
+
+public function lastNamedUpdate($lastName){
+    $update=$this->db->prepare("UPDATE `user` SET `lasttName`=:lastname WHERE `id`= :id");
+    $update->execute(array(
+        ':firstname'=>$lastName,
+        ':id'=>$_SESSION['user']['id']
+    ));
+}
 }

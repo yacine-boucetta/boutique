@@ -18,6 +18,10 @@ public static function index($url){
     } 
     elseif ($url[0] == 'SignIn') {
         SignIn::signInView();
+    }
+    elseif ($url[0] == 'Profil') {
+        Profil::viewProfil();
+    }
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {
@@ -29,7 +33,7 @@ public static function index($url){
 
 
 
-}
+
 
 
 
