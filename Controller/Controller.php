@@ -21,16 +21,17 @@ public static function index($url){
         SignIn::signInAction();
     }
     elseif ($url[0] == 'Admin') {
-            Admin::adminView();
+            
             Product::insertProduct();
             Admin::addCat();
             Admin::addSubCat();
-            Admin::displayCat();
+            //Admin::displayCat();
             Admin::deleteCateg();
-            Admin::displaySubCat();
+            Admin::deleteSubCateg();
+            //Admin::displaySubCat();
             // $prod = new Product();
             Product::deleteProducts();
-            
+            Admin::adminView();
             // $prod->updateProduct();
             // $admin = new Admin();
             // $admin->addCat(htmlspecialchars($_POST['catName']));

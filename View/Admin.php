@@ -9,38 +9,43 @@
 <body>
     <h1>ADMIN</h1>
     <aricle>
+        <h2>Creation de categorie</h2>
         <form method="post" name='creationCat'>
             <input type="text" name="catName"></input>
             <input type="submit" name="createCat"></input>
         </form>
+        <h2>Suppresion de categories</h2>
         <form method="post" name='deleteCateg'>
             <select name="idDel" >
                 <?php
                 $option = new Admin();
-                $select = $option->displayCat();
+                $option->displayCat();
                 ?>
             </select>
             <input type="submit" name="deleteCat"></input>
         </form>
     </aricle>
     <article>
+    <h2>Creation de Sub categorie</h2>
         <form method="post" name='createSubCat'>
             <input type="text" name="catSubName"></input>
             <select name="idCatForSub" >
                 <?php
-                $option = new Admin();
-                $select = $option->displayCat();
+                //$option = new Admin();
+                $option->displayCat();
                 ?>
             </select>
             <input type="submit" name="createSubCat"></input>
         </form>
+        <h2>Suppresion de Sub categorie</h2>
         <form method="post" name='deleteSubCateg'>
             <select name="idSubDel" >
                 <?php
-                $option = new Admin();
-                $select = $option->displaySubCat();
+                //$option = new Admin();
+                $option->displaySubCat();
                 ?>
             </select>
+            <input type="submit" name="deleteSubCateg"></input>
         </form>
     </article>
 

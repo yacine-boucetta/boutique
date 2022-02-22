@@ -48,12 +48,12 @@
         //     return $result;
         // }
 //-------------------------------------------Count Cat---------------------------------------------------------------
-        public function countCategories(){
-            $countCat = $this->db->prepare("SELECT COUNT `nom` FROM `categories`");
-            $countCat->execute();
-            $results = $countCat->fetch(PDO::FETCH_ASSOC);
-            return $results;
-        }
+        // public function countCategories(){
+        //     $countCat = $this->db->prepare("SELECT COUNT `nom` FROM `categories`");
+        //     $countCat->execute();
+        //     $results = $countCat->fetch(PDO::FETCH_ASSOC);
+        //     return $results;
+        // }
 //----------------------------------------Delete Categ------------------------------------------------------------------------------
         public function deleteCategories($id){
             $delete = $this->db->prepare("DELETE FROM categories WHERE id = :id");
@@ -62,7 +62,7 @@
         }
 //---------------------------------------Delete Sub Categories--------------------------------------------------------------
         public function deleteSubCategories($id){
-            $deleteSub = $this->db->prepare("DELETE FROM categories WHERE id = :id");
+            $deleteSub = $this->db->prepare("DELETE FROM sous_categories WHERE id = :id");
             $deleteSub->bindValue(':id', $id, PDO::PARAM_STR);
             $deleteSub->execute();
         }

@@ -97,7 +97,7 @@
     public static function deleteSubCateg(){
         if(isset($_POST['deleteSubCateg'])){
             $delete = new Categories;
-            $delete->deleteCategories(htmlspecialchars($_POST['idDel']));
+            $delete->deleteSubCategories(htmlspecialchars($_POST['idSubDel']));
             header ('Location:./Admin');
         }
 } 
