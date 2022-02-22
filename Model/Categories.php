@@ -22,9 +22,18 @@
             $getCat = $this->db->prepare("SELECT * FROM categories");
             $getCat->execute();
             $result = $getCat->fetchAll(PDO::FETCH_ASSOC);
+            //var_dump($result);
             return $result;
         }
-        //------------------------------------------new Sub Categories------------------------------------------------------
+//-------------------------------------------Display Sub Categories--------------------------------------------------
+        public function geSubtCat(){
+            $getSubCat = $this->db->prepare("SELECT * FROM sous_categories");
+            $getSubCat->execute();
+            $result = $getSubCat->fetchAll(PDO::FETCH_ASSOC);
+            var_dump($result);
+            return $result;
+}
+//------------------------------------------new Sub Categories------------------------------------------------------
         public function insertSubCat($nom, $idSubCat){
             $insertSubCat = $this->db->prepare("INSERT INTO sous_categories (nom_sous_cat, id_categories) VALUES (:nom, :id_categories)");
             $insertSubCat->bindParam(':nom',$nom, PDO::PARAM_STR);

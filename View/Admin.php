@@ -38,9 +38,10 @@
             <select name="idSubDel" >
                 <?php
                 $option = new Admin();
-                $select = $option->displayCat();
+                $select = $option->displaySubCat();
                 ?>
             </select>
+        </form>
     </article>
 
 </body>

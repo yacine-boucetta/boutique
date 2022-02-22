@@ -38,10 +38,28 @@
             $choice = new Categories();
             $tab = $choice->getCat();
             //$tab = $choice->selectCategorie();
-
-            var_dump($tab);
+            // echo '<pre>';
+            // var_dump($tab);
+            // echo '</pre>';
+            //var_dump($tab);
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
+
+                //return $result;
+                
+            }
+        }
+//----------------------------------------------------affichage Cat -------------------------------------
+        public static function displaySubCat(){
+            //$choice = new Admin;
+            $choice = new Categories();
+            $tab = $choice->getSubCat();
+            //$tab = $choice->selectCategorie();
+            echo '<pre>';
+            var_dump($tab);
+            echo '</pre>';
+            foreach($tab as $values){
+                echo '<option value="' . $values['id'] . '">' . $values['nom_sous_cat'] . '</option>';
                 
                 //return $result;
                 

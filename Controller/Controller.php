@@ -21,12 +21,13 @@ public static function index($url){
         SignIn::signInAction();
     }
     elseif ($url[0] == 'Admin') {
-        Admin::adminView();
+            Admin::adminView();
             Product::insertProduct();
             Admin::addCat();
             Admin::addSubCat();
             Admin::displayCat();
             Admin::deleteCateg();
+            Admin::displaySubCat();
             // $prod = new Product();
             Product::deleteProducts();
             
