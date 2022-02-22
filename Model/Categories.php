@@ -26,11 +26,11 @@
             return $result;
         }
 //-------------------------------------------Display Sub Categories--------------------------------------------------
-        public function geSubtCat(){
+        public function getSubCat(){
             $getSubCat = $this->db->prepare("SELECT * FROM sous_categories");
             $getSubCat->execute();
             $result = $getSubCat->fetchAll(PDO::FETCH_ASSOC);
-            var_dump($result);
+            //var_dump($result);
             return $result;
 }
 //------------------------------------------new Sub Categories------------------------------------------------------
@@ -41,12 +41,12 @@
             $insertSubCat->execute();
         }
 //-------------------------------------------Display Sub Categories--------------------------------------------------
-        public function getSubCat(){
-            $getSubCat = $this->db->prepare("SELECT * FROM sous_categories");
-            $getSubCat->execute();
-            $result = $getSubCat->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        }
+        // public function getSubCat(){
+        //     $getSubCat = $this->db->prepare("SELECT * FROM sous_categories");
+        //     $getSubCat->execute();
+        //     $result = $getSubCat->fetch(PDO::FETCH_ASSOC);
+        //     return $result;
+        // }
 //-------------------------------------------Count Cat---------------------------------------------------------------
         public function countCategories(){
             $countCat = $this->db->prepare("SELECT COUNT `nom` FROM `categories`");

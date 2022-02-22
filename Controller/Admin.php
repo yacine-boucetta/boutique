@@ -55,9 +55,9 @@
             $choice = new Categories();
             $tab = $choice->getSubCat();
             //$tab = $choice->selectCategorie();
-            echo '<pre>';
-            var_dump($tab);
-            echo '</pre>';
+            // echo '<pre>';
+            // var_dump($tab);
+            // echo '</pre>';
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom_sous_cat'] . '</option>';
                 
