@@ -10,12 +10,12 @@ class SignUp
 
     public static function signUpView()
     {
-        $message = '';
+        $message=SignUp::signUpAction();
         require('view/signUp.php');
     }
 
     public static function signUpAction()
-    {
+    {$message='';
         if (isset($_POST['sign_up'])) {
 
             $a = new Model();
@@ -23,7 +23,7 @@ class SignUp
 
             if ($b > 0) {
                 $message = loginError();
-                return false;
+                return $message;
             }
 
 //             $uppercase = preg_match('@[A-Z]@', $password);
@@ -35,17 +35,17 @@ class SignUp
 // }
             if (strlen($_POST['password']) < 6) {
                 $message = lengthError();
-                return false;
+                return $message;
             } else {
                 $password = htmlspecialchars(password_hash($_POST['password'], PASSWORD_BCRYPT));
                 $newLogin = htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1");
                 $newEmail = htmlspecialchars($_POST['email'], ENT_QUOTES, "ISO-8859-1");
                 $newFirstName = htmlspecialchars($_POST['firstname'], ENT_QUOTES, "ISO-8859-1");
                 $newLastName = htmlspecialchars($_POST['lastname'], ENT_QUOTES, "ISO-8859-1");
-                $newUser = new User($newLogin, $password, $newEmail, $newFirstName, $newLastName);
-                $newUser->setUser();
+                $newUser = new User();
+                $newUser->setUser($newLogin, $password, $newEmail, $newFirstName, $newLastName);
             }
         }
-        return $message;
+        return $message; 
     }
 }

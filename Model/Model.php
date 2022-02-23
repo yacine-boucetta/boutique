@@ -32,6 +32,6 @@ class Model
         $getProduit = $getProd->fetchall(PDO::FETCH_ASSOC);
         return $getProduit;
     }
-    
-    
+
+
 }

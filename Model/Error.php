@@ -16,4 +16,8 @@ function signError(){
     return $error;
 }
 
+function passwordError(){
+    $error='Les mots de passe ne sont pas identique';
+    return $error;
+}
 ?>
