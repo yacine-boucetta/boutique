@@ -74,7 +74,7 @@ class Product{
     public static function updateProduct(){
             
             
-        if(isset($_POST['addProd'])){
+        if(isset($_POST['updateProd'])){
             $insert = new Product();
             $insert->oldInfo();
             $insert->checkPost();

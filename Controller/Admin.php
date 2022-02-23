@@ -65,6 +65,22 @@
                 
             }
         }
+//----------------------------------------------------affichage Sub Cat --------------------------------
+    public static function displaySubCatProd(){
+        //$choice = new Admin;
+        $choice = new Categories();
+        $tab = $choice->getSubCat();
+        //$tab = $choice->selectCategorie();
+        // echo '<pre>';
+        // var_dump($tab);
+        // echo '</pre>';
+        foreach($tab as $values){
+            echo '<option value="' . $values['id_categories'] . '">' . $values['nom_sous_cat'] . '</option>';
+            
+            //return $result;
+            
+        }
+    }
 //-------------------------------------------------ajout de categorie------------------------------------------------------------
 
         public static function addCat(){
@@ -100,7 +116,37 @@
             $delete->deleteSubCategories(htmlspecialchars($_POST['idSubDel']));
             header ('Location:./Admin');
         }
-} 
+}
+//----------------------------------------------------select pour ajout ------------------------------------------------------------------------------------
+    public static function addSelect(){
+        if(isset($_POST['addSelect'])){
+            $select = new Categories;
+            $tab = $select->selectAddProduct(htmlspecialchars($_POST['addSelect']));
+            foreach($tab as $values){
+                echo '<option value="' . $values['id'] . '">' . $values['nom_sous_cat'] . '</option>';
+                //return $result;
+            }
+        }
+    }
+//---------------------------------------------------Display ajouts de product -----------------------------------------------------------
+    public function addForm(){
+        if(isset($_POST['addSelect'])){
+            echo 
+            "<form>
+            <input type='text' name='nom'></input>
+            <input type='textarea' name='description'></input>
+            <select name='idSousCat'> 
+            ";
+                $option = new Admin;
+                $option->addSelect(htmlspecialchars($_POST['addaddSelect']));
+            echo "</select>
+            <input type='text' name='prix'></input>
+            <input type='text' name='img'></input>
+            <input type='submit' name='addProd'></input>
+        </form>
+            ";
+        }
+    }
     }
 
 ?>

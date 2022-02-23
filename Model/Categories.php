@@ -66,5 +66,13 @@
             $deleteSub->bindValue(':id', $id, PDO::PARAM_STR);
             $deleteSub->execute();
         }
+//----------------------------------------------Select add product------------------------------------------------------------------------------
+        public function selectAddProduct($id){
+            $select = $this->db->prepare("SELECT * FROM categories INNER JOIN sous_categories ON categories.id = sous_categories.id_categories WHERE categories.id = :id");
+            $select->bindValue(':id', $id, PDO::PARAM_STR);
+            $select->execute();
+            $result = $select->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
 ?>

@@ -19,7 +19,7 @@
             <select name="idDel" >
                 <?php
                 $option = new Admin();
-                $option->displayCat();
+                $var = $option->displayCat();
                 ?>
             </select>
             <input type="submit" name="deleteCat"></input>
@@ -47,6 +47,21 @@
             </select>
             <input type="submit" name="deleteSubCateg"></input>
         </form>
+    </article>
+    <article>
+        <h2>Ajout Produits</h2>
+        <form method="post" name='formAjout'>
+            <select name="addSelect">
+                <?php
+                //$option = new Admin();
+                $option->displayCat();
+                ?>
+            </select>
+            <input type="submit" name="inputSelect"></input>
+        </form>
+        <?php
+            $option->addForm();
+        ?>
     </article>
 
 </body>

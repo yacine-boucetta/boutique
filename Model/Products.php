@@ -22,7 +22,7 @@
             $insertProd = $this->db->prepare("INSERT INTO produits (nom, description, id_sous_categories, id_categories, prix, id_droits, image)
                 VALUES (:nom, :description, :id_sous_categories, :id_categories, :prix, :id_droits, :image)");
                 $insertProd->bindValue(':nom', $nom, PDO::PARAM_STR);
-                $insertProd->bindValue(':descrition', $description, PDO::PARAM_STR);
+                $insertProd->bindValue(':description', $description, PDO::PARAM_STR);
                 $insertProd->bindValue(':id_sous_categories', $id_sous_categories, PDO::PARAM_STR);
                 $insertProd->bindValue(':id_categories', $id_categories, PDO::PARAM_STR);
                 $insertProd->bindValue(':prix', $prix, PDO::PARAM_STR);
