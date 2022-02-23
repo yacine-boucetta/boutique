@@ -50,7 +50,7 @@
     </article>
     <article>
         <h2>Ajout Produits</h2>
-        <form method="post" name='formAjout'>
+        <form method='POST' enctype='multipart/form-data'>
             <select name="addSelect">
                 <?php
                 //$option = new Admin();
@@ -58,10 +58,10 @@
                 ?>
             </select>
             <input type="submit" name="inputSelect"></input>
-        </form>
         <?php
             $option->addForm();
         ?>
+        </form>
     </article>
 
 </body>

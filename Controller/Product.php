@@ -37,11 +37,13 @@ class Product{
         
         
         if(isset($_POST['addProd'])){
+            //$idCat = $_POST['addSlect'];
             $insert = new Product();
             $insert->checkPost();
             $insert->priceProd();
+            $image = $insert->addImg();
             $insert = new Products();
-            $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
+            $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
             echo 'coucou';
         }
 
@@ -95,7 +97,46 @@ class Product{
         $delete->deleteProd($_POST['idDel']);
         echo 'coucou2';
     }
+//----------------------------------------------------ajouts d'img----------------------------------------------------
+public static function addImg(){
 
+    if (isset($_FILES['image']) ){
+        var_dump($_FILES['image']);
+        $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
+            $tailleMax = 5242880; // Taille maximum 5 Mo
+        
+            $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
+            if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
+                
+                $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1)); // Prend l'extension après le point, soit "jpg, jpeg ou png"
+
+                if (in_array($extensionUpload, $extensionsValides)){ // Vérifie que l'extension est correct
+                    
+                    $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
+                    if (!is_dir($dossier)){ // Si le nom de dossier n'existe pas alors on le crée
+
+                        mkdir($dossier,0777,true);
+                
+
+                    }
+                    $nom = $_POST['nom'] ; // Permet de générer un nom unique à la photo
+                    $chemin = "./assets/images/" . $nom. "." . $extensionUpload; // Chemin pour placer la photo
+                    $resultat = move_uploaded_file($_FILES['image']['tmp_name'], $chemin); // On fini par mettre la photo dans le dossier
+                    if ($resultat){ // Si on a le résultat alors on va comprésser l'image
+                            
+                        $verif_ext = getimagesize("./assets/images/" . $nom. "." . $extensionUpload);
+                        // Vérification des extensions avec la liste des extensions autorisés          
+                        // J'enregistre le chemin de l'image dans filename
+                        $fileName = "./assets/images/" . $nom. "." . $extensionUpload;
+                                
+                        return $fileName;    
+                    }
+                } 
+            }
+                    
+    }
+
+}
 }
 //require('view/admin.php');
 

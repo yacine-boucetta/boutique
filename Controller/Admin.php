@@ -132,21 +132,21 @@
     public function addForm(){
         if(isset($_POST['addSelect'])){
             echo 
-            "<form>
-            <input type='text' name='nom'></input>
-            <input type='textarea' name='description'></input>
+            "<input type='text' name='nom'></input>
+            <textarea name='description'></textarea>
             <select name='idSousCat'> 
             ";
                 $option = new Admin;
-                $option->addSelect(htmlspecialchars($_POST['addaddSelect']));
+                $option->addSelect(htmlspecialchars($_POST['addSelect']));
             echo "</select>
             <input type='text' name='prix'></input>
-            <input type='text' name='img'></input>
+            <input type='file' name='image'></input>
             <input type='submit' name='addProd'></input>
-        </form>
             ";
         }
     }
-    }
+//---------------------------------------------------Ajout d'images------------------------------------------------------------
+
+}
 
 ?>
