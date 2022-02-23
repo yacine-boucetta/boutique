@@ -8,11 +8,11 @@
 </head>
 <body>
     <ul><li><a href='./Product'>product</a></li>
-    <li><a href= './SignUp'>sign_up</a></li>
-    <li><a href= './SignIn'>sign_in</a></li>
+    <li><a href='./SignUp'>inscription</a></li>
+    <li><a href= './SignIn'>connexion</a></li>
     <li><a href= './Product'>product</a></li>
     <li><a href= './Admin'>admin</a></li>
-    <li><a href= './sign_up'></a></li>
-    </ul>
+    <li><a href= './Profil'>profil</a></li>
+    </ul> 
 </body>
 </html>

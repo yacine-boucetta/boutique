@@ -4,34 +4,24 @@ session_start();
 class Model
 {
 
-    private $dbName;
-    private $hostName;
-    private $dbLogin;
-    private $dbPassword;
-
-    function __construct()
-    {
-        $this->dbName = 'boutique';
-        $this->hostName = 'localhost';
-        $this->dblogin = 'root';
-        $this->dbPassword = 'root';
-
+    protected $db;
+    function __construct(){
         try {
-            $this->db = new PDO('mysql:host=' . $this->hostName . ';dbname=' . $this->dbName . ';charset=utf8,' . $this->dbLogin . ',' . $this->dbPassword . '');
+            $this->db = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8','root','root');
         } catch (PDOException $e) {
             echo 'Echec de la connexion : ' . $e->getMessage();
             exit;
         }
     }
 
-    public  function checkUser($login)
+    public function checkUser($login)
     {
-        $sqlinsert = "SELECT * FROM utilisateurs WHERE login=:login ";
+        $sqlinsert = "SELECT * FROM user WHERE login=:login ";
         $signIn = $this->db->prepare($sqlinsert);
         $signIn->execute(array(
-            ':login' => $login
+            ':login' => $login,
         ));
-        $checkUser = $signIn->fetch(PDO::FETCH_ASSOC);
+        $checkUser= $signIn->rowCount();
         return $checkUser;
     }
 
@@ -42,4 +32,6 @@ class Model
         $getProduit = $getProd->fetchall(PDO::FETCH_ASSOC);
         return $getProduit;
     }
+
+
 }
