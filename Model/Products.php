@@ -25,7 +25,7 @@
                 $insertProd->bindValue(':description', $description, PDO::PARAM_STR);
                 $insertProd->bindValue(':id_sous_categories', $id_sous_categories, PDO::PARAM_INT);
                 $insertProd->bindValue(':id_categories', $id_categories, PDO::PARAM_INT);
-                $insertProd->bindValue(':prix', $prix, PDO::PARAM_INT);
+                $insertProd->bindValue(':prix', $prix, PDO::PARAM_STR);
                 $insertProd->bindValue(':image', $image, PDO::PARAM_STR);
                 $insertProd->execute();
 
