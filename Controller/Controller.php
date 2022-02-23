@@ -8,7 +8,6 @@ class Controller{
     }
 
 public static function index($url){
-    
     if ($url[0] == '') {
     Home::getHomePage();
     }   
@@ -45,6 +44,14 @@ public static function index($url){
     // } else {
     //     require 'view/404.php';
     // }
-}
-}
+    }
+    elseif ($url[0]== 'order') {
+        
+        $order=new Order;
+        $intent=$order->OrderPay();
+        Order::orderView();
+        return $intent;
+        
+    }
+    }
 }

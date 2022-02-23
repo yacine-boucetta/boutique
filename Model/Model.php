@@ -5,8 +5,7 @@ class Model
 {
 
     protected $db;
-    function __construct()
-    {
+    function __construct(){
         try {
             $this->db = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8','root','root');
         } catch (PDOException $e) {
@@ -33,4 +32,6 @@ class Model
         $getProduit = $getProd->fetchall(PDO::FETCH_ASSOC);
         return $getProduit;
     }
+    
+    
 }

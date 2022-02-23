@@ -12,7 +12,7 @@
     <li><a href= './SignIn'>sign_in</a></li>
     <li><a href= './Product'>product</a></li>
     <li><a href= './Admin'>admin</a></li>
-    <li><a href= './Controller/sign_up'>hiiii</a></li>
+   
     </ul> 
 </body>
 </html>
