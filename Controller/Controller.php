@@ -21,7 +21,15 @@ public static function index($url){
     }
     elseif ($url[0] == 'Profil') {
         Profil::viewProfil();
-    }
+    }  elseif ($url[0] == 'Admin') {   
+        Product::insertProduct();
+        Admin::addCat();
+        Admin::addSubCat();
+        Admin::deleteCateg();
+        Admin::deleteSubCateg();
+        Product::deleteProducts();
+        Admin::adminView();
+    
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {
@@ -29,7 +37,7 @@ public static function index($url){
     // } else {
     //     require 'view/404.php';
     // }
-}}
+}}}
 
 
 

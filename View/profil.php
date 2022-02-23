@@ -15,8 +15,7 @@
         <a href='./'>home</a>
         <div class="testbox">
             <form class="sign" method="post">
-<p><?php var_dump($_SESSION['user']);
-echo $message ;?></p>
+<p><?php echo $message ;?></p>
                 <h2>Profil</h2>
                 
                 <div class="item">
@@ -35,7 +34,7 @@ echo $message ;?></p>
                 </div>
 
                 <div class="item">
-                    <label for="email">Email:<?php echo $_SESSION['user']['email'] ?><span>*</span></label>
+                    <label for="email">Email:<?php echo $_SESSION['user']['email'] ?></label>
                     <input id="email" type="email" name="email"  />
                 </div>
 
@@ -45,12 +44,12 @@ echo $message ;?></p>
                 </div>
 
                 <div class="item">
-                    <label for="password">Veuillez valider votre mot de passe pour le modifier<span>*</span></label>
-                    <input id="password" type="password2" name="password"  />
+                    <label for="password">Veuillez valider votre mot de passe pour le modifier</label>
+                    <input id="password" type="password" name="password2"  />
                 </div>
 
                 <div class="btn-block">
-                    <button name='sign_up' type="valider">valider</button>
+                    <button name='valider' type="submit">valider</button>
                 </div>
 
         </div>

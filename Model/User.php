@@ -60,7 +60,7 @@ public function loginUpdate($login){
 }
 
 public function passwordUpdate($password){
-    $update=$this->db->prepare("UPDATE `user` SET `password`=:password WHERE `id`= :id");
+    $update=$this->db->prepare("UPDATE `user` SET password=:password WHERE id= :id");
     $update->execute(array(
         ':password'=>$password,
         ':id'=>$_SESSION['user']['id']
@@ -68,7 +68,7 @@ public function passwordUpdate($password){
 }
 
 public function emailUpdate($email){
-    $update=$this->db->prepare("UPDATE `user` SET `email`=:email WHERE `id`= :id");
+    $update=$this->db->prepare("UPDATE `user` SET email=:email WHERE id= :id");
     $update->execute(array(
         ':email'=>$email,
         ':id'=>$_SESSION['user']['id']
@@ -76,7 +76,7 @@ public function emailUpdate($email){
 }
 
 public function firstNamedUpdate($firstName){
-    $update=$this->db->prepare("UPDATE `user` SET `firstName`=:firstname WHERE `id`= :id");
+    $update=$this->db->prepare("UPDATE `user` SET prenom=:firstname WHERE id= :id");
     $update->execute(array(
         ':firstname'=>$firstName,
         ':id'=>$_SESSION['user']['id']
@@ -84,10 +84,25 @@ public function firstNamedUpdate($firstName){
 }
 
 public function lastNamedUpdate($lastName){
-    $update=$this->db->prepare("UPDATE `user` SET `lasttName`=:lastname WHERE `id`= :id");
+    $update=$this->db->prepare("UPDATE `user` SET nom=:lastname WHERE `id`= :id");
     $update->execute(array(
-        ':firstname'=>$lastName,
+        ':lastname'=>$lastName,
         ':id'=>$_SESSION['user']['id']
     ));
 }
+
+//---------------recuperation de donnée------------------------
+public function userDisplay($id)
+{
+    $sqlinsert = "SELECT * FROM user WHERE id=:id";
+    $display = $this->db->prepare($sqlinsert);
+    $display->execute(array(
+        ':id' => $id,
+    ));
+    $getuser= $display->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['user']=$getuser;
+    return $getuser;
+}
+
+
 }
