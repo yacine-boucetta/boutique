@@ -25,7 +25,7 @@
                 $insertProd->bindValue(':description', $description, PDO::PARAM_STR);
                 $insertProd->bindValue(':id_sous_categories', $id_sous_categories, PDO::PARAM_INT);
                 $insertProd->bindValue(':id_categories', $id_categories, PDO::PARAM_INT);
-                $insertProd->bindValue(':prix', $prix, PDO::PARAM_INT);
+                $insertProd->bindValue(':prix', $prix, PDO::PARAM_STR);
                 $insertProd->bindValue(':image', $image, PDO::PARAM_STR);
                 $insertProd->execute();
 
@@ -58,7 +58,15 @@
             $result=$getAllInfos->fetchall(PDO::FETCH_ASSOC);
             return $result;
         }
-        
+
+        public function countProd($nom){
+            $count = $this->db->prepare("SELECT COUNT(*) FROM produits WHERE `nom` = :nom");
+            $count->bindValue(':nom', $nom, PDO::PARAM_STR);
+            $count->execute();
+            $result= $count->fetchall(PDO::FETCH_ASSOC);
+            return $result;
+
+        }
 
     }
 
