@@ -28,6 +28,7 @@ class Product{
             return $message;
         }elseif( $desLenght <=1 || $desLenght >= 200){
             $message = 'La description dot faire entre 1 et 200 characters';
+            return $message;
         }
         
     }
@@ -48,10 +49,15 @@ class Product{
         
         if(isset($_POST['addProd'])){
             //$idCat = $_POST['addSlect'];
+            $count = new Products();
             $insert = new Product();
+            if($count->countProd($_POST['nom']) > 1){
+                $message = doublonError();
+                return $message;
+            }
             $insert->checkPost();
             $insert->priceProd();
-            $insert->checkCount();
+            //$insert->checkCount();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);

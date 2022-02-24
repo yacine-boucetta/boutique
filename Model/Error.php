@@ -20,4 +20,10 @@ function passwordError(){
     $error='Les mots de passe ne sont pas identique';
     return $error;
 }
+//-------------------errors product----------------------------------------------------
+function doublonError(){
+    $error = 'Ce nom de produit existe deja login';
+    return $error;
+}
+
 ?>
