@@ -31,7 +31,17 @@ class Product{
         }
         
     }
-
+//------------------------------------------------Check si le nom de produit existe deja ----------------------------------------------------------------
+    public static function checkCount(){
+        $count = new Products();
+        if(isset($_POST['addSelect'])){
+            if($count->countProd($_POST['nom']) > 0){
+                $message = 'Ce nom de produits existe deja';
+                return $message;
+            
+            }
+        }
+    }
 //---------------------------------------------Ajouts des produits -------------------------------------------------------------
     public static function insertProduct(){
         
@@ -41,6 +51,7 @@ class Product{
             $insert = new Product();
             $insert->checkPost();
             $insert->priceProd();
+            $insert->checkCount();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
