@@ -45,5 +45,11 @@ public static function index($url){
         return $intent;
         
     }
+
+
+    elseif($url[0]=='Product'){
+        Product::showProduct();
+        Product::productView();
+        }
     }
 }

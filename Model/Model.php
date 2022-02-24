@@ -27,7 +27,7 @@ class Model
 
     public function getProd()
     {
-        $getProd = $this->db->prepare("SELECT * FROM product");
+        $getProd = $this->db->prepare("SELECT * FROM produits");
         $getProd->execute();
         $getProduit = $getProd->fetchall(PDO::FETCH_ASSOC);
         return $getProduit;
