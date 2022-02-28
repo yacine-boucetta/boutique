@@ -50,6 +50,13 @@ public static function index($url){
     elseif($url[0]=='Product'){
         Product::showProduct();
         Product::productView();
+        
+        }
+    elseif ($url[0]=='Article') {
+           Article::GetArticle();
+            Article::viewArticle();
+          
         }
     }
+   
 }

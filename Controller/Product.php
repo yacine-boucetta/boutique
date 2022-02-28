@@ -151,22 +151,17 @@ public static function addImg(){
                     
     }
 
-}public static function showProduct(){
+}
+public static function showProduct(){
     $affiche=new Model;
     $prod=$affiche->getProd();
-    foreach ($prod as $product ) { ?>
-   
-    <div class="card">
-        <h2><?=$product['nom']?></h2>
-        <img src="<?=$product['image']?>" alt="">
-        <p><?=$product['description']?></p>
-        <p><?= $product['prix'] ?>€</p>
-    </div>
-      <?php  
-    }
+    return $prod;    
 }
 
+
+
 }
+
 //require('view/admin.php');
 
 
