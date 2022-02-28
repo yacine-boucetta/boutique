@@ -12,16 +12,19 @@
     <?php
     $prod = Product::showProduct();
     foreach ($prod as $product) { ?>
+        <form method="get" action=Article.php>
+            <div class="card"><?= var_dump($product['id']); ?>
+                <a href="./Article/<?= $product['id'] ?>">
 
-        <div class="card">
-            <a href="./Article"<?php $product->$id?>>
-            <input type="hidden" name="" value=<?= $product['id'] ?>>
-            <h2><?= $product['nom'] ?></h2>
-            <img src="<?= $product['image'] ?>" alt="">
-            <p><?= $product['description'] ?></p>
-            <p><?= $product['prix'] ?>€</p>
-            </a>
-        </div>
+                    <input type="hidden" name="" value=<?= $product['id'] ?>>
+
+                    <h2><?= $product['nom'] ?></h2>
+                    <img src="<?= $product['image'] ?>" alt="">
+                    <p><?= $product['description'] ?></p>
+                    <p><?= $product['prix'] ?>€</p>
+                </a>
+            </div>
+        </form>
     <?php } ?>
 </body>
 

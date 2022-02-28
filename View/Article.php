@@ -11,9 +11,10 @@
         <input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input type="text">
     </form>
     <p>
+    
     <?=
         $article=new Article;
-        $test=$article->GetArticle();
+        $test=$article->GetArticle($url[1]);
     ?>
     </p>
 </body>

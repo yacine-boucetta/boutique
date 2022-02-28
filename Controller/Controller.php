@@ -53,7 +53,10 @@ public static function index($url){
         
         }
     elseif ($url[0]=='Article') {
-           Article::GetArticle();
+        var_dump($url);
+
+        if(isset($url[1])){
+           Article::GetArticle($url[1]);}
             Article::viewArticle();
           
         }
