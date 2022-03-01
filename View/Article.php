@@ -7,15 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input type="text"><input type="text">
-    </form>
-    <p>
-    
-    <?=
-        $article=new Article;
-        $test=$article->GetArticle($url[1]);
-    ?>
-    </p>
+ 
 </body>
 </html>
