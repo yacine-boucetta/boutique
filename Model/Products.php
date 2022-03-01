@@ -67,6 +67,13 @@
             return $result;
 
         }
+        public function getAllInfo($id){
+            $getAllInfos = $this->db->prepare("SELECT * FROM produits WHERE id = :id");
+            $getAllInfos->bindValue(':id', $id, PDO::PARAM_STR);
+            $getAllInfos->execute();
+            $result=$getAllInfos->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
     }
 

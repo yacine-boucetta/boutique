@@ -3,6 +3,10 @@
 require ('Model/Products.php');
 
 class Product{
+    public static function productView(){
+        $message='';
+        require('view/Product.php');
+    }
 //-------------------------------------------------Verrif si les post sont vides --------------------------------------
     public static function checkPost(){
         if(empty($_POST['nom']) && empty($_POST['description']) && empty($_POST['idSousCat']) && empty($_POST['idCat']) && empty($_POST['prix']) && empty($_POST['img'])){
@@ -155,7 +159,16 @@ public static function addImg(){
     }
 
 }
+public static function showProduct(){
+    $affiche=new Model;
+    $prod=$affiche->getProd();
+    return $prod;    
 }
+
+
+
+}
+
 //require('view/admin.php');
 
 

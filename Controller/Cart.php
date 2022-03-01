@@ -1,25 +1,17 @@
 <?php
 
 class Cart{
-
-public function __construct(){
-
-}
-
-  
-
     
-   public function addProduct($libelleProduit,$qteProduit,$prixProduit){
-      if (isset($_POST['addProduct'])) {
+   public function addToCart($libelleProduit,$qteProduit,$prixProduit){
+      if (isset($_POST['addToCart'])) {
          $_SESSION['panier']=array();
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
          $_SESSION['panier']['verrou'] = false;
          
-     }
+     
         //Si le panier existe
-        if (isset($_SESSION['panier'])){
            //Si le produit existe déjà on ajoute seulement la quantité
            $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
            if ($positionProduit !== false){
@@ -35,6 +27,7 @@ public function __construct(){
         else
         echo "Un problème est survenu veuillez contacter l'administrateur du site.";
      }
+   
     public function supprimerArticle($libelleProduit){
         //Si le panier existe
         if (!empty($_SESSION['panier'])){
