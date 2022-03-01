@@ -117,7 +117,7 @@
             header ('Location:./Admin');
         }
 }
-//----------------------------------------------------select pour ajout ------------------------------------------------------------------------------------
+//----------------------------------------------------select cat pour ajout ------------------------------------------------------------------------------------
     public static function addSelect(){
         if(isset($_POST['addSelect'])){
             $select = new Categories;
@@ -127,6 +127,11 @@
                 //return $result;
             }
         }
+    }
+//----------------------------------------------------select prod pour ajouts-------------
+    public static function prodSelect(){
+        $select = new Model;
+        $tab = $select->
     }
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
     public function addForm(){
@@ -145,6 +150,12 @@
             ";
         }
     }
+//------------------------------------------------Display update de produits --------------------------------------------------------
+public function addUpFor(){
+    if(isset($_POST['upSelect'])){
+
+    }
+}
 
 }
 
