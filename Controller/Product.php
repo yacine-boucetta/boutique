@@ -99,11 +99,8 @@ class Product{
             $insert->oldInfo();
             $insert->checkPost();
             $insert->priceProd();
-            if($count->countProd($_POST['nom']) > 1){
-                $message = doublonError();
-                return $message;
-            }
-            $count->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
+            $insert = new Products();
+            $insert->updateProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
             echo 'coucou';
         }
 
