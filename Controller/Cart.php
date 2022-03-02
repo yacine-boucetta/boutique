@@ -1,7 +1,7 @@
 <?php
 
 class Cart{
-   function creationPanier(){
+   public static function creationPanier(){
       if (!isset($_SESSION['panier'])){
          $_SESSION['panier']=array();
          $_SESSION['panier']['libelleProduit'] = array();
@@ -12,17 +12,14 @@ class Cart{
       return true;
    }
    public function addToCart($libelleProduit,$qteProduit,$prixProduit){
-      if ($this->creationPanier()){
+      if (Cart::creationPanier()){
          //Si le produit existe déjà on ajoute seulement la quantité
          $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
         
-         if ($positionProduit == true)
-         {
-            $_SESSION['panier']['qteProduit']++ ;
-            var_dump($_SESSION);
-            var_dump($qteProduit);
-            // $_SESSION['panier']['qteProduit'] = $qteProduit ;
-         }
+         if ($positionProduit !== false)
+      {
+         $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
+      }
          else
          {
             //Sinon on ajoute le produit
@@ -31,8 +28,8 @@ class Cart{
             array_push( $_SESSION['panier']['prixProduit'],$prixProduit);
          }
       }
-      else
-      echo "Un problème est survenu veuillez contacter l'administrateur du site.";
+      else{
+      echo "Un problème est survenu veuillez contacter l'administrateur du site.";}
    }
    
     public function supprimerArticle($libelleProduit){
@@ -43,7 +40,7 @@ class Cart{
            $tmp['libelleProduit'] = array();
            $tmp['qteProduit'] = array();
            $tmp['prixProduit'] = array();
-           $tmp['verrou'] = $_SESSION['panier']['verrou'];
+         //   $tmp['verrou'] = $_SESSION['panier']['verrou'];
      
            for($i = 0; $i < count($_SESSION['panier']['libelleProduit']); $i++){
               if ($_SESSION['panier']['libelleProduit'][$i] !== $libelleProduit){
