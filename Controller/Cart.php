@@ -14,11 +14,14 @@ class Cart{
    public function addToCart($libelleProduit,$qteProduit,$prixProduit){
       if ($this->creationPanier()){
          //Si le produit existe déjà on ajoute seulement la quantité
-         $positionProduit = array_search($libelleProduit,  $_SESSION['panier']);
-   
-         if ($positionProduit ==true)
+         $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
+        
+         if ($positionProduit == true)
          {
-            $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
+            $_SESSION['panier']['qteProduit']++ ;
+            var_dump($_SESSION);
+            var_dump($qteProduit);
+            // $_SESSION['panier']['qteProduit'] = $qteProduit ;
          }
          else
          {
