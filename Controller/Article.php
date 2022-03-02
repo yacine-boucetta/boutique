@@ -28,7 +28,7 @@ class Article
                     // $_SESSION['panier']['libelleProduit']=[$key['nom']];
                     // $_SESSION['panier']['qteProduit']=[$qteprod];
                     // $_SESSION['panier']['prixProduit']=[$key['prix']];
-                    $cart->addToCart([$key['nom']],[1],[$key['prix']]);
+                    $cart->addToCart([$key['nom']],1,[$key['prix']]);
                     
                 }
 var_dump($_SESSION['panier']);

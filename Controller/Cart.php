@@ -15,10 +15,12 @@ class Cart{
       if (Cart::creationPanier()){
          //Si le produit existe déjà on ajoute seulement la quantité
          $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
-        
-         if ($positionProduit !== false)
+        var_dump($positionProduit);
+         if (isset($positionProduit)&& $positionProduit!==false)
       {
-         $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
+       
+         $_SESSION['panier']['qteProduit'][$positionProduit] = $_SESSION['panier']['qteProduit'][$positionProduit]+1;
+         var_dump($_SESSION['panier']['qteProduit'][$positionProduit]);
       }
          else
          {
