@@ -58,7 +58,7 @@ public static function index($url){
         if(isset($url[1])){
            Article::GetArticle($url[1]);}
             Article::viewArticle();
-          
+           
         }
     }
    

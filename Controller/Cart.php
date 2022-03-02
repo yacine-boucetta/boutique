@@ -8,7 +8,7 @@ class Cart{
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
-         $_SESSION['panier']['verrou'] = false;
+         
          
      
         //Si le panier existe
