@@ -63,5 +63,21 @@
         ?>
         </form>
     </article>
+    <article>
+        <h2>Modification de produits</h2>
+        <form method='POST' enctype='multipart/form-data'>
+            <select name='upSelect'>
+                <?php
+                    //$option = new Admin();
+                    $option->prodSelect();
+                ?>
+                <input type="submit" name="updateSelect"></input>
+            </select>
+            <?php
+                $option->addUpForm();
+            ?>
+
+        </form>
+    </article>
 </body>
 </html>

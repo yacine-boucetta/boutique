@@ -49,7 +49,7 @@
                 
             }
         }
-//----------------------------------------------------affichage Cat -------------------------------------
+//---------------------------------------------------- affichage Cat -------------------------------------
         public static function displaySubCat(){
             //$choice = new Admin;
             $choice = new Categories();
@@ -128,10 +128,25 @@
             }
         }
     }
+//----------------------------------------------------selectCat pour modif -----------------------------------------------------------------------------------
+    public static function updateSelect(){
+        if(isset($_POST['upCateg'])){
+            $select = new Categories;
+            $tab = $select->selectAddProduct(htmlspecialchars($_POST['upCateg']));
+            foreach($tab as $values){
+                echo '<option value="' . $values['id'] . '">' . $values['nom_sous_cat'] . '</option>';
+                
+        }
+    }
+}
 //----------------------------------------------------select prod pour ajouts-------------
     public static function prodSelect(){
         $select = new Model;
-        $tab = $select->
+        $tab = $select->getProd();
+        foreach($tab as $values){
+            echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
+        }
+
     }
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
     public function addForm(){
@@ -151,12 +166,32 @@
         }
     }
 //------------------------------------------------Display update de produits --------------------------------------------------------
-public function addUpFor(){
-    if(isset($_POST['upSelect'])){
+    public function addUpForm(){
+        if(isset($_POST['upSelect'])){
+            echo
+            "<select name='upCateg'>";
+            $option = new Admin;
+            $option->displayCat();
+            echo"</select>";
+            echo
+                "<select name='upIdSousCat'>"; 
+                    //$option = new Admin;
+                    $option->updateSelect($_POST['upSelect']);
+                "</select>";
+                echo        
+                "<input type='text' name='upNom'></input>
+                <textarea name='upDescription'></textarea>
+                <input type='text' name='upPrix'></input>
+                <input type='file' name='upImage'></input>
+                <input type='submit' name='upAddProd'></input>
+                ";
+                
+            }
+        }
 
-    }
-}
+        }
+    
 
-}
+//}
 
 ?>

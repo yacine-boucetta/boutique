@@ -74,5 +74,14 @@
             $result = $select->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+        
+        // public function selectUpProduct($id){
+        //     $select = $this->db->prepare("SELECT * FROM sous_categories INNER JOIN produits ON produits.id = sous_categories.id_categories WHERE sous_cqtegories.id = :id");
+        //     $select->bindValue(':id', $id, PDO::PARAM_STR);
+        //     $select->execute();
+        //     $result = $select->fetchAll(PDO::FETCH_ASSOC);
+        //     return $result;
+        // }
     }
+    
 ?>

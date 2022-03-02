@@ -48,20 +48,36 @@ class Product{
         }
     }
 //---------------------------------------------Ajouts des produits -------------------------------------------------------------
+    // public static function insertProduct(){
+        
+        
+    //     if(isset($_POST['addProd'])){
+    //         //$idCat = $_POST['addSlect'];
+    //         $count = new Products();
+    //         $insert = new Product();
+    //         if($count->countProd($_POST['nom']) > 1){
+    //             $message = doublonError();
+    //             return $message;
+    //         }
+    //         $insert->checkPost();
+    //         $insert->priceProd();
+    //         //$insert->checkCount();
+    //         $image = $insert->addImg();
+    //         $insert = new Products();
+    //         $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
+    //         echo 'coucouLLOLOL';
+    //     }
+
+    // }
     public static function insertProduct(){
-        
-        
+
+
         if(isset($_POST['addProd'])){
             //$idCat = $_POST['addSlect'];
-            $count = new Products();
             $insert = new Product();
-            if($count->countProd($_POST['nom']) > 1){
-                $message = doublonError();
-                return $message;
-            }
             $insert->checkPost();
             $insert->priceProd();
-            //$insert->checkCount();
+            $insert->checkCount();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
@@ -104,7 +120,7 @@ class Product{
             $insert->checkPost();
             $insert->priceProd();
             $insert = new Products();
-            $insert->updateProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
+            $insert->updateProd(htmlspecialchars($_POST['upNom']), htmlspecialchars($_POST['upDescription']),htmlspecialchars($_POST['upIdSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['upPrix']), htmlspecialchars($_POST['upImage']));
             echo 'coucou';
         }
 
