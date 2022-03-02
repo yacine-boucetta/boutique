@@ -132,7 +132,7 @@
     public static function updateSelect(){
         if(isset($_POST['upCateg'])){
             $select = new Categories;
-            $tab = $select->selectAddProduct(htmlspecialchars($_POST['upCateg']));
+            $tab = $select->selectAddProduct(htmlspecialchars($_POST['upSelect']));
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom_sous_cat'] . '</option>';
                 
@@ -144,7 +144,7 @@
         $select = new Model;
         $tab = $select->getProd();
         foreach($tab as $values){
-            echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
+            echo '<option value="' . $values['id_categories'] . '">' . $values['nom'] . '</option>';
         }
 
     }
@@ -168,6 +168,7 @@
 //------------------------------------------------Display update de produits --------------------------------------------------------
     public function addUpForm(){
         if(isset($_POST['upSelect'])){
+            var_dump($_POST['upSelect']);
             echo
             "<select name='upCateg'>";
             $option = new Admin;
