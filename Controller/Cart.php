@@ -1,32 +1,36 @@
 <?php
 
 class Cart{
-    
-   public function addToCart($libelleProduit,$qteProduit,$prixProduit){
-      if (isset($_POST['addToCart'])) {
+   function creationPanier(){
+      if (!isset($_SESSION['panier'])){
          $_SESSION['panier']=array();
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
          
-         
-     
-        //Si le panier existe
-           //Si le produit existe déjà on ajoute seulement la quantité
-           $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
-           if ($positionProduit !== false){
-              $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
-           }
-           else{
-              //Sinon on ajoute le produit
-              array_push( $_SESSION['panier']['libelleProduit'],$libelleProduit);
-              array_push( $_SESSION['panier']['qteProduit'],$qteProduit);
-              array_push( $_SESSION['panier']['prixProduit'],$prixProduit);
-           }
-        }
-        else
-        echo "Un problème est survenu veuillez contacter l'administrateur du site.";
-     }
+      }
+      return true;
+   }
+   public function addToCart($libelleProduit,$qteProduit,$prixProduit){
+      if ($this->creationPanier()){
+         //Si le produit existe déjà on ajoute seulement la quantité
+         $positionProduit = array_search($libelleProduit,  $_SESSION['panier']);
+   
+         if ($positionProduit ==true)
+         {
+            $_SESSION['panier']['qteProduit'][$positionProduit] += $qteProduit ;
+         }
+         else
+         {
+            //Sinon on ajoute le produit
+            array_push( $_SESSION['panier']['libelleProduit'],$libelleProduit);
+            array_push( $_SESSION['panier']['qteProduit'],$qteProduit);
+            array_push( $_SESSION['panier']['prixProduit'],$prixProduit);
+         }
+      }
+      else
+      echo "Un problème est survenu veuillez contacter l'administrateur du site.";
+   }
    
     public function supprimerArticle($libelleProduit){
         //Si le panier existe
