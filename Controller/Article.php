@@ -23,11 +23,12 @@ class Article
             </div><?php
                 }
                 if (isset($_POST['addToCart'])) {
-                    $qteProd =+1;
+                    $qteProd= +1 ;
                     $cart=new Cart;
                     $cart->addToCart($key['nom'],$qteProd,$key['prix']);
                     var_dump($_SESSION['panier']);
                 }
+                
             }
     
 }
