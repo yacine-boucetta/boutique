@@ -37,10 +37,11 @@ class Product{
         
     }
 //------------------------------------------------Check si le nom de produit existe deja ----------------------------------------------------------------
-    public static function checkCount(){
+    public static function checkCount($nom){
         $count = new Products();
+        $compter = $count->countProd($nom);
         if(isset($_POST['addSelect'])){
-            if($count->countProd($_POST['nom']) > 0){
+            if($compter > 0){
                 $message = 'Ce nom de produits existe deja';
                 return $message;
             
@@ -74,14 +75,21 @@ class Product{
 
         if(isset($_POST['addProd'])){
             //$idCat = $_POST['addSlect'];
+            //$insert = new Products();
+            $a = $insert->countProd($_POST['nom']);
+            if($a > 0){
+                $message = 'Ce nom de produits existe deja';
+                return $message;
+            }else{
             $insert = new Product();
             $insert->checkPost();
             $insert->priceProd();
-            $insert->checkCount();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
             echo 'coucou';
+            var_dump($a);
+        }
         }
 
     }
@@ -111,17 +119,23 @@ class Product{
 //-----------------------------------------------------Update Produits----------------------------------------------------------------
 
     public static function updateProduct(){
-            
-            
         if(isset($_POST['updateProd'])){
+            echo'coucou22';
+            $a = $insert->countProd($_POST['nom']);
+            if($a > 0){
+                $message = 'Ce nom de produits existe deja';
+                return $message;
+            }else{
             $insert = new Product();
-            $count = new Products();
             $insert->oldInfo();
-            $insert->checkPost();
-            $insert->priceProd();
+            //$insert->checkPost();
+            //$insert->priceProd();
+            $image = $insert->addImg();
             $insert = new Products();
-            $insert->updateProd(htmlspecialchars($_POST['upNom']), htmlspecialchars($_POST['upDescription']),htmlspecialchars($_POST['upIdSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['upPrix']), htmlspecialchars($_POST['upImage']));
-            echo 'coucou';
+            $insert->updateProd(htmlspecialchars($_POST['upSelect']), htmlspecialchars($_POST['idCateg']),
+            htmlspecialchars($_POST['upIdSousCat']),htmlspecialchars($_POST['nom']), 
+            htmlspecialchars($_POST['upDescription']),
+            htmlspecialchars($_POST['upPrix']), $image);
         }
 
     }

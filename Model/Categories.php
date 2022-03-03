@@ -25,6 +25,14 @@
             //var_dump($result);
             return $result;
         }
+//-----------------------------------------display cat by id----------------------------------------------------
+        public function getCatById($id){
+            $getCat = $this->db->prepare("SELECT * FROM categories INNER JOIN produits ON categories.id = produits.id_categories WHERE categorie.id = :id");
+            $getCat->bindValue(':id', $id, PDO::PARAM_STR);
+            $getCat->execute();
+            $result = $getCat->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 //-------------------------------------------Display Sub Categories--------------------------------------------------
         public function getSubCat(){
             $getSubCat = $this->db->prepare("SELECT * FROM sous_categories");

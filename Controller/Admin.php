@@ -144,10 +144,11 @@
         $select = new Model;
         $tab = $select->getProd();
         foreach($tab as $values){
-            echo '<option value="' . $values['id_categories'] . '">' . $values['nom'] . '</option>';
+            echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
         }
 
     }
+
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
     public function addForm(){
         if(isset($_POST['addSelect'])){
@@ -166,29 +167,29 @@
         }
     }
 //------------------------------------------------Display update de produits --------------------------------------------------------
-    public function addUpForm(){
-        if(isset($_POST['upSelect'])){
-            var_dump($_POST['upSelect']);
-            echo
-            "<select name='upCateg'>";
-            $option = new Admin;
-            $option->displayCat();
-            echo"</select>";
-            echo
-                "<select name='upIdSousCat'>"; 
-                    //$option = new Admin;
-                    $option->updateSelect($_POST['upSelect']);
-                "</select>";
-                echo        
-                "<input type='text' name='upNom'></input>
-                <textarea name='upDescription'></textarea>
-                <input type='text' name='upPrix'></input>
-                <input type='file' name='upImage'></input>
-                <input type='submit' name='upAddProd'></input>
-                ";
+    // public function addUpForm(){
+    //     if(isset($_POST['upSelect'])){
+    //         var_dump($_POST['upSelect']);
+    //         echo
+    //         "<select name='upCateg'>";
+    //         $option = new Admin;
+    //         $option->displayCat();
+    //         echo"</select>";
+    //         echo
+    //             "<select name='upIdSousCat'>"; 
+    //                 //$option = new Admin;
+    //                 $option->updateSelect($_POST['upSelect']);
+    //             "</select>";
+    //             echo        
+    //             "<input type='text' name='upNom'></input>
+    //             <textarea name='upDescription'></textarea>
+    //             <input type='text' name='upPrix'></input>
+    //             <input type='file' name='upImage'></input>
+    //             <input type='submit' name='updateProd'></input>
+    //             ";
                 
-            }
-        }
+    //         }
+    //     }
 
         }
     

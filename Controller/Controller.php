@@ -28,7 +28,7 @@ public static function index($url){
         Admin::deleteSubCateg();
         Product::deleteProducts();
         Admin::adminView();
-    
+        Product::updateProduct();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {

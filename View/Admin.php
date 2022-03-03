@@ -71,12 +71,22 @@
                     //$option = new Admin();
                     $option->prodSelect();
                 ?>
-                <input type="submit" name="updateSelect"></input>
             </select>
+            <select name='idCateg'>
             <?php
-                $option->addUpForm();
+                $option->displayCat();
             ?>
-
+            </select>
+            <select name='upIdSousCat'>
+                <?php
+                    $option->displaySubCat();
+                ?>
+            </select>
+                <input type='text' name='nom'></input>
+                <textarea name='upDescription'></textarea>
+                <input type='text' name='upPrix'></input>
+                <input type='file' name='image'></input>
+                <input type='submit' name='updateProd'></input>
         </form>
     </article>
 </body>
