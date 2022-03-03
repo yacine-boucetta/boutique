@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<?php var_dump($_SESSION['user']);?>
 <body>
     <ul><li><a href='./Product'>product</a></li>
     <li><a href='./SignUp'>inscription</a></li>
@@ -13,6 +14,7 @@
     <li><a href= './Product'>product</a></li>
     <li><a href= './Admin'>admin</a></li>
     <li><a href= './Profil'>profil</a></li>
+    <li><a href= './Deconnexion'>deconnexion</a></li>
     </ul> 
 </body>
 </html>

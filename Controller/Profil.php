@@ -42,7 +42,7 @@ class Profil
             $_POST['password'] = $_SESSION['user']['password'];
         }
         if (empty($_POST['password2'])) {
-            $_POST['password2'] = $_SESSION['user']['password'];
+            $_POST['password2'] = '';
         }
         if (empty($_POST['email'])) {
             $_POST['email'] = $_SESSION['user']['email'];

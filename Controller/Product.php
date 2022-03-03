@@ -59,7 +59,6 @@ class Product{
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
-            echo 'coucou';
         }
 
     }
@@ -98,10 +97,8 @@ class Product{
             $insert->priceProd();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
-            echo 'coucou';
-        }
-
-    }
+        
+    }}
 
 //-----------------------------------------------------Supression des produits--------------------------------------------------
     public static function deleteProducts(){
@@ -110,7 +107,7 @@ class Product{
 
         
         $delete->deleteProd($_POST['idDel']);
-        echo 'coucou2';
+  
     }
 //----------------------------------------------------ajouts d'img----------------------------------------------------
 public static function addImg(){
@@ -163,7 +160,3 @@ public static function showProduct(){
 }
 
 //require('view/admin.php');
-
-
-
-?>
