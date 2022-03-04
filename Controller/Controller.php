@@ -56,9 +56,17 @@ public static function index($url){
         var_dump($url);
 
         if(isset($url[1])){
-           Article::GetArticle($url[1]);}
+           Article::GetArticle($url[1]);
+        }
             Article::viewArticle();
-           
+        }
+        elseif (isset($url[0])) {
+            Cart::showCart();
+            Cart::viewCart();
+            $cart=new Cart ;
+            $cart->MontantGlobal();
+            $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
+            $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
         }
     }
    

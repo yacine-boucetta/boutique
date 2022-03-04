@@ -23,15 +23,14 @@ class Article
             </div><?php
                 }
                 if (isset($_POST['addToCart'])) {
-                    
+                    // $qteprod=1;
                     $cart=new Cart;
-                    $_SESSION['panier']['libelleProduit']=[$key['nom']];
-                
-                    $_SESSION['panier']['prixProduit']=[$key['prix']];
-                    $cart->addToCart($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit'],$_SESSION['panier']['prixProduit']);
-                    var_dump($_SESSION['panier']);
-                }
+                    // $_SESSION['panier']['libelleProduit']=[$key['nom']];
+                    // $_SESSION['panier']['qteProduit']=[$qteprod];
+                    // $_SESSION['panier']['prixProduit']=[$key['prix']];
+                    $cart->addToCart($key['nom'],1,$key['prix']);
 
+                }
+                var_dump($_SESSION['panier']);
             }
-    
 }
