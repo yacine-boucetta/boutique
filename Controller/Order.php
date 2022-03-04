@@ -11,9 +11,7 @@ class Order{
     }
 
     public function OrderPay(){
-
         $order=new Commande();
-       
         $prix=$order->pay();
         if(isset($prix)){
             require_once('vendor/autoload.php');
@@ -24,7 +22,6 @@ class Order{
                 'amount' => $prix,
                 'currency' => 'eur'
             ]);
-           
             return $intent;
         }
         else{

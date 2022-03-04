@@ -1,4 +1,5 @@
 <?php
+require 'assets/template/header.php';
 $order=new Order;
 $intent=$order->OrderPay();
 ?>

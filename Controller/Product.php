@@ -32,8 +32,7 @@ class Product{
             return $message;
         }elseif( $desLenght <=1 || $desLenght >= 200){
             $message = 'La description dot faire entre 1 et 200 characters';
-        }
-        
+        }  
     }
 //------------------------------------------------Check si le nom de produit existe deja ----------------------------------------------------------------
     public static function checkCount(){
@@ -42,16 +41,12 @@ class Product{
             if($count->countProd($_POST['nom']) > 0){
                 $message = 'Ce nom de produits existe deja';
                 return $message;
-            
             }
         }
     }
 //---------------------------------------------Ajouts des produits -------------------------------------------------------------
     public static function insertProduct(){
-        
-        
         if(isset($_POST['addProd'])){
-            //$idCat = $_POST['addSlect'];
             $insert = new Product();
             $insert->checkPost();
             $insert->priceProd();
@@ -60,7 +55,6 @@ class Product{
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
         }
-
     }
 //-----------------------------------------------------Old info for update------------------------------------------------------------
 
@@ -88,8 +82,6 @@ class Product{
 //-----------------------------------------------------Update Produits----------------------------------------------------------------
 
     public static function updateProduct(){
-            
-            
         if(isset($_POST['updateProd'])){
             $insert = new Product();
             $insert->oldInfo();
@@ -97,17 +89,13 @@ class Product{
             $insert->priceProd();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['idCat']),htmlspecialchars($_POST['prix']), htmlspecialchars($_POST['img']));
-        
     }}
 
 //-----------------------------------------------------Supression des produits--------------------------------------------------
     public static function deleteProducts(){
         $delete = new Products();
         if(isset($_POST['deleteProd']))
-
-        
         $delete->deleteProd($_POST['idDel']);
-  
     }
 //----------------------------------------------------ajouts d'img----------------------------------------------------
 public static function addImg(){
@@ -116,20 +104,14 @@ public static function addImg(){
         var_dump($_FILES['image']);
         $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
             $tailleMax = 5242880; // Taille maximum 5 Mo
-        
             $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
             if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
-                
                 $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1)); // Prend l'extension après le point, soit "jpg, jpeg ou png"
-
                 if (in_array($extensionUpload, $extensionsValides)){ // Vérifie que l'extension est correct
                     
                     $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
                     if (!is_dir($dossier)){ // Si le nom de dossier n'existe pas alors on le crée
-
                         mkdir($dossier,0777,true);
-                
-
                     }
                     $nom = $_POST['nom'] ; // Permet de générer un nom unique à la photo
                     $chemin = "./assets/images/" . $nom. "." . $extensionUpload; // Chemin pour placer la photo
