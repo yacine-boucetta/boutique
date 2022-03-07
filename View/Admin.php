@@ -67,27 +67,31 @@
         <h2>Modification de produits</h2>
         <form method='POST' enctype='multipart/form-data'>
             <select name='upSelect'>
+            <option value="" disabled selected>Select your option</option>
                 <?php
-                    //$option = new Admin();
+                    $option = new Admin();
                     $option->prodSelect();
                 ?>
             </select>
-            <select name='idCateg'>
-            <?php
-                $option->displayCat();
-            ?>
-            </select>
+            <!-- <input type='submit' name='choiceProd'></input> -->
+            <input type='text' name='nom'></input>
+            <textarea name='upDescription'></textarea>
             <select name='upIdSousCat'>
+            <option value='' disabled selected>Select your option</option>
                 <?php
                     $option->displaySubCat();
                 ?>
             </select>
-                <input type='text' name='nom'></input>
-                <textarea name='upDescription'></textarea>
+            <select name='idCateg'>
+            <option value="" disabled selected>Select your option</option>
+            <?php
+                $option->displayCat();
+            ?>
+            </select>                
                 <input type='text' name='upPrix'></input>
-                <input type='file' name='image'></input>
+                <!-- <input type='file' name='image'></input> -->
                 <input type='submit' name='updateProd'></input>
-        </form>
+        </form> 
     </article>
 </body>
 </html>

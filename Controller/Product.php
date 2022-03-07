@@ -17,7 +17,7 @@ class Product{
 //-------------------------------------------------Verrif du prix-------------------------------------------
     public static function priceProd(){
 
-        if($_POST['prix'] <= 0){
+        if($_POST['upPrix'] <= 0){
             $message = 'Veuillez ajouter un prix positif';
             return $message;
         }
@@ -75,7 +75,7 @@ class Product{
 
         if(isset($_POST['addProd'])){
             //$idCat = $_POST['addSlect'];
-            //$insert = new Products();
+            $insert = new Products();
             $a = $insert->countProd($_POST['nom']);
             if($a > 0){
                 $message = 'Ce nom de produits existe deja';
@@ -97,49 +97,87 @@ class Product{
 
     public static function oldInfo(){
 
-        if(isset($_POST['updateProd'])){
+        if(isset($_POST['upSelect'])){
             $getInfo = new Products();
-            $getInfo->getAllInfos($_POST['prodChoice']);
-            if(empty($_POST['upNom'])){
-                $_POST['upNom'] = $getInfo['nom'];
-            }elseif(empty($_POST['upDes'])){
-                $_POST['upDes'] = $getInfo['description'];
-            }elseif(empty($_POST['upSousCat'])){
-                $_POST['upSousCat'] = $getInfo['id_sous_categories'];
-            }elseif(empty($_POST['upCat'])){
-                $_POST['upCat'] = $getInfo['id_categories'];
-            }elseif(empty($_POST['upPrix'])){
-                $_POST['upPrix'] = $getInfo['prix'];
-            }elseif(empty($_POST['upImg'])){
-                $_POST['ipImg'] = $getInfo['id_sous_categories'];
-            }
+            $info = $getInfo->getAllInfos($_POST['upSelect']);
+            echo'<pre>';
+            var_dump($info);
+            echo '</pre>';
+            if(empty($_POST['nom'])){
+                $_POST['nom'] = $info[0]['nom'];
+            }if(empty($_POST['upDescription'])){
+                $_POST['upDescription'] = $info[0]['description'];
+            }if(empty($_POST['upIdSousCat'])){
+                $_POST['upIdSousCat'] = $info[0]['id_sous_categories'];
+            }if(empty($_POST['idCateg'])){
+                $_POST['idCateg'] = $info[0]['id_categories'];
+            }if(empty($_POST['upPrix'])){
+                $_POST['upPrix'] = $info[0]['prix'];
+            }//elseif(empty($_POST['image'])){
+            //     $_POST['image'] = $info[0]['image'];
+            // }
         }
+        echo'<pre>';
+        var_dump($_POST);
+        echo '</pre>';
     }
+//----------------------------------------------------
+//     public static function displayUpdate(){
+//         if(isset($_POST['choiceProd'])){
+            
+//             $getInfo = new Products();
+//             $info = $getInfo->getAllInfos($_POST['upSelect']);
+//             echo "</select>
+//             <input type='text' name='nom' value='".$info[0]['nom']."'></input>
+//             <textarea name='upDescription'>".$info[0]['description']."</textarea>
+//             <select name='upIdSousCat'>
+//             <option value='' disabled selected>Select your option</option>";
+//             $option = new Admin;
+//             $option->displaySubCat();
 
+//             echo" </select>
+//             <select name='idCateg'>
+//             <option value='' disabled selected>Select your option</option>";
+
+//             $option->displayCat();
+
+//             echo"</select>                
+//             <input type='text' name='upPrix' value='".$info[0]['prix']."'></input>
+//             <input type='file' name='image' ".$info[0]['prix']."></input>
+//             <input type='submit' name='updateProd'></input>";
+            
+//                 echo'<pre>';
+//                 var_dump($info);
+//                 var_dump($_POST);
+//                 var_dump($_POST['image']);
+//                 echo '</pre>';
+//     }
+// }
 //-----------------------------------------------------Update Produits----------------------------------------------------------------
 
     public static function updateProduct(){
         if(isset($_POST['updateProd'])){
-            echo'coucou22';
-            $a = $insert->countProd($_POST['nom']);
-            if($a > 0){
+            //echo'coucou22';
+            $count = new Products();
+            $countLog = $count->countProd($_POST['nom']);
+            if($countLog > 0){
                 $message = 'Ce nom de produits existe deja';
                 return $message;
             }else{
             $insert = new Product();
             $insert->oldInfo();
-            //$insert->checkPost();
-            //$insert->priceProd();
-            $image = $insert->addImg();
+            $insert->checkPost();
+            $insert->priceProd();
+            //$image = $insert->addImg();
             $insert = new Products();
             $insert->updateProd(htmlspecialchars($_POST['upSelect']), htmlspecialchars($_POST['idCateg']),
             htmlspecialchars($_POST['upIdSousCat']),htmlspecialchars($_POST['nom']), 
             htmlspecialchars($_POST['upDescription']),
-            htmlspecialchars($_POST['upPrix']), $image);
+            htmlspecialchars($_POST['upPrix']));
         }
 
     }
-
+}
 //-----------------------------------------------------Supression des produits--------------------------------------------------
     public static function deleteProducts(){
         $delete = new Products();
@@ -147,7 +185,7 @@ class Product{
 
         
         $delete->deleteProd($_POST['idDel']);
-        echo 'coucou2';
+        //echo 'coucou2';
     }
 //----------------------------------------------------ajouts d'img----------------------------------------------------
 public static function addImg(){

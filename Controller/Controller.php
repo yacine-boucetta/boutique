@@ -29,6 +29,7 @@ public static function index($url){
         Product::deleteProducts();
         Admin::adminView();
         Product::updateProduct();
+        //Product::displayUpdate();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {

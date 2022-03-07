@@ -30,16 +30,16 @@
                 $insertProd->execute();
 
         }
-        public function updateProd($id, $id_categories, $id_sous_categories, $nom ,$description , $prix, $image){
+        public function updateProd($id, $id_categories, $id_sous_categories, $nom ,$description , $prix){
 
-            $insertProd = $this->db->prepare("UPDATE produits SET nom=:nom, description=:description ,id_sous_categories=:id_sous_categories ,id_categories=:id_categories ,prix=:prix ,image=:image WHERE id = :id");
+            $insertProd = $this->db->prepare("UPDATE produits SET nom=:nom, description=:description ,id_sous_categories=:id_sous_categories ,id_categories=:id_categories ,prix=:prix WHERE id = :id");
                 $insertProd->bindValue(':id', $id, PDO::PARAM_INT);
                 $insertProd->bindValue(':nom', $nom, PDO::PARAM_STR);
                 $insertProd->bindValue(':description', $description, PDO::PARAM_STR);
                 $insertProd->bindValue(':id_sous_categories', $id_sous_categories, PDO::PARAM_INT);
                 $insertProd->bindValue(':id_categories', $id_categories, PDO::PARAM_STR);
                 $insertProd->bindValue(':prix', $prix, PDO::PARAM_INT);
-                $insertProd->bindValue(':image', $image, PDO::PARAM_STR);
+                //$insertProd->bindValue(':image', $image, PDO::PARAM_STR);
                 $insertProd->execute();
 
         }
