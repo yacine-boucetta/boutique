@@ -41,6 +41,22 @@
             //var_dump($result);
             return $result;
 }
+//-----------------------------------------display sub cat update ----------------------------------------------------------------
+    public function updateSubCat(){
+        $getCatName = $this->db->prepare("SELECT sous_categories.id, sous_categories.nom_sous_cat, id_categories, nom FROM sous_categories INNER JOIN categories ON sous_categories.id_categories = categories.id");
+        $getCatName->execute();
+        $result = $getCatName->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+
+    }
+//-----------------------------------------Update Cat  ----------------------------------------------------------------
+    public function updateCat($id, $idCat, $idSubCat){
+        $updateCat = $this->db->prepare("UPDATE produits SET id_categories=:id_categories, id_sous_categories=:id_sous_categories WHERE id = :id");
+        $updateCat->bindValue(':id', $id, PDO::PARAM_INT);
+        $updateCat->bindValue(':id_categories', $idCat, PDO::PARAM_INT);
+        $updateCat->bindValue(':id_sous_categories', $idSubCat, PDO::PARAM_INT);
+        $updateCat->execute();
+    }
 //------------------------------------------new Sub Categories------------------------------------------------------
         public function insertSubCat($nom, $idSubCat){
             $insertSubCat = $this->db->prepare("INSERT INTO sous_categories (nom_sous_cat, id_categories) VALUES (:nom, :id_categories)");

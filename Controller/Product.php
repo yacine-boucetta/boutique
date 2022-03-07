@@ -121,6 +121,18 @@ class Product{
         var_dump($_POST);
         echo '</pre>';
     }
+//-------------------------------------------------Update Categ ----------------------------------------------------------------
+    public static function updateCategorie(){
+        if(isset($_POST['updateCat'])){
+            $update = new Categories;
+            $update->updateCat(htmlspecialchars($_POST['upCategoProd']),
+            htmlspecialchars($_POST['idCategoUp']), htmlspecialchars($_POST['idSubCategoUp']));
+            // echo'<pre>';
+            // var_dump($_POST);
+            // echo '</pre>';
+        }
+        
+    }
 //----------------------------------------------------
 //     public static function displayUpdate(){
 //         if(isset($_POST['choiceProd'])){

@@ -65,6 +65,18 @@
                 
             }
         }
+//------------------------------------------Affichage cat name-------------------------------------------------------------------------
+public static function displayNameCat(){
+    $choice = new Categories();
+    $tab = $choice->updateSubCat();
+    echo 'coucou78';
+    foreach($tab as $values){
+        echo '<option value="' . $values['id'] . '">' . $values['nom'] .' / '. $values['nom_sous_cat']. '</option>';
+    }
+    echo '<pre>';
+    var_dump($tab);
+    echo '</pre>';
+}
 //----------------------------------------------------affichage Sub Cat --------------------------------
     public static function displaySubCatProd(){
         //$choice = new Admin;
@@ -146,9 +158,9 @@
         foreach($tab as $values){
             echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
         }
-
     }
-
+//---------------------------------------------Update Categ-----------------------------------------------------------------------
+    
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
     public function addForm(){
         if(isset($_POST['addSelect'])){

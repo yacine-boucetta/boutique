@@ -75,23 +75,35 @@
             </select>
             <!-- <input type='submit' name='choiceProd'></input> -->
             <input type='text' name='nom'></input>
-            <textarea name='upDescription'></textarea>
-            <select name='upIdSousCat'>
-            <option value='' disabled selected>Select your option</option>
-                <?php
-                    $option->displaySubCat();
-                ?>
-            </select>
-            <select name='idCateg'>
-            <option value="" disabled selected>Select your option</option>
-            <?php
-                $option->displayCat();
-            ?>
-            </select>                
+            <textarea name='upDescription'></textarea>             
                 <input type='text' name='upPrix'></input>
                 <!-- <input type='file' name='image'></input> -->
                 <input type='submit' name='updateProd'></input>
         </form> 
+
+        <h2>Update de categories</h2>
+        <form method='POST'>
+            <select name='upCategoProd'>
+                <option value="" disabled selected>Select your option</option>
+                    <?php
+                        $option = new Admin();
+                        $option->prodSelect();
+                    ?>
+            </select>
+            <select name='idCategoUp'>
+                <option value="" disabled selected>Select your option</option>
+                <?php
+                    $option->displayCat();
+                ?>
+            </select>
+            <select name='idSubCategoUp'>
+            <option value='' disabled selected>Select your option</option>
+                <?php
+                    $option->displayNameCat();
+                ?>
+            </select>
+            <input type='submit' name='updateCat'></input>
+        </form>
     </article>
 </body>
 </html>
