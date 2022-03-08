@@ -17,6 +17,7 @@ class Order{
     public function OrderPay(){
 
       $prix= Order::payment();
+
         if(isset($prix)){
             require_once('vendor/autoload.php');
             // On instancie Stripe
@@ -26,7 +27,6 @@ class Order{
                 'amount' => $prix*100,
                 'currency' => 'eur'
             ]);
-           
             return $intent;
         }
      
