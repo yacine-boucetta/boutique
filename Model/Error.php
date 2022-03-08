@@ -7,7 +7,7 @@ function loginError(){
 
 //---------error password----------
 function lengthError(){
-    $error='Votre mot de passe doit contenir au moin 6 caractères';
+    $error='Votre mot de passe doit contenir au moins 6 caractères une majuscule un chiffre et un caractère spécial';
     return $error;
 }
 

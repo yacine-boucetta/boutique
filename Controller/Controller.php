@@ -72,7 +72,7 @@ class Controller
     public static function checkoutSession()
     {
         if (!isset($_SESSION['user'])) {
-            header('Location:./Home');
+            header('Location:./');
         }
     }
 

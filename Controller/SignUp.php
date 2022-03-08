@@ -23,17 +23,15 @@ class SignUp
                 $message = loginError();
                 return $message;
             }
-//             $uppercase = preg_match('@[A-Z]@', $password);
-// $lowercase = preg_match('@[a-z]@', $password);
-// $number    = preg_match('@[0-9]@', $password);
+            $password=$_POST['password'];
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
 
-// if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-  // tell the user something went wrong
-// }
-            if (strlen($_POST['password']) < 6) {
+        if(!$uppercase || !$lowercase || !$number || strlen($password) < 6) {
                 $message = lengthError();
                 return $message;
-            } else {
+        }else {
                 $password = htmlspecialchars(password_hash($_POST['password'], PASSWORD_BCRYPT));
                 $newLogin = htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1");
                 $newEmail = htmlspecialchars($_POST['email'], ENT_QUOTES, "ISO-8859-1");
