@@ -30,7 +30,7 @@ class Cart{
                  <td><?=$_SESSION['panier']['libelleProduit'][$i]?></td>
                  <td>
                     <form method="POST">
-                       <input type="submit" value="-" name="delete<?php $_SESSION['panier']['libelleProduit'][$i]?>">
+                       <input type="submit" value="-" name="delete">
                        <input type="text" size="4" name= "qteProd"value=<?=$_SESSION['panier']['qteProduit'][$i]?>>
                         <input type=submit value="+" name="add">
                   </form>
@@ -43,9 +43,11 @@ class Cart{
                $cart=new Cart;
                $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
                }
+               
                if (isset($_POST['delete'])||isset($_POST['add'])) {
                   $cart=new Cart;
                   $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i],$_SESSION['panier']['qteProduit'][$i]);
+                  
                }
                var_dump($_SESSION['panier']);
             } ?>
@@ -57,7 +59,7 @@ class Cart{
            </form>
          <?php
              if (isset($_POST['pay'])) {
-                
+                Cart::payCart();
              }
          }
      }
@@ -118,8 +120,14 @@ class Cart{
       {
          $total += $_SESSION['panier']['qteProduit'][$i] * $_SESSION['panier']['prixProduit'][$i];
       }
-      echo $total ?> € <?php ;
+      
+      return $total;
    }
+   public static function payCart(){
+    header("location: ./order");
+   }
+
+   
 
    public function modifierQteArticle($libelleProduit,$qteProduit){
       if (isset($_POST['delete'])) {
@@ -130,6 +138,7 @@ class Cart{
                if ($qteProduit == 0) {
                   $cart=new Cart;
                   $cart->supprimerArticle($_SESSION['panier']['libelleproduit']);
+                  return;
                }
             }
          }
@@ -140,6 +149,7 @@ class Cart{
             $positionProduit=array_search($libelleProduit,$_SESSION['panier']['libelleProduit']);
             if ($positionProduit!==false) {
                $_SESSION['panier']['qteProduit'][$positionProduit]=$qteProduit +1;
+               return;
          }
       }
       header("refresh: 0.5");

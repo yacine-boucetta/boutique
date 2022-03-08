@@ -59,14 +59,15 @@ public static function index($url){
            Article::GetArticle($url[1]);
         }
             Article::viewArticle();
-        }
-        elseif (isset($url[0])) {
+        }   
+        elseif ($url[0] =='cart') {
             Cart::showCart();
             Cart::viewCart();
             $cart=new Cart ;
             $cart->MontantGlobal();
             $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
             $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
+            
         }
     }
    

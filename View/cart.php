@@ -10,8 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-        
-    ?>
+    <p> <?= Cart::MontantGlobal()?>€</p>
 </body>
 </html>
