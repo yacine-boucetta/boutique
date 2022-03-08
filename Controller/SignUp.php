@@ -17,15 +17,12 @@ class SignUp
     public static function signUpAction()
     {$message='';
         if (isset($_POST['sign_up'])) {
-
             $a = new Model();
             $b = $a->checkUser($_POST['login']);
-
             if ($b > 0) {
                 $message = loginError();
                 return $message;
             }
-
 //             $uppercase = preg_match('@[A-Z]@', $password);
 // $lowercase = preg_match('@[a-z]@', $password);
 // $number    = preg_match('@[0-9]@', $password);

@@ -32,6 +32,20 @@ class Model
         $getProduit = $getProd->fetchall(PDO::FETCH_ASSOC);
         return $getProduit;
     }
+    public  function articleCheck($id){
+        $getProd = $this->db->prepare("SELECT * FROM produits WHERE id=:id ");
+        $getProd->execute(array(':id' => $id));
+        $getProduit = $getProd->rowCount();
+        return $getProduit;
+    }
 
-
+    public function query($query){
+        $research="SELECT * FROM produits
+        WHERE (`nom` LIKE '%".$query."%') OR (`description` LIKE '%".$query."%')"  ;
+        $search= $this->db->prepare($research);
+        $search->execute();
+        $searching=$search->fetchAll(PDO::FETCH_ASSOC);
+    return $searching;
+    
+    }
 }

@@ -1,5 +1,6 @@
 <?php
 
+
 class Cart{
 
 
@@ -12,10 +13,10 @@ class Cart{
    public static function creationPanier(){
       if (!isset($_SESSION['panier'])){
          $_SESSION['panier']=array();
+
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
-         
       }
       return true;
    }
@@ -38,6 +39,7 @@ class Cart{
       else{
       echo "Un problème est survenu veuillez contacter l'administrateur du site.";}
    }
+
    public static function showCart(){
       if (Cart::creationPanier()){
          $nbArticles=count($_SESSION['panier']['libelleProduit']);
