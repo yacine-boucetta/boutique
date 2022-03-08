@@ -19,52 +19,6 @@ class Cart{
       }
       return true;
    }
-   public static function showCart(){
-      if (Cart::creationPanier()){
-         $nbArticles=count($_SESSION['panier']['libelleProduit']);
-         if ($nbArticles <= 0)
-         echo "<tr><td>Votre panier est vide </ td></tr>";
-         else{
-             for ($i=0 ;$i < $nbArticles ; $i++){?>
-                 <tr>
-                 <td><?=$_SESSION['panier']['libelleProduit'][$i]?></td>
-                 <td>
-                    <form method="POST">
-                       <input type="submit" value="-" name="delete">
-                       <input type="text" size="4" name= "qteProd"value=<?=$_SESSION['panier']['qteProduit'][$i]?>>
-                        <input type=submit value="+" name="add">
-                  </form>
-                  </td>
-                 <td><?=$_SESSION['panier']['prixProduit'][$i]*$_SESSION['panier']['qteProduit'][$i]?></td>
-                 
-                 </tr><?php
-              
-              if (isset($_POST['supp'])) {
-               $cart=new Cart;
-               $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
-               }
-               
-               if (isset($_POST['delete'])||isset($_POST['add'])) {
-                  $cart=new Cart;
-                  $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i],$_SESSION['panier']['qteProduit'][$i]);
-                  
-               }
-               var_dump($_SESSION['panier']);
-            } ?>
-           <form method="POST">
-           <input type="submit" name="supp" value="supprimez">
-           </form>
-           <form method="POST">
-           <input type="submit" name="pay" value="paimment">
-           </form>
-         <?php
-             if (isset($_POST['pay'])) {
-                Cart::payCart();
-             }
-         }
-     }
-    
-    }
    public function addToCart($libelleProduit,$qteProduit,$prixProduit){
       if (Cart::creationPanier()){
          //Si le produit existe déjà on ajoute seulement la quantité
@@ -84,6 +38,80 @@ class Cart{
       else{
       echo "Un problème est survenu veuillez contacter l'administrateur du site.";}
    }
+   public static function showCart(){
+      if (Cart::creationPanier()){
+         $nbArticles=count($_SESSION['panier']['libelleProduit']);
+         if ($nbArticles <= 0)
+         echo "<tr><td>Votre panier est vide </ td></tr>";
+         else{
+             for ($i=0 ;$i < $nbArticles ; $i++){?>
+                 <tr>
+                 <td><?=$_SESSION['panier']['libelleProduit'][$i]?></td>
+                 <td>
+                    <form method="POST">
+                       <input type="hidden" value=<?= $i?> name="id">
+                       <input type="submit" value="-" name="delete">
+                       <input type="text" size="4" name= "qteProd"value=<?=$_SESSION['panier']['qteProduit'][$i]?>>
+                        <input type=submit value="+" name="add">
+                  </form>
+                  </td>
+                 <td><?=$_SESSION['panier']['prixProduit'][$i]*$_SESSION['panier']['qteProduit'][$i]?></td>
+                 
+                 </tr><?php
+               echo $i;
+              if (isset($_POST['supp'])) {
+               $cart=new Cart;
+               $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
+               }
+               if (isset($_POST['delete'])||isset($_POST['add'])) {
+                  $cart=new Cart;
+                  $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i],$_SESSION['panier']['qteProduit'][$i]);
+               }
+               var_dump($_SESSION['panier']);
+            } ?>
+           <form method="POST">
+           <input type="submit" name="supp" value="supprimez">
+           </form>
+           <form method="POST">
+           <input type="submit" name="pay" value="paimment">
+           </form>
+         <?php
+             if (isset($_POST['pay'])) {
+                Cart::payCart();
+             }
+         }
+     }
+    
+    }
+    public function modifierQteArticle($libelleProduit,$qteProduit){
+      if (isset($_POST['delete'])) {
+         if ($qteProduit>0) {
+            $positionProduit=array_search($libelleProduit,$_SESSION['panier']['libelleProduit']);
+            if ($positionProduit!==false) {
+               if ($_POST['id']== $positionProduit) {
+                  $_SESSION['panier']['qteProduit'][$positionProduit]=$qteProduit -1;
+              }
+               if ($qteProduit == 0) {
+                  $cart=new Cart;
+                  $cart->supprimerArticle($_SESSION['panier']['libelleproduit']);
+               }
+            }
+         }
+         header("refresh: 0.5");
+      }
+      if (isset($_POST['add'])) {
+         if ($qteProduit >=1) {
+            $positionProduit=array_search($libelleProduit,$_SESSION['panier']['libelleProduit']);
+            if ($positionProduit!==false) {
+               if ($_POST['id']== $positionProduit) {
+                   $_SESSION['panier']['qteProduit'][$positionProduit]=$qteProduit +1;
+               }
+              
+         }
+      }
+      header("refresh: 0.5");
+   }
+}
    
    public function supprimerArticle($libelleProduit){
         //Si le panier existe
@@ -129,32 +157,7 @@ class Cart{
 
    
 
-   public function modifierQteArticle($libelleProduit,$qteProduit){
-      if (isset($_POST['delete'])) {
-         if ($qteProduit>0) {
-            $positionProduit=array_search($libelleProduit,$_SESSION['panier']['libelleProduit']);
-            if ($positionProduit!==false) {
-               $_SESSION['panier']['qteProduit'][$positionProduit]=$qteProduit -1;
-               if ($qteProduit == 0) {
-                  $cart=new Cart;
-                  $cart->supprimerArticle($_SESSION['panier']['libelleproduit']);
-                  return;
-               }
-            }
-         }
-         header("refresh: 0.5");
-      }
-      if (isset($_POST['add'])) {
-         if ($qteProduit >=1) {
-            $positionProduit=array_search($libelleProduit,$_SESSION['panier']['libelleProduit']);
-            if ($positionProduit!==false) {
-               $_SESSION['panier']['qteProduit'][$positionProduit]=$qteProduit +1;
-               return;
-         }
-      }
-      header("refresh: 0.5");
-   }
-}
+   
    //   function modifierQteArticle($libelleProduit,$qteProduit){
    //      //Si le panier existe
    //      if (isset($_POST['delete'])|| isset($_POST['add'])){
