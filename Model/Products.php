@@ -74,6 +74,12 @@
             $result=$getAllInfos->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+        public function updateImg($id, $image){
+            $updateImg = $this->db->prepare("UPDATE `produits` SET image = :image WHERE id = :id");
+            $updateImg->bindValue(':id', $id, PDO::PARAM_INT);
+            $updateImg->bindValue(':image', $image, PDO::PARAM_STR);
+            $updateImg->execute();
+        }
 
     }
 

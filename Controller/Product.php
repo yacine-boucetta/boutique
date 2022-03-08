@@ -133,6 +133,26 @@ class Product{
         }
         
     }
+//-----------------------------------------Update IMG------------------------------------------------
+    public static function updateImage(){
+        if(isset($_POST['updateImage'])){
+            $getInfo = new Products();
+            $info = $getInfo->getAllInfos($_POST['upImgProd']);
+            echo'<pre>';
+            var_dump($info);
+            echo '</pre>';
+            $_POST['nom'] = $info[0]['nom'];
+            echo'<pre>';
+            var_dump($_POST['nom']);
+            echo '</pre>';
+            $update= new Product();
+            $image=$update->addImg();
+            var_dump($image);
+            $update= new Products();
+            $update->updateImg($_POST['upImgProd'], $image);
+            //var_dump($_POST['upImgProd']);
+        }
+    }
 //----------------------------------------------------
 //     public static function displayUpdate(){
 //         if(isset($_POST['choiceProd'])){
@@ -230,7 +250,7 @@ public static function addImg(){
                         // Vérification des extensions avec la liste des extensions autorisés          
                         // J'enregistre le chemin de l'image dans filename
                         $fileName = "./assets/images/" . $nom. "." . $extensionUpload;
-                                
+                            
                         return $fileName;    
                     }
                 } 

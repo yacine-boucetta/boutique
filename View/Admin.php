@@ -104,6 +104,19 @@
             </select>
             <input type='submit' name='updateCat'></input>
         </form>
+        <h2>Update d'image</h2>
+        <form method='POST'>
+            <select name='upImgProd'>
+                <option value="" disabled selected>Select your option</option>
+                    <?php
+                        $option = new Admin();
+                        $option->prodSelect();
+                    ?>
+            </select>
+            <input type='hidden' name ='nom'></input>
+            <input type='file' name='image'></input>
+            <input type='submit' name='updateImage'></input>
+        </form>
     </article>
 </body>
 </html>

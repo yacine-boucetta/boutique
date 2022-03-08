@@ -30,6 +30,7 @@ public static function index($url){
         Admin::adminView();
         Product::updateProduct();
         Product::updateCategorie();
+        Product::updateImage();
         //Product::displayUpdate();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
