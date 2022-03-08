@@ -60,11 +60,20 @@ class Controller
             Controller::disconnect();
         } elseif ($url[0] == 'Article') {
 
-            if (isset($url[1])) {
-                Controller::secureArticle($url[1]);
-                Article::GetArticle($url[1]);
-            }
+        if(isset($url[1])){
+           Article::GetArticle($url[1]);
+        }
             Article::viewArticle();
+        }   
+        elseif ($url[0] =='cart') {
+            Cart::showCart();
+            Cart::viewCart();
+            $cart=new Cart ;
+            $cart->MontantGlobal();
+            $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
+            $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
+            
+
         }
     }
 

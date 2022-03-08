@@ -23,9 +23,15 @@ class Article
             </div><?php
                 }
                 if (isset($_POST['addToCart'])) {
+
+
+                    $cart=new Cart;
+                    $cart->addToCart($key['nom'],1,$key['prix']);
+
+                }
+
                     $cart=new Cart;
                     $cart->addToCart($key['nom'],1,$key['prix']);
                 }
-            }
-    
+
 }
