@@ -27,4 +27,14 @@ public function saveOrder($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays){
     $insert->execute();
 
 }
+public function getExample(){
+
+    $select=$this->db->prepare("SELECT * FROM example");
+    $select->execute();
+    $result=$select->fetchAll(PDO::FETCH_ASSOC);
+    return $result;
+
+
+}
+
 }

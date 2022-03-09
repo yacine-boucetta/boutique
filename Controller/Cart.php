@@ -95,7 +95,7 @@ class Cart{
               }
                if ($qteProduit == 0) {
                   $cart=new Cart;
-                  $cart->supprimerArticle($_SESSION['panier']['libelleproduit']);
+                  $cart->supprimerArticle($_SESSION['panier']['libelleproduit'][$positionProduit]);
                }
             }
          }
@@ -111,10 +111,14 @@ class Cart{
               
          }
       }
-      header("refresh: 0.5");
+      // header("refresh: 0.5");
+      var_dump(array_sum($_SESSION['panier']['qteProduit'])) ;
    }
 }
-   
+   public static function countProd(){
+      $count=array_sum($_SESSION['panier']['qteProduit']);
+      return $count;
+   }
    public function supprimerArticle($libelleProduit){
         //Si le panier existe
         if (isset($_POST['supp'])) {
@@ -160,25 +164,4 @@ class Cart{
    
 
    
-   //   function modifierQteArticle($libelleProduit,$qteProduit){
-   //      //Si le panier existe
-   //      if (isset($_POST['delete'])|| isset($_POST['add'])){
-   //         //Si la quantité est positive on modifie sinon on supprime l'article
-   //         if ($qteProduit > 0){
-   //            //Recherche du produit dans le panier
-   //            $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
-     
-   //            if ($positionProduit !== false)
-   //            {
-   //               $_SESSION['panier']['qteProduit'][$positionProduit]  = $qteProduit  ;
-               
-   //            }
-   //         }
-   //         else
-   //         $_SESSION['panier']->supprimerArticle($libelleProduit);
-   //      }
-   //      else
-   //      echo "Un problème est survenu veuillez contacter l'administrateur du site.";
-   //   }
-
 }

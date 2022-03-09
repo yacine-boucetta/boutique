@@ -21,7 +21,7 @@ class Article
                     <input type="submit" name="addToCart">
                 </form>
             </div><?php
-                }
+                
                 if (isset($_POST['addToCart'])) {
 
 
@@ -33,5 +33,5 @@ class Article
                     $cart=new Cart;
                     $cart->addToCart($key['nom'],1,$key['prix']);
                 }
-
+            }
 }

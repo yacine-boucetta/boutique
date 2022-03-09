@@ -2,6 +2,7 @@
 require 'assets/template/header.php';
 $order=new Order;
 $id=$_SESSION['user']['id'];
+$cart=new Cart;
 ?>
 
 
@@ -23,6 +24,7 @@ $id=$_SESSION['user']['id'];
             <input type="text" name="cp" placeholder="code postale">
             <input type="text" name="ville" placeholder="ville">
             <input type="text" name="pays" placeholder="pays">
+            <?= $cart->countProd(); ?>
             <?php $intent=$order->OrderPay()?>
             <div id="errors"></div><!--Contiendra les messages d'erreur de paiement-->
             <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
