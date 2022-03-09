@@ -16,7 +16,12 @@ class SignUp
 
     public static function signUpAction()
     {$message='';
-        if (isset($_POST['sign_up'])) {
+    
+        if (isset($_POST['sign_up'])) {   
+            if(empty($_POST['password'])||empty($_POST['login'])||empty($_POST['email'])||empty($_POST['firstname'])){
+                $message='veuillez remplir tout les champs';
+            return $message;
+        }
             $a = new Model();
             $b = $a->checkUser($_POST['login']);
             if ($b > 0) {

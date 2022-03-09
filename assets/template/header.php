@@ -12,7 +12,6 @@
     <header>
         <nav class="navbar">
             <ul>
-                <li><a href='./Product'>product</a></li>
                 <li><a href='./SignUp'>inscription</a></li>
                 <li><a href='./SignIn'>connexion</a></li>
                 <li><a href='./Product'>product</a></li>
