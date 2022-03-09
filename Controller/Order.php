@@ -38,5 +38,10 @@ class Order{
 
      }
  }
+ public function test(){
+     $test=new Commande;
+     $result=$test->getExample();
+     print_r($result[0]) ;
+ }
 
 }
