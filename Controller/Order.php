@@ -31,17 +31,21 @@ class Order{
         }
      
     }
- public static function validation(){
+    public function addliaison($libelleProduit){
+        $libelleProduit=$_SESSION['panier']['id'];
+        var_dump($libelleProduit);
+        var_dump($_SESSION['panier']);
+        foreach ($libelleProduit as $article) {
+           
+        }
+    }
+ public static function validation($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice){
      if (isset($_POST['payez'])) {
          $commande=new Commande;
-         $commande->saveOrder($_POST['id'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays']);
-
+        $toto= $commande->saveOrder($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice);
+        return $toto;
      }
  }
- public function test(){
-     $test=new Commande;
-     $result=$test->getExample();
-     print_r($result[0]) ;
- }
+
 
 }

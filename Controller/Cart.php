@@ -13,14 +13,14 @@ class Cart{
    public static function creationPanier(){
       if (!isset($_SESSION['panier'])){
          $_SESSION['panier']=array();
-
+         $_SESSION['panier']['id']=array();
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
       }
       return true;
    }
-   public function addToCart($libelleProduit,$qteProduit,$prixProduit){
+   public function addToCart($id,$libelleProduit,$qteProduit,$prixProduit){
       if (Cart::creationPanier()){
          //Si le produit existe déjà on ajoute seulement la quantité
          $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
@@ -31,6 +31,7 @@ class Cart{
       }
          else{
             //Sinon on ajoute le produit
+            array_push($_SESSION['panier']['id'],$id);
             array_push( $_SESSION['panier']['libelleProduit'],$libelleProduit);
             array_push( $_SESSION['panier']['qteProduit'],$qteProduit);
             array_push( $_SESSION['panier']['prixProduit'],$prixProduit);

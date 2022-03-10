@@ -16,7 +16,8 @@ $cart=new Cart;
     </head>
     <body>
         <form method="post">
-            <input type="hidden" name='id' value="<?php $id ?>">
+            <input type="hidden" name='id' value="<?= $id ?>">
+            <input type="hidden" name="date" value="<?= date("j-n-Y h:i:s")?>">
             <input type="text" name="prenom" value="<?php echo $_SESSION['user']['prenom'] ?>">
             <input type="text" name="nom" value="<?php echo $_SESSION['user']['nom'] ?>">
             <input type="text" name="email" value="<?php echo $_SESSION['user']['email'] ?>">
@@ -24,14 +25,16 @@ $cart=new Cart;
             <input type="text" name="cp" placeholder="code postale">
             <input type="text" name="ville" placeholder="ville">
             <input type="text" name="pays" placeholder="pays">
-            <?= $cart->countProd(); ?>
+            <input type="text"value="<?= $cart->countProd()?>"name="totalProd">
+            <input type="text"value="<?= $cart->MontantGlobal()?>"name="totalPrix">
+
             <?php $intent=$order->OrderPay()?>
             <div id="errors"></div><!--Contiendra les messages d'erreur de paiement-->
             <input type="text" id="cardholder-name" placeholder="Titulaire de la carte">
             <div id="card-elements"></div><!--Contiendra le formulaire de saisie des informations de carte-->
             <div id="card-errors" role="alert"></div><!--Contiendra les erreurs relatives à la carte-->
             <p><?php echo Cart::MontantGlobal()?>€</p>
-            <button id="card-button" type="button" name="payez" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiement</button>
+            <button id="card-button" type="submit" name="payez" data-secret="<?= $intent['client_secret'] ?>">Procéder au paiement</button>
             
         </form>
     

@@ -14,6 +14,7 @@ class Article
 ?>
             <div>
                 <form action="" method="POST">
+                    <input type="hidden" value="<?= $key['id'] ?>" >
                     <h1><?= $key['nom'] ?></h1>
                     <img src=".<?= $key['image'] ?>">
                     <h1><?= $key['description'] ?></h1>
@@ -26,12 +27,11 @@ class Article
 
 
                     $cart=new Cart;
-                    $cart->addToCart($key['nom'],1,$key['prix']);
+                    $cart->addToCart($key['id'],$key['nom'],1,$key['prix']);
 
                 }
 
-                    $cart=new Cart;
-                    $cart->addToCart($key['nom'],1,$key['prix']);
+                    
                 }
             }
 }
