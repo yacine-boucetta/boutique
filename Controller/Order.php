@@ -29,15 +29,20 @@ class Order{
             ]);
             return $intent;
         }
-     
     }
  public static function validation(){
      if (isset($_POST['payez'])) {
          $commande=new Commande;
          $commande->saveOrder($_POST['id'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays']);
 
+}
      }
+ public function foreach(){
+    
+
+
  }
+    
  public function test(){
      $test=new Commande;
      $result=$test->getExample();
