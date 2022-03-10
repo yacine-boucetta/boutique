@@ -9,6 +9,8 @@
 <body>
     <h1>ADMIN</h1>
     <h3 style="color:red"><?php echo $message; ?></h3>
+    <h3 style="color:red"><?php echo $results; ?></h3>
+    <h3 style="color:red"><?php echo $resulta; ?></h3>
     <aricle>
         <h2>Creation de categorie</h2>
         <form method="post" name='creationCat'>

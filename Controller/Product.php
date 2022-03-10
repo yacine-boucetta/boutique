@@ -61,17 +61,16 @@ class Product{
         }
     }
 //-------------------------------------------------Check si le nom de la categorie existe ----------------------------------------------------------------
-    public static function checkCatCount($nom){
-        $count = new Categories();
-        $compter = $count->countCat($nom);
-        if(isset($_POST['createCat'])){
-            if($compter > 0){
-                $message = 'Cette categorie de produits existe deja';
-                return $message;
-            }
-        }
-
-    }
+    // public static function checkCatCount($nom){
+    //     $count = new Categories();
+    //     $compter = $count->countCat($nom);
+    //     if(isset($_POST['createCat'])){
+    //         if($compter > 0){
+    //             $message = 'Cette categorie de produits existe deja';
+    //             return $message;
+    //         }
+    //     }
+    // }
 //---------------------------------------------Ajouts des produits -------------------------------------------------------------
     // public static function insertProduct(){
         
@@ -104,10 +103,9 @@ class Product{
             $a = $insert->countProd($_POST['nom']);
             //var_dump($a);
             if($a > 0){
-                
-                $message = doublonError();
-                //echo $message;
-                return $message;
+                $resulta = doublonError();
+                echo $resulta;
+                return $resulta;
             }else{
             $insert = new Product();
             $message = $insert->checkPost();
@@ -121,6 +119,32 @@ class Product{
         }
 
     }
+    // public static function insertProduct(){
+
+
+    //     if(isset($_POST['addProd'])){
+    //         //$idCat = $_POST['addSlect'];
+    //         $insert = new Products();
+    //         $a = $insert->countProd($_POST['nom']);
+    //         //var_dump($a);
+    //         if($a > 0){
+                
+    //             $message = doublonError();
+    //             //echo $message;
+    //             return $message;
+    //         }else{
+    //         $insert = new Product();
+    //         $message = $insert->checkPost();
+    //         $message = $insert->priceProd();
+    //         $image = $insert->addImg();
+    //         $insert = new Products();
+    //         $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
+            
+    //     }
+    //     return $message; 
+    //     }
+
+    // }
 //-----------------------------------------------------Old info for update------------------------------------------------------------
 
     public static function oldInfo(){

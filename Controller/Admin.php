@@ -7,11 +7,10 @@
 
         public static function adminView()
         {
-            $message=Product::insertProduct();
-            $message=Admin::addCat();
+            $resulta=Product::insertProduct();
+            $results=Admin::addCat();
             $message=Admin::addSubCat();
             require('view/Admin.php');
-
         }
 
 //-------------------------------------------------Select all cat for display ---------------------------
@@ -101,23 +100,26 @@ public static function displayNameCat(){
             if(isset($_POST['createCat'])){
                 $count = new Categories;
                 $compter = $count->countCat($_POST['catName']);
+                var_dump($compter);
                 if($compter > 0){
-                    $message='Ce nom de categories existe deja';
-                    return $message;
+                    $results = "Ce nom de categories existe deja.";
+                    echo $results;
+                    return $results;
                 }else{
                 $create = new Categories;
                 $create->insertCat(htmlspecialchars($_POST['catName']));
-                //echo 'coucou cat';
                 }
             }
-//-------------------------------------------------ajouts sub cat ------------------------------------------------------------------
         }
+//-------------------------------------------------ajouts sub cat ------------------------------------------------------------------
         public static function addSubCat(){
             if(isset($_POST['createSubCat'])){
                 $count = new Categories;
                 $compter = $count->countSubCat($_POST['catSubName']);
+                var_dump($compter);
                 if($compter > 0){
-                    $message='Ce nom de sous categories existe deja';
+                    $message = 'Ce nom de sous categories existe deja';
+                    //echo $message;
                     return $message;
                 }else{
                 $create = new Categories;
