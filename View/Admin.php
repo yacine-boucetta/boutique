@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>ADMIN</h1>
+    <h3 style="color:red"><?php echo $message; ?></h3>
     <aricle>
         <h2>Creation de categorie</h2>
         <form method="post" name='creationCat'>
@@ -73,14 +74,11 @@
                     $option->prodSelect();
                 ?>
             </select>
-            <!-- <input type='submit' name='choiceProd'></input> -->
             <input type='text' name='nom'></input>
             <textarea name='upDescription'></textarea>             
                 <input type='text' name='upPrix'></input>
-                <!-- <input type='file' name='image'></input> -->
                 <input type='submit' name='updateProd'></input>
         </form> 
-
         <h2>Update de categories</h2>
         <form method='POST'>
             <select name='upCategoProd'>
@@ -105,7 +103,7 @@
             <input type='submit' name='updateCat'></input>
         </form>
         <h2>Update d'image</h2>
-        <form method='POST'>
+        <form method='POST' enctype='multipart/form-data'>
             <select name='upImgProd'>
                 <option value="" disabled selected>Select your option</option>
                     <?php

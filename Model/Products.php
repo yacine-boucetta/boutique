@@ -64,6 +64,7 @@
             $count->bindValue(':nom', $nom, PDO::PARAM_STR);
             $count->execute();
             $result= $count->rowCount();
+            var_dump($result);
             return $result;
 
         }

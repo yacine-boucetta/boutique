@@ -9,7 +9,8 @@ class Product{
     }
 //-------------------------------------------------Verrif si les post sont vides --------------------------------------
     public static function checkPost(){
-        if(empty($_POST['nom']) && empty($_POST['description']) && empty($_POST['idSousCat']) && empty($_POST['idCat']) && empty($_POST['prix']) && empty($_POST['img'])){
+        if(empty($_POST['nom']) || empty($_POST['description']) || empty($_POST['idSousCat']) || empty($_POST['idCat']) || empty($_POST['prix']) || empty($_POST['img'])){
+            echo 'coucou checkpost ';
             $message = 'Veuillez remplir tout les champs';
             return $message;
         }
@@ -17,7 +18,18 @@ class Product{
 //-------------------------------------------------Verrif du prix-------------------------------------------
     public static function priceProd(){
 
+        if($_POST['prix'] <= 0){
+            echo 'coucou du prix';
+            $message = 'Veuillez ajouter un prix positif';
+            return $message;
+        }
+
+    }
+//--------------------------------------------------------Verrif du prix update ------------------------------
+    public static function priceUpProd(){
+
         if($_POST['upPrix'] <= 0){
+            echo 'coucou du prix';
             $message = 'Veuillez ajouter un prix positif';
             return $message;
         }
@@ -48,6 +60,18 @@ class Product{
             }
         }
     }
+//-------------------------------------------------Check si le nom de la categorie existe ----------------------------------------------------------------
+    public static function checkCatCount($nom){
+        $count = new Categories();
+        $compter = $count->countCat($nom);
+        if(isset($_POST['createCat'])){
+            if($compter > 0){
+                $message = 'Cette categorie de produits existe deja';
+                return $message;
+            }
+        }
+
+    }
 //---------------------------------------------Ajouts des produits -------------------------------------------------------------
     // public static function insertProduct(){
         
@@ -70,6 +94,7 @@ class Product{
     //     }
 
     // }
+
     public static function insertProduct(){
 
 
@@ -77,19 +102,22 @@ class Product{
             //$idCat = $_POST['addSlect'];
             $insert = new Products();
             $a = $insert->countProd($_POST['nom']);
+            //var_dump($a);
             if($a > 0){
-                $message = 'Ce nom de produits existe deja';
+                
+                $message = doublonError();
+                //echo $message;
                 return $message;
             }else{
             $insert = new Product();
-            $insert->checkPost();
-            $insert->priceProd();
+            $message = $insert->checkPost();
+            $message = $insert->priceProd();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
-            echo 'coucou';
-            var_dump($a);
+            
         }
+        return $message; 
         }
 
     }
@@ -138,25 +166,25 @@ class Product{
         if(isset($_POST['updateImage'])){
             $getInfo = new Products();
             $info = $getInfo->getAllInfos($_POST['upImgProd']);
-            echo'<pre>';
-            var_dump($info);
-            echo '</pre>';
+            // echo'<pre>';
+            // var_dump($info);
+            // echo '</pre>';
             $_POST['nom'] = $info[0]['nom'];
-            echo'<pre>';
-            var_dump($_POST['nom']);
-            echo '</pre>';
+            // echo'<pre>';
+            // var_dump($_POST['nom']);
+            // echo '</pre>';
             $update= new Product();
-            $image=$update->addImg();
-            var_dump($image);
+            $image = $update->addImg();
+            //var_dump($image);
             $update= new Products();
             $update->updateImg($_POST['upImgProd'], $image);
-            //var_dump($_POST['upImgProd']);
+            // var_dump($_POST['nom']);
+            // var_dump($_POST['upImgProd']);
         }
     }
 //----------------------------------------------------
 //     public static function displayUpdate(){
 //         if(isset($_POST['choiceProd'])){
-            
 //             $getInfo = new Products();
 //             $info = $getInfo->getAllInfos($_POST['upSelect']);
 //             echo "</select>
@@ -199,7 +227,7 @@ class Product{
             $insert = new Product();
             $insert->oldInfo();
             $insert->checkPost();
-            $insert->priceProd();
+            $insert->priceUpProd();
             //$image = $insert->addImg();
             $insert = new Products();
             $insert->updateProd(htmlspecialchars($_POST['upSelect']), htmlspecialchars($_POST['idCateg']),
@@ -211,54 +239,57 @@ class Product{
     }
 }
 //-----------------------------------------------------Supression des produits--------------------------------------------------
-    public static function deleteProducts(){
-        $delete = new Products();
-        if(isset($_POST['deleteProd']))
+        public static function deleteProducts(){
+            $delete = new Products();
+            if(isset($_POST['deleteProd']))
 
-        
-        $delete->deleteProd($_POST['idDel']);
-        //echo 'coucou2';
-    }
+            
+            $delete->deleteProd($_POST['idDel']);
+            //echo 'coucou2';
+        }
 //----------------------------------------------------ajouts d'img----------------------------------------------------
-public static function addImg(){
+    public static function addImg(){
 
-    if (isset($_FILES['image']) ){
-        var_dump($_FILES['image']);
-        $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
-            $tailleMax = 5242880; // Taille maximum 5 Mo
-        
-            $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
-            if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
-                
-                $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1)); // Prend l'extension après le point, soit "jpg, jpeg ou png"
-
-                if (in_array($extensionUpload, $extensionsValides)){ // Vérifie que l'extension est correct
+        if (isset($_FILES['image']) ){
+            var_dump($_FILES['image']);
+            $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
+                $tailleMax = 5242880; // Taille maximum 5 Mo
+            
+                $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
+                if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
                     
-                    $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
-                    if (!is_dir($dossier)){ // Si le nom de dossier n'existe pas alors on le crée
+                    $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1)); // Prend l'extension après le point, soit "jpg, jpeg ou png"
 
-                        mkdir($dossier,0777,true);
-                
+                    if (in_array($extensionUpload, $extensionsValides)){ // Vérifie que l'extension est correct
+                        
+                        $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
+                        if (!is_dir($dossier)){ // Si le nom de dossier n'existe pas alors on le crée
 
-                    }
-                    $nom = $_POST['nom'] ; // Permet de générer un nom unique à la photo
-                    $chemin = "./assets/images/" . $nom. "." . $extensionUpload; // Chemin pour placer la photo
-                    $resultat = move_uploaded_file($_FILES['image']['tmp_name'], $chemin); // On fini par mettre la photo dans le dossier
-                    if ($resultat){ // Si on a le résultat alors on va comprésser l'image
-                            
-                        $verif_ext = getimagesize("./assets/images/" . $nom. "." . $extensionUpload);
-                        // Vérification des extensions avec la liste des extensions autorisés          
-                        // J'enregistre le chemin de l'image dans filename
-                        $fileName = "./assets/images/" . $nom. "." . $extensionUpload;
-                            
-                        return $fileName;    
-                    }
-                } 
-            }
+                            mkdir($dossier,0777,true);
                     
+
+                        }
+                        $nom = $_POST['nom'] ; // Permet de générer un nom unique à la photo
+                        $chemin = "./assets/images/" . $nom. "." . $extensionUpload; // Chemin pour placer la photo
+                        $resultat = move_uploaded_file($_FILES['image']['tmp_name'], $chemin); // On fini par mettre la photo dans le dossier
+                        if ($resultat){ // Si on a le résultat alors on va comprésser l'image
+                                
+                            $verif_ext = getimagesize("./assets/images/" . $nom. "." . $extensionUpload);
+                            // Vérification des extensions avec la liste des extensions autorisés          
+                            // J'enregistre le chemin de l'image dans filename
+                            $fileName = "./assets/images/" . $nom. "." . $extensionUpload;
+                                
+                            return $fileName;    
+                        }
+                    } 
+                }
+                        
+        }
+    
     }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-}
+
 public static function showProduct(){
     $affiche=new Model;
     $prod=$affiche->getProd();

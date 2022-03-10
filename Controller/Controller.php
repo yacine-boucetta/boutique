@@ -21,9 +21,9 @@ public static function index($url){
     elseif ($url[0] == 'Profil') {
         Profil::viewProfil();
     }  elseif ($url[0] == 'Admin') {   
-        Product::insertProduct();
-        Admin::addCat();
-        Admin::addSubCat();
+        
+        //Admin::addCat();
+        //Admin::addSubCat();
         Admin::deleteCateg();
         Admin::deleteSubCateg();
         Product::deleteProducts();
@@ -31,6 +31,7 @@ public static function index($url){
         Product::updateProduct();
         Product::updateCategorie();
         Product::updateImage();
+        Product::addImg();
         //Product::displayUpdate();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';

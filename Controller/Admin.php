@@ -7,7 +7,9 @@
 
         public static function adminView()
         {
-            $message = '';
+            $message=Product::insertProduct();
+            $message=Admin::addCat();
+            $message=Admin::addSubCat();
             require('view/Admin.php');
 
         }
@@ -97,20 +99,34 @@ public static function displayNameCat(){
 
         public static function addCat(){
             if(isset($_POST['createCat'])){
+                $count = new Categories;
+                $compter = $count->countCat($_POST['catName']);
+                if($compter > 0){
+                    $message='Ce nom de categories existe deja';
+                    return $message;
+                }else{
                 $create = new Categories;
                 $create->insertCat(htmlspecialchars($_POST['catName']));
                 //echo 'coucou cat';
+                }
             }
 //-------------------------------------------------ajouts sub cat ------------------------------------------------------------------
         }
         public static function addSubCat(){
             if(isset($_POST['createSubCat'])){
+                $count = new Categories;
+                $compter = $count->countSubCat($_POST['catSubName']);
+                if($compter > 0){
+                    $message='Ce nom de sous categories existe deja';
+                    return $message;
+                }else{
                 $create = new Categories;
                 $create->insertSubCat(htmlspecialchars($_POST['catSubName']), htmlspecialchars($_POST['idCatForSub']));
-                header ('Location:./Admin');
+                //header ('Location:./Admin');
             }
 
         }
+    }
 //------------------------------------------------Suppresion Cat------------------------------------------------------------------------------------------------
 
         public static function deleteCateg(){

@@ -22,8 +22,12 @@ function passwordError(){
 }
 //-------------------errors product----------------------------------------------------
 function doublonError(){
-    $error = 'Ce nom de produit existe deja login';
+    $error = 'Ce nom de produit existe deja';
     return $error;
+}
+function priceError(){
+    $message = 'Veuillez remplir tout les champs';
+    return $message;
 }
 
 ?>
