@@ -42,9 +42,9 @@ public static function index($url){
         $order=new Order;
         $intent=$order->OrderPay();
         Order::orderView();
-        $order->test();
+        $toto=Order::validation($_POST['id'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+        var_dump($toto);
         return $intent;
-        
     }
 
 
