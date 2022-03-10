@@ -106,16 +106,21 @@ class Product{
                 $resulta = doublonError();
                 echo $resulta;
                 return $resulta;
-            }else{
-            $insert = new Product();
-            $message = $insert->checkPost();
-            $message = $insert->priceProd();
+            }if(($_POST['nom']) || empty($_POST['description']) || empty($_POST['idSousCat']) || empty($_POST['idCat']) || empty($_POST['prix']) || empty($_POST['img'])){
+                $resulta = 'Veuillez remplir tout les champs';
+                return $resulta;
+            }if($_POST['prix'] <= 0){
+                $resulta='Veuillez ajouter un prix positif';
+                return $resulta;
+            }
+            $insert = new Product();         
+            //$message = $insert->priceProd();
             $image = $insert->addImg();
             $insert = new Products();
             $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
             
-        }
-        return $message; 
+        
+        //return $message; 
         }
 
     }
@@ -128,10 +133,9 @@ class Product{
     //         $a = $insert->countProd($_POST['nom']);
     //         //var_dump($a);
     //         if($a > 0){
-                
-    //             $message = doublonError();
-    //             //echo $message;
-    //             return $message;
+    //             $resulta = doublonError();
+    //             echo $resulta;
+    //             return $resulta;
     //         }else{
     //         $insert = new Product();
     //         $message = $insert->checkPost();
