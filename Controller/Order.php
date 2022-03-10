@@ -44,7 +44,7 @@ class Order{
         $toto= $commande->saveOrder($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice);
         return $toto;
      }
- public function foreach(){
+
     
 
 
