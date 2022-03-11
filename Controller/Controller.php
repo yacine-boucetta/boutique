@@ -38,12 +38,11 @@ public static function index($url){
     // }
     }
     elseif ($url[0]== 'order') {
-        
         $order=new Order;
-        $intent=$order->OrderPay();
         Order::orderView();
-        $toto=Order::validation($_POST['id'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
-        var_dump($toto);
+        $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+        var_dump($_POST);
+        $intent=$order->OrderPay();
         return $intent;
     }
 
