@@ -10,6 +10,7 @@
             $resulta=Product::insertProduct();
             $results=Admin::addCat();
             $message=Admin::addSubCat();
+            $resultas=Product::updateProduct();
             require('view/Admin.php');
         }
 
@@ -180,22 +181,24 @@ public static function displayNameCat(){
 //---------------------------------------------Update Categ-----------------------------------------------------------------------
     
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
-    public function addForm(){
-        if(isset($_POST['addSelect'])){
-            echo 
-            "<input type='text' name='nom'></input>
-            <textarea name='description'></textarea>
-            <select name='idSousCat'> 
-            ";
-                $option = new Admin;
-                $option->addSelect(htmlspecialchars($_POST['addSelect']));
-            echo "</select>
-            <input type='text' name='prix'></input>
-            <input type='file' name='image'></input>
-            <input type='submit' name='addProd'></input>
-            ";
-        }
-    }
+    // public function addForm(){
+    //     if(isset($_POST['addSelect'])){
+    //         echo 
+    //         "<input type='text' name='nom'></input>
+    //         <textarea name='description'></textarea>
+    //         <select name='idSousCat'> 
+    //         ";
+
+    //             $option = new Admin;
+    //             $option->addSelect(htmlspecialchars($_POST['addSelect']));
+
+    //         echo "</select>
+    //         <input type='text' name='prix'></input>
+    //         <input type='file' name='image'></input>
+    //         <input type='submit' name='addProd'></input>
+    //         ";
+    //     }
+    // }
 //------------------------------------------------Display update de produits --------------------------------------------------------
     // public function addUpForm(){
     //     if(isset($_POST['upSelect'])){

@@ -11,6 +11,7 @@
     <h3 style="color:red"><?php echo $message; ?></h3>
     <h3 style="color:red"><?php echo $results; ?></h3>
     <h3 style="color:red"><?php echo $resulta; ?></h3>
+    <h3 style="color:red"><?php echo $resultas; ?></h3>
     <aricle>
         <h2>Creation de categorie</h2>
         <form method="post" name='creationCat'>
@@ -61,9 +62,17 @@
                 ?>
             </select>
             <input type="submit" name="inputSelect"></input>
-        <?php
-            $option->addForm();
-        ?>
+            <input type='text' name='nom'></input>
+            <textarea name='description'></textarea>
+            <select name='idSousCat'> 
+                <?php
+                $option = new Admin;
+                $option->displayNameCat();
+                ?>
+            echo "</select>
+            <input type='text' name='prix'></input>
+            <input type='file' name='image'></input>
+            <input type='submit' name='addProd'></input>
         </form>
     </article>
     <article>

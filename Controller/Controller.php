@@ -28,7 +28,7 @@ public static function index($url){
         Admin::deleteSubCateg();
         Product::deleteProducts();
         Admin::adminView();
-        Product::updateProduct();
+        //Product::updateProduct();
         Product::updateCategorie();
         Product::updateImage();
         Product::addImg();

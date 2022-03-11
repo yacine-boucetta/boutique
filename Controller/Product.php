@@ -169,13 +169,7 @@ class Product{
         if(isset($_POST['updateImage'])){
             $getInfo = new Products();
             $info = $getInfo->getAllInfos($_POST['upImgProd']);
-            // echo'<pre>';
-            // var_dump($info);
-            // echo '</pre>';
             $_POST['nom'] = $info[0]['nom'];
-            // echo'<pre>';
-            // var_dump($_POST['nom']);
-            // echo '</pre>';
             $update= new Product();
             $image = $update->addImg();
             //var_dump($image);
@@ -221,17 +215,10 @@ class Product{
     public static function updateProduct(){
         if(isset($_POST['updateProd'])){
             //echo'coucou22';
-            $count = new Products();
-            $countLog = $count->countProd($_POST['nom']);
-            if($countLog > 0){
-                $message = 'Ce nom de produits existe deja';
-                return $message;
-            }else{
             $insert = new Product();
             $insert->oldInfo();
-            $insert->checkPost();
-            $insert->priceUpProd();
-            //$image = $insert->addImg();
+            $insert = new Product();
+            $insert->oldInfo();
             $insert = new Products();
             $insert->updateProd(htmlspecialchars($_POST['upSelect']), htmlspecialchars($_POST['idCateg']),
             htmlspecialchars($_POST['upIdSousCat']),htmlspecialchars($_POST['nom']), 
@@ -240,7 +227,7 @@ class Product{
         }
 
     }
-}
+
 //-----------------------------------------------------Supression des produits--------------------------------------------------
         public static function deleteProducts(){
             $delete = new Products();
@@ -257,7 +244,7 @@ class Product{
             var_dump($_FILES['image']);
             $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
                 $tailleMax = 5242880; // Taille maximum 5 Mo
-            
+
                 $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
                 if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
                     
@@ -267,10 +254,9 @@ class Product{
                         
                         $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
                         if (!is_dir($dossier)){ // Si le nom de dossier n'existe pas alors on le crée
-
+                            
                             mkdir($dossier,0777,true);
-                    
-
+                            
                         }
                         $nom = $_POST['nom'] ; // Permet de générer un nom unique à la photo
                         $chemin = "./assets/images/" . $nom. "." . $extensionUpload; // Chemin pour placer la photo
@@ -291,13 +277,17 @@ class Product{
     
     }
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------
+        public static function renameImg(){
+            if(isset($_FILES['image'])){
+                
+            }
+        }
 
-
-public static function showProduct(){
-    $affiche=new Model;
-    $prod=$affiche->getProd();
-    return $prod;    
-}
+        public static function showProduct(){
+            $affiche=new Model;
+            $prod=$affiche->getProd();
+            return $prod;    
+        }
 
 
 
