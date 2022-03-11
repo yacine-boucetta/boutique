@@ -39,11 +39,12 @@ class Order{
            
         }
     }
- public static function validation($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice){
+ public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice){
      if (isset($_POST['payez'])) {
          $commande=new Commande;
-        $toto= $commande->saveOrder($id,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice);
-        return $toto;
+        $commande->saveOrder($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice);
+        var_dump($_POST);
+
      }
  }
 
