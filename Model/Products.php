@@ -81,6 +81,13 @@
             $updateImg->bindValue(':image', $image, PDO::PARAM_STR);
             $updateImg->execute();
         }
+        public function getImg($id){
+            $getImg = $this->db->prepare("SELECT image FROM `produits` WHERE id = :id");
+            $getImg->bindValue(':id', $id, PDO::PARAM_INT);
+            $getImg->execute();
+            $result = $getImg->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
     }
 

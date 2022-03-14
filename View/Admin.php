@@ -61,7 +61,6 @@
                 $option->displayCat();
                 ?>
             </select>
-            <input type="submit" name="inputSelect"></input>
             <input type='text' name='nom'></input>
             <textarea name='description'></textarea>
             <select name='idSousCat'> 
