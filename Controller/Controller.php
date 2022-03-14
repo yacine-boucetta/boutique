@@ -40,7 +40,7 @@ public static function index($url){
     elseif ($url[0]== 'order') {
         $order=new Order;
         Order::orderView();
-        $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+        $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['totalProd'],$_POST['totalPrix']);
         var_dump($_POST);
         $intent=$order->OrderPay();
         return $intent;
@@ -60,16 +60,16 @@ public static function index($url){
         }
             Article::viewArticle();
         }   
-        // elseif ($url[0] =='cart') {
-        //     Cart::showCart();
-        //     Cart::viewCart();
-        //     $cart=new Cart ;
-        //     $cart->MontantGlobal();
-        //     $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
-        //     $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
+        elseif ($url[0] =='cart') {
+            Cart::showCart();
+            Cart::viewCart();
+            $cart=new Cart ;
+            $cart->MontantGlobal();
+            $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
+            $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
             
 
-        // }
+        }
     }
 
 
