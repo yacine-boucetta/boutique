@@ -126,5 +126,36 @@
             <input type='submit' name='updateImage'></input>
         </form>
     </article>
+    <article>
+        <h2>Effacer un utilisateur</h2>
+        <form method='POST'>
+            <select name='idDelete'>
+                <option value="" disabled selected>Select your option</option>
+                    <?php
+                        $option = new Admin();
+                        $option->displayUser();
+                    ?>
+            </select>
+            <input type='submit' name='deleteUser'></input>
+        </form>
+    </article>
+    <article>
+        <h2>Update droit user</h2>
+        <form method='POST'>
+            <select name='idUserRight'>
+                <option value="" disabled selected>Select your option</option>
+                    <?php
+                        $option = new Admin();
+                        $option->displayUser();
+                    ?>
+            </select>
+            <select name='idRight'>
+                <option value="" disabled selected>Select your option</option>
+                <option value="1">User</option>
+                <option value="2">Admin</option>
+            </select>
+            <input type='submit' name='modUser'></input>
+        </form>
+    </article>
 </body>
 </html>

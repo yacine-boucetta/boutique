@@ -2,6 +2,7 @@
 
     //require('Model/Products.php');
     require('Model/Categories.php');
+    require('Model/User.php');
 
     class Admin{
 
@@ -127,7 +128,6 @@ public static function displayNameCat(){
                 $create->insertSubCat(htmlspecialchars($_POST['catSubName']), htmlspecialchars($_POST['idCatForSub']));
                 //header ('Location:./Admin');
             }
-
         }
     }
 //------------------------------------------------Suppresion Cat------------------------------------------------------------------------------------------------
@@ -178,8 +178,41 @@ public static function displayNameCat(){
             echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
         }
     }
-//---------------------------------------------Update Categ-----------------------------------------------------------------------
-    
+//---------------------------------------------User Select-----------------------------------------------------------------------
+    public static function displayUser(){
+        //$choice = new Admin;
+        $choice = new User();
+        $tab = $choice->getUser();
+        //$tab = $choice->selectCategorie();
+        // echo '<pre>';
+        // var_dump($tab);
+        // echo '</pre>';
+        //var_dump($tab);
+        foreach($tab as $values){
+            echo '<option value="' . $values['id'] . '">' . $values['login'] . '</option>';
+
+            //return $result;
+            
+        }
+    }
+//------------------------------delete user----------------------------------------------------------------
+public static function deleteUser(){
+    if(isset($_POST['deleteUser'])){
+        $delete = new User;
+        $delete->userDelete($_POST['idDelete']);
+        header ('Location:./Admin');
+    }
+}
+//----------------------------------------------------------------update right --------------------------------------------------------------
+
+public static function modUser(){
+    if(isset($_POST['modUser'])){
+        $mod = new User;
+        $mod->updateRight($_POST['idRight'], $_POST['idUserRight']);
+        header ('Location:./Admin');
+    }
+}
+
 //---------------------------------------------------Display ajouts de product -----------------------------------------------------------
     // public function addForm(){
     //     if(isset($_POST['addSelect'])){

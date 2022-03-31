@@ -32,6 +32,8 @@ public static function index($url){
         Product::updateCategorie();
         Product::updateImage();
         Product::addImg();
+        Admin::deleteUser();
+        Admin::modUser();
         //Product::displayUpdate();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
