@@ -13,6 +13,15 @@
     <h3 style="color:red"><?php echo $resulta; ?></h3>
     <h3 style="color:red"><?php echo $resultas; ?></h3>
     <aricle>
+        <div id="navBar">
+            <nav>
+                <ul>
+                    <li><a href="">Categorie</a></li>
+                    <li><a href="">Produits</a></li>
+                    <li><a href="">Utilisateur</a></li>
+                </ul>
+            </nav>
+        </div>
         <h2>Creation de categorie</h2>
         <form method="post" name='creationCat'>
             <input type="text" name="catName"></input>
