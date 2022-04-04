@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'Model/Panier.php';
 class Cart{
 
 
@@ -80,7 +80,11 @@ class Cart{
            </form>
          <?php
              if (isset($_POST['pay'])) {
-                Cart::payCart();
+               $insert=new Panier;
+               $insert->addpanier();
+               var_dump($insert);
+               //  Cart::payCart();
+               
              }
          }
      }

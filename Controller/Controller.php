@@ -67,6 +67,8 @@ public static function index($url){
             $cart->MontantGlobal();
             $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
             $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
+            $panier=new Panier;
+            $panier->addpanier();
             
         }
     }

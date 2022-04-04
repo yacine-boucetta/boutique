@@ -8,6 +8,7 @@ class Model
     function __construct(){
         try {
             $this->db = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8','root','root');
+            $this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo 'Echec de la connexion : ' . $e->getMessage();
             exit;
