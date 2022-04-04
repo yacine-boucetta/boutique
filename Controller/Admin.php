@@ -209,7 +209,7 @@ public static function modUser(){
     if(isset($_POST['modUser'])){
         $mod = new User;
         $mod->updateRight($_POST['idRight'], $_POST['idUserRight']);
-        header ('Location:./Admin');
+        //header ('Location:./Admin');
     }
 }
 
