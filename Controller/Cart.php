@@ -51,7 +51,7 @@ class Cart{
                  <tr>
                  <td><?=$_SESSION['panier']['libelleProduit'][$i]?></td>
                  <td>
-                    <form method="POST">
+                    <form method="POST" class="produit">
                        <input type="hidden" value=<?= $i?> name="id">
                        <input type="submit" value="-" name="delete">
                        <input type="text" size="4" name= "qteProd"value=<?=$_SESSION['panier']['qteProduit'][$i]?>>
@@ -70,9 +70,9 @@ class Cart{
                   $cart=new Cart;
                   $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i],$_SESSION['panier']['qteProduit'][$i]);
                }
-               var_dump($_SESSION['panier']);
+               // var_dump($_SESSION['panier']);
             } ?>
-           <form method="POST">
+           <form method="POST" class="paytest">
            <input type="submit" name="supp" value="supprimez">
            </form>
            <form method="POST">
@@ -80,10 +80,7 @@ class Cart{
            </form>
          <?php
              if (isset($_POST['pay'])) {
-               $insert=new Panier;
-               $insert->addpanier();
-               var_dump($insert);
-               //  Cart::payCart();
+                Cart::payCart();
                
              }
          }
@@ -116,8 +113,8 @@ class Cart{
               
          }
       }
-      // header("refresh: 0.5");
-      var_dump(array_sum($_SESSION['panier']['qteProduit'])) ;
+      header("refresh: 0.5");
+      // var_dump(array_sum($_SESSION['panier']['qteProduit'])) ;
    }
 }
    public static function countProd(){

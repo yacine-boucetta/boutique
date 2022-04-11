@@ -61,7 +61,7 @@ public static function index($url){
             Article::viewArticle();
         }   
         elseif ($url[0] =='cart') {
-            Cart::showCart();
+            // Cart::showCart();
             Cart::viewCart();
             $cart=new Cart ;
             $cart->MontantGlobal();
