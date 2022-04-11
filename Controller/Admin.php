@@ -47,7 +47,6 @@
             //var_dump($tab);
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
-
                 //return $result;
                 
             }

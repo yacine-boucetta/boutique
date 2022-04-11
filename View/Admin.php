@@ -44,7 +44,7 @@
                 <input type='submit' name='updateCat'></input>
             </form>
         </article>
-        <article>
+        <article id='updateCateg'>
             <h2>Suppresion de categories</h2>
             <form method="post" name='deleteCateg'>
                 <select name="idDel" >
@@ -58,7 +58,7 @@
         </article>
         </section>
         <section id='secSubCateg'>
-            <article>
+            <article id='createSubCat'>
                 <h2>Creation de Sub categorie</h2>
                 <form method="post" name='createSubCat'>
                     <input type="text" name="catSubName"></input>
@@ -71,7 +71,7 @@
                     <input type="submit" name="createSubCat"></input>
                 </form>
             </article>
-            <article>
+            <article id='deleteSubCat'>
                 <h2>Suppresion de Sub categorie</h2>
                 <form method="post" name='deleteSubCateg'>
                     <select name="idSubDel" >
@@ -85,8 +85,8 @@
             </article>
         </section>
     </article>
-        <section>
-            <article>
+        <section id='secProd'>
+            <article id='addProd'>
                 <h2>Ajout Produits</h2>
                     <form method='POST' enctype='multipart/form-data'>
                         <select name="addSelect">
@@ -108,7 +108,7 @@
                     <input type='submit' name='addProd'></input>
                 </form>
             </article>
-            <article>
+            <article id='updateProd'>
                 <h2>Modification de produits</h2>
                 <form method='POST' enctype='multipart/form-data'>
                     <select name='upSelect'>
@@ -123,6 +123,8 @@
                 <input type='text' name='upPrix'></input>
                 <input type='submit' name='updateProd'></input>
             </form> 
+        </article>
+        <article>
             <h2>Update d'image</h2>
             <form method='POST' enctype='multipart/form-data'>
                 <select name='upImgProd'>
@@ -139,7 +141,7 @@
         </article>
     </section>
     <section>
-        <article>
+        <article id='deleteUser'>
             <h2>Effacer un utilisateur</h2>
             <form method='POST'>
                 <select name='idDelete'>
@@ -152,7 +154,7 @@
             <input type='submit' name='deleteUser'></input>
         </form>
     </article>
-    <article>
+    <article id='modUser'>
         <h2>Update droit user</h2>
         <form method='POST'>
             <select name='idUserRight'>
