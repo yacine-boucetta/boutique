@@ -4,6 +4,7 @@
 }
 body{
     height: 100vh;
+    background-color: #2e2d2c;
 }
 header{
     height: 120px;
@@ -27,4 +28,25 @@ ul li a{
     display: flex;
     justify-content: flex-end;
     margin-top: 2%;
+}
+.mainProd{
+    display: flex;
+   justify-content: center;
+}
+.formProd{
+   display: flex;
+   justify-content: center;
+   margin-top: 2%; 
+}
+.formProd img{
+    height: 50vh;
+    width: 60vh;
+}
+.formProd h2 ,.formProd p{
+    text-align: center;
+    margin-bottom: 2%;
+}
+.formProd a{
+    text-decoration: none;
+    color:white;
 }

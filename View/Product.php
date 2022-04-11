@@ -31,10 +31,12 @@
         </nav>
     </header>
     <?php
+    
     $prod = Product::showProduct();
     foreach ($prod as $product) { ?>
-        <form method="get" action=Article.php>
-            <div class="card">
+    <main class="mainProd">
+        <form method="get" action=Article.php class="formProd" >
+            <div class="card" >
                 <a href="./Article/<?= $product['id'] ?>">
 
                     <input type="hidden" name="" value=<?= $product['id'] ?>>
@@ -46,6 +48,7 @@
                 </a>
             </div>
         </form>
+    </main>
     <?php } ?>
 </body>
 

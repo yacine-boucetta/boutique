@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Model/Panier.php';
+
 class Cart{
 
 
@@ -45,7 +45,7 @@ class Cart{
       if (Cart::creationPanier()){
          $nbArticles=count($_SESSION['panier']['libelleProduit']);
          if ($nbArticles <= 0)
-         echo "<tr><td>Votre panier est vide </ td></tr>";
+         echo "<tr><td>Votre panier est vide </td></tr>";
          else{
              for ($i=0 ;$i < $nbArticles ; $i++){?>
                  <tr>

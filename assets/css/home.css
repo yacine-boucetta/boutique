@@ -31,23 +31,58 @@ ul li a{
 }
 .home{
     margin-top: 3%;
+    display: flex;
+    
 }
 .home h2{
     text-align: center;
 }
 .couteau{
-  height: 550px;
+  width: 100vh;
+  height: 70vh;
   background-image: url("../images/damien.jpg");
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 30%;
+  margin-right: 2%;
+  margin-left: 2%;
+  
 }
-.couteau h2{
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+.couteau a ,.accessoire a{
+  text-decoration: none;
+}
+.accessoire{
+  width: 100vh;
+  height: 70vh;
+  background-image: url("../images/damien.jpg");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.couteau h2 ,.accessoire h2 ,.produit h2{
+  font-family: Impact,'Arial Narrow Bold', sans-serif;
   text-decoration: none;
   color: white;
+  font-size:50px;
   letter-spacing :15px
 }
-  
+.produit{
+  height: 50vh;
+  width: 150vh;
+  background-color: red;
+  margin-left: 15%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/thomas.jpg");
+  background-repeat: no-repeat;
+
+ 
+}
+footer{
+  height: 100px;
+  margin-top: 3%;
+}
