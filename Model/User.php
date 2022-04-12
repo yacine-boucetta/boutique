@@ -135,4 +135,5 @@ public function updateRight($idDroit,$id){
 
 
 
+
 }

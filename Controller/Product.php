@@ -56,7 +56,6 @@ class Product{
             if($compter > 0){
                 $message = 'Ce nom de produits existe deja';
                 return $message;
-            
             }
         }
     }
@@ -122,7 +121,6 @@ class Product{
         
         //return $message; 
         }
-
     }
 //-----------------------------------------------------Old info for update------------------------------------------------------------
 
@@ -290,12 +288,9 @@ public static function addUpImg(){
         //var_dump($_FILES['image']);
         $fileName = $_FILES['image']['tmp_name']; // On récupère le nom du fichier
             $tailleMax = 5242880; // Taille maximum 5 Mo
-
             $extensionsValides = array('jpg','jpeg','png','JPG'); // Format accepté
             if ($_FILES['image']['size'] <= $tailleMax){ // Si le fichier et bien de taille inférieur ou égal à 5 Mo
-                
                 $extensionUpload = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1)); // Prend l'extension après le point, soit "jpg, jpeg ou png"
-
                 if (in_array($extensionUpload, $extensionsValides)){ // Vérifie que l'extension est correct
                     
                     $dossier = "./assets/images/"; // On se place dans le dossier de la personne 
@@ -340,7 +335,3 @@ public static function addUpImg(){
 }
 
 //require('view/admin.php');
-
-
-
-?>

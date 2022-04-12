@@ -9,26 +9,43 @@ class Order{
         $message='';
         require('view/order.php');
     }
+    public static function payment(){
+        $prix=Cart::MontantGlobal();
+        return $prix;
+    }
 
     public function OrderPay(){
 
-        $order=new Commande();
-       
-        $prix=$order->pay();
+      $prix= Order::payment();
+
         if(isset($prix)){
             require_once('vendor/autoload.php');
             // On instancie Stripe
             Stripe\Stripe::setApiKey('sk_test_51KRulFAhAIqaLL5QDy2nlZuYkPtfJcbj3ozmH4ojUteGeWKfoIkS84aGaQFfHCkUTqZaW4eyJ6MNkU88E4FRJvEo00nPT925Hr');
 
             $intent = Stripe\PaymentIntent::create([
-                'amount' => $prix,
+                'amount' => $prix*100,
                 'currency' => 'eur'
             ]);
-           
             return $intent;
         }
-        else{
-            header('Location: /index.php');
+     
+    }
+    public function addliaison($libelleProduit){
+        $libelleProduit=$_SESSION['panier']['id'];
+        var_dump($libelleProduit);
+        var_dump($_SESSION['panier']);
+        foreach ($libelleProduit as $article) {
+           
         }
     }
+ public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice){
+     if (isset($_POST['payez'])) {
+         $commande=new Commande;
+        $commande->saveOrder($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+        var_dump($_POST);
+
+     }
+ }
+ 
 }
