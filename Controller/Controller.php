@@ -21,14 +21,20 @@ public static function index($url){
     elseif ($url[0] == 'Profil') {
         Profil::viewProfil();
     }  elseif ($url[0] == 'Admin') {   
-        Product::insertProduct();
-        Admin::addCat();
-        Admin::addSubCat();
+        
+        //Admin::addCat();
+        //Admin::addSubCat();
         Admin::deleteCateg();
         Admin::deleteSubCateg();
         Product::deleteProducts();
         Admin::adminView();
-    
+        //Product::updateProduct();
+        Product::updateCategorie();
+        Product::updateImage();
+        Product::addImg();
+        Admin::deleteUser();
+        Admin::modUser();
+        //Product::displayUpdate();
     // } elseif ($url[0] == 'product') {
     //     require 'view/product.php';
     // } elseif ($url[0] == 'admin') {
@@ -38,12 +44,38 @@ public static function index($url){
     // }
     }
     elseif ($url[0]== 'order') {
-        
         $order=new Order;
-        $intent=$order->OrderPay();
         Order::orderView();
+        $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+        var_dump($_POST);
+        $intent=$order->OrderPay();
         return $intent;
+    }
+
+
+    elseif($url[0]=='Product'){
+        Product::showProduct();
+        Product::productView();
         
+        }
+    elseif ($url[0]=='Article') {
+        var_dump($url);
+
+        if(isset($url[1])){
+           Article::GetArticle($url[1]);
+        }
+            Article::viewArticle();
+        }   
+        elseif ($url[0] =='cart') {
+            // Cart::showCart();
+            Cart::viewCart();
+            $cart=new Cart ;
+            $cart->MontantGlobal();
+            $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
+            $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
+         
+            
+        }
     }
-    }
+   
 }

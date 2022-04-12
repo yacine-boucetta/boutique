@@ -15,8 +15,6 @@ class SignIn
         require_once('view/signIn.php');
     }
 
-
-
     public static function signInAction()
     {
         $message = '';
@@ -28,7 +26,6 @@ class SignIn
             } else {           
                 $newUser = new User();
                 $user = $newUser->userConnexion($_POST['login']);
-
                 if (password_verify(htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1"), $user['password'])) {
                     $_SESSION['user'] = $user; 
                     header('Location:./');
