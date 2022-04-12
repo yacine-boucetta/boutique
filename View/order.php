@@ -3,8 +3,7 @@ require 'assets/template/header.php';
 $order=new Order;
 $id=$_SESSION['user']['id'];
 $cart=new Cart;
-$test=count($_SESSION['panier']['id']);
-var_dump($test);
+
 
 
 ?>
