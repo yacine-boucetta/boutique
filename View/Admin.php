@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/admin.css">
     <title>Document</title>
 </head>
 <body>
+    <main>
     <h1>ADMIN</h1>
     <h3 style="color:red"><?php echo $message; ?></h3>
     <h3 style="color:red"><?php echo $results; ?></h3>
     <h3 style="color:red"><?php echo $resulta; ?></h3>
     <h3 style="color:red"><?php echo $resultas; ?></h3>
     <section id='secCat'>
-        <aricle id='artCategCreat'>
+        <article id='artCategCreat'>
             <h2>Creation de categorie</h2>
             <form method="post" name='creationCat'>
                 <input type="text" name="catName"></input>
                 <input type="submit" name="createCat"></input>
             </form>
+        </article>
         <article id='artCategUpdate'>
             <h2>Update de categories</h2>
             <form method='POST'>
@@ -56,7 +59,7 @@
             <input type="submit" name="deleteCat"></input>
             </form>
         </article>
-        </section>
+    </section>
         <section id='secSubCateg'>
             <article id='createSubCat'>
                 <h2>Creation de Sub categorie</h2>
@@ -114,8 +117,8 @@
                     <select name='upSelect'>
                         <option value="" disabled selected>Select your option</option>
                         <?php
-                        $option = new Admin();
-                        $option->prodSelect();
+                            $option = new Admin();
+                            $option->prodSelect();
                         ?>
                 </select>
                 <input type='text' name='nom'></input>
@@ -140,7 +143,7 @@
             </form>
         </article>
     </section>
-    <section>
+    <section id='secUser'>
         <article id='deleteUser'>
             <h2>Effacer un utilisateur</h2>
             <form method='POST'>
@@ -173,5 +176,6 @@
         </form>
     </article>
 </section>
+</main>
 </body>
 </html>
