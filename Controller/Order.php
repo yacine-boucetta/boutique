@@ -40,15 +40,11 @@ class Order{
     }
  public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$qteProd,$finalPrice){
      if (isset($_POST['payez'])) {
-        $commande=new Commande;
-        $commande->saveOrder($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$qteProd,$finalPrice);
+         $commande=new Commande;
+        $commande->saveOrder($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
         var_dump($_POST);
 
      }
-
-    
-
-
  }
-
+ 
 }

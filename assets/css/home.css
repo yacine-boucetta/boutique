@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background-color:#2e2d2c;
+}
+header{
+    height: 120px;
+    background-color:#2e2d2c;
+}
+header h1{
+    text-align: center;
+    color: white;
+}
+ul {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+ul li a{
+    text-decoration: none;
+    color: white;
+}
+.search{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2%;
+}
+.home{
+    margin-top: 3%;
+    display: flex;
+    
+}
+.home h2{
+    text-align: center;
+}
+.couteau{
+  width: 100vh;
+  height: 70vh;
+  background-image: url("../images/damien.jpg");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2%;
+  margin-left: 2%;
+  
+}
+.couteau a ,.accessoire a{
+  text-decoration: none;
+}
+.accessoire{
+  width: 100vh;
+  height: 70vh;
+  background-image: url("../images/damien.jpg");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.couteau h2 ,.accessoire h2 ,.produit h2{
+  font-family: Impact,'Arial Narrow Bold', sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size:50px;
+  letter-spacing :15px
+}
+.produit{
+  height: 50vh;
+  width: 150vh;
+  background-color: red;
+  margin-left: 15%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/thomas.jpg");
+  background-repeat: no-repeat;
+
+ 
+}
+footer{
+  height: 100px;
+  margin-top: 3%;
+}
