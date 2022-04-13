@@ -8,8 +8,26 @@
     <title>Document</title>
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <h1> GASHIDO </h1>
+            <ul>
+                <li><a href='./SignUp'>inscription</a></li>
+                <li><a href='./SignIn'>connexion</a></li>
+                <li><a href='./Product'>product</a></li>
+                <li><a href='./Admin'>admin</a></li>
+                <li><a href='./Profil'>profil</a></li>
+                <li><a href='./Deconnexion'>deconnexion</a></li>
+            </ul>
+            <form action="" method="post">
+	            <input type="text" name="query" />
+	            <input type="submit" value="Search" />
+            </form>
+        </nav>
+    </header>
+<body>
     <main>
-    <h1>ADMIN</h1>
+    <h2 id='admin'>ADMIN</h2>
     <h3 style="color:red"><?php echo $message; ?></h3>
     <h3 style="color:red"><?php echo $results; ?></h3>
     <h3 style="color:red"><?php echo $resulta; ?></h3>
@@ -18,28 +36,28 @@
         <article id='artCategCreat'>
             <h2>Creation de categorie</h2>
             <form method="post" name='creationCat'>
-                <input type="text" name="catName"></input>
+                <input type="text" name="catName" placeholder="Nouveau nom de categorie"></input>
                 <input type="submit" name="createCat"></input>
             </form>
         </article>
         <article id='artCategUpdate'>
-            <h2>Update de categories</h2>
-            <form method='POST'>
+            <h2>Update categories de produits</h2>
+            <form method='POST' class='formAdmin'>
                 <select name='upCategoProd'>
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="" disabled selected>Choisisez un produit</option>
                     <?php
                             $option = new Admin();
                             $option->prodSelect();
                             ?>
                 </select>
                 <select name='idCategoUp'>
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="" disabled selected>Choisiez une categorie</option>
                     <?php
                         $option->displayCat();
                         ?>
                 </select>
                 <select name='idSubCategoUp'>
-                    <option value='' disabled selected>Select your option</option>
+                    <option value='' disabled selected>Choisiez une sous categories</option>
                     <?php
                         $option->displayNameCat();
                         ?>
@@ -49,8 +67,9 @@
         </article>
         <article id='updateCateg'>
             <h2>Suppresion de categories</h2>
-            <form method="post" name='deleteCateg'>
+            <form method="post" name='deleteCateg' class='formAdmin'>
                 <select name="idDel" >
+                <option value='' disabled selected>Choisiez une categorie a supprimer</option>
                     <?php
                 $option = new Admin();
                 $var = $option->displayCat();
@@ -63,9 +82,10 @@
         <section id='secSubCateg'>
             <article id='createSubCat'>
                 <h2>Creation de Sub categorie</h2>
-                <form method="post" name='createSubCat'>
-                    <input type="text" name="catSubName"></input>
+                <form method="post" name='createSubCat' class='formAdmin'>
+                    <input type="text" name="catSubName" placeholder="Choisisez un nom de sous categorie"></input>
                     <select name="idCatForSub" >
+                    <option value='' disabled selected>Chosisez une categorie</option>
                         <?php
                         //$option = new Admin();
                         $option->displayCat();
@@ -76,8 +96,9 @@
             </article>
             <article id='deleteSubCat'>
                 <h2>Suppresion de Sub categorie</h2>
-                <form method="post" name='deleteSubCateg'>
+                <form method="post" name='deleteSubCateg' class='formAdmin'>
                     <select name="idSubDel" >
+                    <option value='' disabled selected>Choisiez une sous categorie a supprimer</option>
                         <?php
                         //$option = new Admin();
                         $option->displaySubCat();
@@ -89,49 +110,57 @@
         </section>
     </article>
         <section id='secProd'>
-            <article id='addProd'>
+            <article id='artaddProd'>
                 <h2>Ajout Produits</h2>
-                    <form method='POST' enctype='multipart/form-data'>
-                        <select name="addSelect">
-                            <?php
-                        //$option = new Admin();
-                        $option->displayCat();
-                        ?>
-                    </select>
-                    <input type='text' name='nom'></input>
-                    <textarea name='description'></textarea>
-                    <select name='idSousCat'> 
-                        <?php
-                        $option = new Admin;
-                        $option->displayNameCat();
-                        ?>
-                    </select>
-                    <input type='text' name='prix'></input>
-                    <input type='file' name='image'></input>
+                <div class="divProd">
+                    <form method='POST' enctype='multipart/form-data' class='formAdmin'>
+                            <select name="addSelect">
+                                <option value="" disabled selected>Choisiez une categorie</option>
+                                <?php
+                                //$option = new Admin();
+                                    $option->displayCat();
+                                ?>
+                            </select>
+                        </div>
+                        <!-- <div class="divProd"> -->
+                            <select name='idSousCat'> 
+                                <option value='' disabled selected>Choisiez une sous categories</option>
+                                <?php
+                                    $option = new Admin;
+                                    $option->displayNameCat();
+                                ?>
+                            </select>
+                        <!-- </div> -->
+                    <input class='inputProd' type='text' name='nom' placeholder='Nom de produit'></input>
+                    <textarea class='inputProd' name='description' style="resize: none;" placeholder='Description du produit'></textarea>
+                    <input class='inputProd' type='text' name='prix' placeholder="Prix du produit"></input>
+                    <input class='inputProd' type='file' name='image'></input>
                     <input type='submit' name='addProd'></input>
                 </form>
             </article>
             <article id='updateProd'>
                 <h2>Modification de produits</h2>
-                <form method='POST' enctype='multipart/form-data'>
+                <div class="divProd">
+                <form method='POST' enctype='multipart/form-data' class='formAdmin'>
                     <select name='upSelect'>
-                        <option value="" disabled selected>Select your option</option>
+                        <option value="" disabled selected>Choisisez un produit</option>
                         <?php
                             $option = new Admin();
                             $option->prodSelect();
                         ?>
                 </select>
-                <input type='text' name='nom'></input>
-                <textarea name='upDescription'></textarea>             
-                <input type='text' name='upPrix'></input>
-                <input type='submit' name='updateProd'></input>
+                </div>
+                <input class='inputProd' type='text' name='nom' placeholder='Nouveau nom de produit'></input>
+                <textarea class='inputProd' name='upDescription' style="resize: none;" placeholder='Nouvelle description du produit'></textarea>             
+                <input class='inputProd' type='text' name='upPrix' placeholder="nouveau prix" ></input>
+                <input class='inputProd' type='submit' name='updateProd'></input>
             </form> 
         </article>
-        <article>
+        <article id='artUpdateImg'>
             <h2>Update d'image</h2>
-            <form method='POST' enctype='multipart/form-data'>
+            <form method='POST' enctype='multipart/form-data' class='formAdmin'>
                 <select name='upImgProd'>
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="" disabled selected>Choisez une nouvelle image de produit</option>
                     <?php
                         $option = new Admin();
                         $option->prodSelect();
@@ -146,9 +175,9 @@
     <section id='secUser'>
         <article id='deleteUser'>
             <h2>Effacer un utilisateur</h2>
-            <form method='POST'>
+            <form method='POST' class='formAdmin'>
                 <select name='idDelete'>
-                    <option value="" disabled selected>Select your option</option>
+                    <option value="" disabled selected>Choisisez un utilisateur a supprimer</option>
                     <?php
                         $option = new Admin();
                         $option->displayUser();
@@ -159,16 +188,16 @@
     </article>
     <article id='modUser'>
         <h2>Update droit user</h2>
-        <form method='POST'>
+        <form method='POST' class='formAdmin'>
             <select name='idUserRight'>
-                <option value="" disabled selected>Select your option</option>
+                <option value="" disabled selected>Choisisez un utilisateur a modfier</option>
                 <?php
                         $option = new Admin();
                         $option->displayUser();
                         ?>
             </select>
             <select name='idRight'>
-                <option value="" disabled selected>Select your option</option>
+                <option value="" disabled selected>Choisisez un droits</option>
                 <option value="1">User</option>
                 <option value="2">Admin</option>
             </select>
