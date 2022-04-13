@@ -29,7 +29,6 @@ class Order{
             ]);
             return $intent;
         }
-     
     }
     public function addliaison($libelleProduit){
         $libelleProduit=$_SESSION['panier']['id'];
@@ -39,7 +38,7 @@ class Order{
            
         }
     }
- public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$date,$qteProd,$finalPrice){
+ public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$qteProd,$finalPrice){
      if (isset($_POST['payez'])) {
          $commande=new Commande;
         $commande->saveOrder($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);

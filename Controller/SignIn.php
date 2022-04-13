@@ -29,6 +29,9 @@ class SignIn
                 if (password_verify(htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1"), $user['password'])) {
                     $_SESSION['user'] = $user; 
                     header('Location:./');
+                }else{
+                    $message = signError();
+                    return $message;
                 }
             }
         }

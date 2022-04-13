@@ -60,9 +60,8 @@ class Profil
         $check = new Model();
         $checkLogin = $check->checkUser(htmlspecialchars($_POST['login'], ENT_QUOTES, "ISO-8859-1"));
         if ($checkLogin > 0) {
-            $message=[];
-            array_push($message, loginError());
-            var_dump($message);
+            $message=loginError();
+            return $message;
         } 
         else {
             $update = new User();
@@ -74,11 +73,14 @@ class Profil
     {
         $password = htmlspecialchars($_POST['password'], ENT_QUOTES, "ISO-8859-1");
         $password2 = htmlspecialchars($_POST['password2'], ENT_QUOTES, "ISO-8859-1");
-            if (strlen($_POST['password']) < 6) {
-                $message=[];
-                array_push($message, loginError(), passwordError());
-                var_dump($message);
-            }
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+
+            if(!$uppercase || !$lowercase || !$number || strlen($password) < 6) {
+            $message = lengthError();
+            return $message;
+        }
             if (strlen($_POST['password']) >= 6) {
                 if ($password == $password2) {
                     $password = password_hash($password, PASSWORD_BCRYPT);

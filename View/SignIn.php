@@ -2,7 +2,6 @@
 
 
     <main class="container">
-        <a href='./'>home</a>
         <div class="testbox">
             <form class="sign" method="post">
                 <p><?php echo $message; ?></p>

@@ -46,7 +46,7 @@ class Model
         $search= $this->db->prepare($research);
         $search->execute();
         $searching=$search->fetchAll(PDO::FETCH_ASSOC);
-    return $searching;
+  return $searching;
     
     }
 }
