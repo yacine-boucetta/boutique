@@ -31,22 +31,23 @@
 
         </nav>
     </header>
-    <section class="produit">
-        <h2>LES COUTEAUX</h2>
-    </section>
-    <main class="home">
-        <div class="couteau">
-            <a href="'./Product'">
-                <h2>l'atelier</h2>
-            </a>
-        </div>
-        <div class="accessoire">
-            <a href="'./Product'">
-                <h2>accessoire</h2>
-            </a>
-        </div>
-    </main>
-    
+    <div class="border">
+        <section class="produit">
+            <h2>LES COUTEAUX</h2>
+        </section>
+        <main class="home">
+            <div class="couteau">
+                <a href="./Product">
+                    <h2>l'atelier</h2>
+                </a>
+            </div>
+            <div class="accessoire">
+                <a href="'./Product'">
+                    <h2>accessoire</h2>
+                </a>
+            </div>
+        </main>
+    </div>
     <footer>
 
     </footer>

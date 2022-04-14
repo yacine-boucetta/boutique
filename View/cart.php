@@ -34,7 +34,10 @@
 
         </nav>
     </header>
+    <h1>PANIER</h1>
 <?php Cart::showCart();?>
-<p> <?= Cart::MontantGlobal()?>€</p>
+<footer>
+    
+</footer>
 </body>
 </html>

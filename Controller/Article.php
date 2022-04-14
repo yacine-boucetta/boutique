@@ -12,14 +12,18 @@ class Article
         $idArticle = $produit->getAllInfo($id);
         foreach ($idArticle as $key) {
 ?>
-            <div>
+            <div class="article">
+            <h1><?= $key['nom'] ?></h1>
                 <form action="" method="POST">
                     <input type="hidden" value="<?= $key['id'] ?>" >
-                    <h1><?= $key['nom'] ?></h1>
+                    <div class="article2">
                     <img src=".<?= $key['image'] ?>">
-                    <h1><?= $key['description'] ?></h1>
-                    <h1><?= $key['prix'] ?></h1>
+                    <div class="desc">
+                    <p><?= $key['description'] ?></p>
+                    <p><?= $key['prix'] ?>€</p>
+                    </div>
                     <input type="submit" name="addToCart">
+                    </div>
                 </form>
             </div><?php
                 

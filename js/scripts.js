@@ -39,5 +39,9 @@ window.onload = () => {
             }
         })
     })
-
+    const appearance = {
+        theme: 'night',
+        labels: 'floating'
+      };
+   
 }
