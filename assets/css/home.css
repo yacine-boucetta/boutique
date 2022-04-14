@@ -5,6 +5,13 @@
 body{
     height: 100vh;
     background-color:#2e2d2c;
+   
+}
+.border{
+  margin-top: 2%;
+  border: 1px solid white;
+  margin: 2%;
+  
 }
 header{
     height: 120px;
@@ -31,47 +38,49 @@ ul li a{
 }
 .home{
     margin-top: 3%;
-    display: flex;
+    /* display: flex; */
     
 }
 .home h2{
     text-align: center;
 }
-.couteau{
+/* .couteau{
   width: 100vh;
   height: 70vh;
-  background-image: url("../images/damien.jpg");
+  background-image: url("../images/dam.jpg");
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-right: 2%;
   margin-left: 2%;
+  margin-bottom: 5%;
   
-}
+} */
 .couteau a ,.accessoire a{
   text-decoration: none;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.accessoire{
+/* .accessoire{
   width: 100vh;
   height: 70vh;
-  background-image: url("../images/damien.jpg");
+  background-image: url("../images/dam.jpg");
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  margin-bottom: 5%;
+} */
 .couteau h2 ,.accessoire h2 ,.produit h2{
-  font-family: Impact,'Arial Narrow Bold', sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-decoration: none;
   color: white;
   font-size:50px;
   letter-spacing :15px
 }
-.produit{
+.produit,.accessoire,.couteau{
   height: 50vh;
   width: 150vh;
-  background-color: red;
   margin-left: 15%;
   margin-top: 3%;
   display: flex;
@@ -79,7 +88,7 @@ ul li a{
   align-items: center;
   background-image: url("../images/thomas.jpg");
   background-repeat: no-repeat;
-
+  margin-bottom: 2%;
  
 }
 footer{

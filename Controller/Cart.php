@@ -1,27 +1,31 @@
 <?php
 
 
-class Cart{
+class Cart
+{
 
 
 
 
-   public static function viewCart(){
+   public static function viewCart()
+   {
       require('view/cart.php');
-  }
+   }
 
-   public static function creationPanier(){
-      if (!isset($_SESSION['panier'])){
-         $_SESSION['panier']=array();
-         $_SESSION['panier']['id']=array();
+   public static function creationPanier()
+   {
+      if (!isset($_SESSION['panier'])) {
+         $_SESSION['panier'] = array();
+         $_SESSION['panier']['id'] = array();
          $_SESSION['panier']['libelleProduit'] = array();
          $_SESSION['panier']['qteProduit'] = array();
          $_SESSION['panier']['prixProduit'] = array();
       }
       return true;
    }
-   public function addToCart($id,$libelleProduit,$qteProduit,$prixProduit){
-      if (Cart::creationPanier()){
+   public function addToCart($id, $libelleProduit, $qteProduit, $prixProduit)
+   {
+      if (Cart::creationPanier()) {
          //Si le produit existe déjà on ajoute seulement la quantité
          $positionProduit = array_search($libelleProduit,  $_SESSION['panier']['libelleProduit']);
          //   var_dump($positionProduit);
@@ -30,10 +34,10 @@ class Cart{
             // var_dump($_SESSION['panier']['qteProduit'][$positionProduit]);
          } else {
             //Sinon on ajoute le produit
-            array_push($_SESSION['panier']['id'],$id);
-            array_push( $_SESSION['panier']['libelleProduit'],$libelleProduit);
-            array_push( $_SESSION['panier']['qteProduit'],$qteProduit);
-            array_push( $_SESSION['panier']['prixProduit'],$prixProduit);
+            array_push($_SESSION['panier']['id'], $id);
+            array_push($_SESSION['panier']['libelleProduit'], $libelleProduit);
+            array_push($_SESSION['panier']['qteProduit'], $qteProduit);
+            array_push($_SESSION['panier']['prixProduit'], $prixProduit);
          }
       } else {
          echo "Un problème est survenu veuillez contacter l'administrateur du site.";
@@ -45,44 +49,64 @@ class Cart{
       if (Cart::creationPanier()) {
          $nbArticles = count($_SESSION['panier']['libelleProduit']);
          if ($nbArticles <= 0)
-         echo "<tr><td>Votre panier est vide </td></tr>";
-         else{
-             for ($i=0 ;$i < $nbArticles ; $i++){?>
-                 <tr>
-                 <td><?=$_SESSION['panier']['libelleProduit'][$i]?></td>
-                 <td>
-                    <form method="POST" class="produit">
-                       <input type="hidden" value=<?= $i?> name="id">
-                       <input type="submit" value="-" name="delete">
-                       <input type="text" size="4" name= "qteProd"value=<?=$_SESSION['panier']['qteProduit'][$i]?>>
-                        <input type=submit value="+" name="add">
-                     </form>
-                  </td>
-                 <td><?=$_SESSION['panier']['prixProduit'][$i]*$_SESSION['panier']['qteProduit'][$i]?></td>
-                 
-                 </tr><?php
-               echo $i;
-              if (isset($_POST['supp'])) {
-               $cart=new Cart;
-               $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
-               }
-               if (isset($_POST['delete'])||isset($_POST['add'])) {
-                  $cart=new Cart;
-                  $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i],$_SESSION['panier']['qteProduit'][$i]);
-               }
-               // var_dump($_SESSION['panier']);
-            } ?>
-           <form method="POST" class="paytest">
-           <input type="submit" name="supp" value="supprimez">
-           </form>
-           <form method="POST">
-           <input type="submit" name="pay" value="paimment">
-           </form>
-         <?php
-             if (isset($_POST['pay'])) {
-                Cart::payCart();
-               
-             }
+            echo "<div class=error><h2>Votre panier est vide </h2></div>";
+         else { ?>
+            <div class="essaie">
+               <div class="test">
+               <table class="test">
+                  <tbody>
+
+                     <?php
+                     for ($i = 0; $i < $nbArticles; $i++) { ?>
+                        
+
+                           <form method="POST" class="produit">
+                              <tr>
+                                 <td>
+                                    <img src="./assets/images/<?= $_SESSION['panier']['libelleProduit'][$i] ?>" alt="">
+                                 </td>
+                                 <td>
+                                    <h2><?= $_SESSION['panier']['libelleProduit'][$i] ?></h2>
+                                 </td>
+                                 <td> <input type="hidden" value=<?= $i ?> name="id"></td>
+                                 <td> <input type="submit" value="-" name="delete" class="delete"></td>
+                                 <td> <input type="text" size="4" name="qteProd" value=<?= $_SESSION['panier']['qteProduit'][$i] ?>></td>
+                                 <td> <input type=submit value="+" name="add" class="add"></td>
+
+                                 <td>
+                                    <p><?= $_SESSION['panier']['prixProduit'][$i] * $_SESSION['panier']['qteProduit'][$i] ?>€</p>
+                                 </td>
+                                 <td> <input type="submit" name="supp" value="videz le panier"></td>
+                              </tr>
+
+                           </form>
+                        <?php
+                        // echo $i;
+                        if (isset($_POST['supp'])) {
+                           $cart = new Cart;
+                           $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
+                        }
+                        if (isset($_POST['delete']) || isset($_POST['add'])) {
+                           $cart = new Cart;
+                           $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i], $_SESSION['panier']['qteProduit'][$i]);
+                        }
+                        // var_dump($_SESSION['panier']);
+                     } ?>
+                  </tbody>
+               </table>
+               </div>
+            <div class="mg">
+               <p class="montant">Montant Total </p>
+               <p class="montant"> <?= Cart::MontantGlobal() ?>€</p>
+               <form method="POST" class="pay">
+                  <input type="submit" name="paye" value="paimment">
+               </form>
+            </div>
+          </div>
+<?php
+            if (isset($_POST['paye'])) {
+               Cart::payCart();
+            }
          }
       }
    }
@@ -112,11 +136,9 @@ class Cart{
                }
             }
          }
-         // header("refresh: 0.5");
-         var_dump(array_sum($_SESSION['panier']['qteProduit']));
+         header("refresh: 0.5");
+         // var_dump(array_sum($_SESSION['panier']['qteProduit'])) ;
       }
-      header("refresh: 0.5");
-      // var_dump(array_sum($_SESSION['panier']['qteProduit'])) ;
    }
    public static function countProd()
    {

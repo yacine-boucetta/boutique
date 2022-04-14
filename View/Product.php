@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="navbar">
-        <h1>GASHIDO</h1>
+            <h1>GASHIDO</h1>
             <ul>
                 <li><a href='./Product'>product</a></li>
                 <li><a href='./SignUp'>inscription</a></li>
@@ -29,29 +29,26 @@
             </form>
 
         </nav>
-    </header> 
+    </header>
     <main class="mainProd">
-    <?php
-
-
-    $prod = Product::showProduct();
-    foreach ($prod as $product) { ?>
-   
-        <form method="get" action=Article.php class="formProd" >
-            <div class="card" >
-                <a href="./Article/<?= $product['id'] ?>">
-
-                    <input type="hidden" name="" value=<?= $product['id'] ?>>
-
-                    <h2><?= $product['nom'] ?></h2>
-                    <img src="<?= $product['image'] ?>" alt="">
-                    <p><?= $product['description'] ?></p>
-                    <p><?= $product['prix'] ?>€</p>
-                </a>
-            </div>
-        </form>
+    
+        <?php
+        $prod = Product::showProduct();
+        foreach ($prod as $product) { ?>
+        <form method="get" action=Article.php class="formProd">
+                <div class="card">
+                    <a href="./Article/<?= $product['id'] ?>">
+                        <input type="hidden" name="" value=<?= $product['id'] ?>>
+                        <h2><?= $product['nom'] ?></h2>
+                        <img src="<?= $product['image'] ?>" alt="">
+                        <p><?= $product['description'] ?></p>
+                        <p><?= $product['prix'] ?>€</p>
+                    </a>
+                </div>
+                </form>
+        <?php } ?>
+        
     </main>
-    <?php } ?>
 </body>
 
 </html>

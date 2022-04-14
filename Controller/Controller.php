@@ -46,8 +46,8 @@ public static function index($url){
     elseif ($url[0]== 'order') {
         $order=new Order;
         Order::orderView();
-        $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['totalProd'],$_POST['totalPrix']);
-        var_dump($_POST);
+       @ $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
+      
         $intent=$order->OrderPay();
         return $intent;
     }
@@ -59,12 +59,12 @@ public static function index($url){
         
         }
     elseif ($url[0]=='Article') {
-        var_dump($url);
-
+        // var_dump($url);
+        Article::viewArticle();
         if(isset($url[1])){
            Article::GetArticle($url[1]);
         }
-            Article::viewArticle();
+            
         }   
         elseif ($url[0] =='cart') {
             // Cart::showCart();

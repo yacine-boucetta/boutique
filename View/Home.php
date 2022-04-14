@@ -51,26 +51,23 @@
 
         </nav> -->
     </header>
-    <section class="produit">
-        <h2>LES Produits</h2>
-    </section>
-    <main class="home">
-        
-        <div class="couteau">
-            <h2 >LE COUTAL</h2>
-            <a href='./Product'>
-                <img src="./assets/images/gashidopattern (3).png" alt="img"></img>  
-            </a>
-        </div>    
-        
-        <div class="accessoire">
-            <h2>Accessoire</h2>
-            <a href=/Product>
-            <img src="./assets/images/gashidopattern (3).png" alt="img"></img>  
-            </a>
-        </div>
-    </main>
-    
+    <div class="border">
+        <section class="produit">
+            <h2>LES COUTEAUX</h2>
+        </section>
+        <main class="home">
+            <div class="couteau">
+                <a href="./Product">
+                    <h2>l'atelier</h2>
+                </a>
+            </div>
+            <div class="accessoire">
+                <a href="'./Product'">
+                    <h2>accessoire</h2>
+                </a>
+            </div>
+        </main>
+    </div>
     <footer>
 
     </footer>
