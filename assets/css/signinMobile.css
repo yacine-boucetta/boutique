@@ -1,12 +1,13 @@
-@media (min-width: 426px) and (max-width: 1180px){
+@media (min-width: 426px) and (max-width: 1181px){
 
     body {
         background-color: #2c2c2c;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         height: 90vh;
-        width: 80%;
+        width: 100%;
         text-align: center;
     }
     
@@ -17,8 +18,8 @@
     main {
         position: relative;
         top: -20%;
-        left: 12.5%;
         justify-content:center;
+        width: 75%;
     }
     header {
         background-color: #2c2c2c;

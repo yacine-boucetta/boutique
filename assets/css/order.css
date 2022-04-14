@@ -1,3 +1,4 @@
+@media (min-width: 1181px){
 *{
     margin: 0;
     padding: 0;
@@ -75,4 +76,85 @@ h2{
 }
 footer{
     height: 100px;
+}
+}
+@media(min-width: 466px) and (max-width: 1180px){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100vh;
+        background-color: #2e2d2c;
+    }
+    header{
+        height: 120px;
+        background-color:#2e2d2c;
+    }
+    header h1{
+        text-align: center;
+        color: white;
+    }
+    ul {
+        
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+    }
+    ul li a{
+        text-decoration: none;
+        color: white;
+    }
+    .search{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 2%;
+    }
+    h2{
+        text-align: center;
+        color: white;
+        margin-top: 5%;
+    }
+    .delivery{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5%;
+        margin-left: 5%;
+        margin-right: 5%;
+       
+        
+    }
+    .delivery input{
+        margin-top: 1%;
+        width: 100vh;
+        height: 40px;
+    }
+    .carte{
+       margin-top: 2%;
+       width: 100vh;
+       
+      margin-left: 15%; 
+    }
+    #cardholder-name{
+        height: 50px;
+        margin-bottom: 5%;
+    }
+    .carte p {
+        margin-top: 2%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
+    }
+    #card-button{
+        margin-left: 30%;
+        width: 40vh;
+        height: 25px;
+        margin-top: 2%;
+    }
+    #card-elements{
+        background-color: white;
+    }
+    footer{
+        height: 100px;
+    }
 }

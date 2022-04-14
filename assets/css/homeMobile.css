@@ -1,3 +1,116 @@
+@media(min-width: 466px) and (max-width: 1180px){
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        height: 100vh;
+        background-color:#2e2d2c;
+       
+    }
+    .border{
+      margin-top: 2%;
+      border: 1px solid white;
+      margin: 2%;
+      
+    }
+    header{
+        height: 120px;
+        background-color:#2e2d2c;
+    }
+    header h1{
+        text-align: center;
+        color: white;
+    }
+    ul {
+        margin-top: 2%;
+        display: flex;
+        justify-content: space-between;
+        list-style: none;
+    }
+    ul li a{
+        text-decoration: none;
+        color: white;
+    }
+    .search{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 2%;
+    }
+    .home{
+        margin-top: 3%;
+        /* display: flex; */
+        
+    }
+    .home h2{
+        text-align: center;
+    }
+    .couteau,.produit,.accessoire{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .couteau a ,.accessoire a{
+      text-decoration: none;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    
+    .couteau h2 ,.accessoire h2 ,.produit h2{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      text-decoration: none;
+      color: white;
+      font-size:50px;
+      letter-spacing :15px;
+      text-align: center;
+    }
+    .produit img,.accessoire img,.couteau img{
+      /* height: 50vh;
+      width: 100vh; */
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 2%;
+    }
+    .home h2:nth-child(1) {
+      position: absolute;
+      z-index: 1;
+      transition: opacity 0.3s;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .home h2:nth-child(n+2) {
+      position: absolute;
+      transition: opacity 0.3s;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .accessoire img,.couteau img,.produit img{
+      border: 1px solid whitesmoke;
+      width: 100%;
+      
+      
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+      transition: background-image 0.3s, background-color 0.3s, filter 0.3s
+      }
+    
+      .accessoire:hover h2{
+          opacity:0% ;
+      }
+      .accessoire:hover img,.couteau:hover img,.produit:hover img{
+          filter: blur(0px);
+          -webkit-filter: blur(0px);
+      }
+    footer{
+      height: 100px;
+      margin-top: 3%;
+    }
+
+}
+@media (max-width: 465px) {
 html {
     max-width: 425px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -114,3 +227,4 @@ header{
         filter: blur(0px);
         -webkit-filter: blur(0px);
     }
+}

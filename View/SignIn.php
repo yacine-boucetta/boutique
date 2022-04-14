@@ -23,24 +23,24 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Acceuil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Les produits</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">inscription</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">connexion</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">profil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">admin</a>
-      </li>
+    <li class="nav-item active">
+                        <a class="nav-link" href="./Home">Acceuil <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Product">Les produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./SignUp">inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./SignIn">connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Profil">profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Admin">admin</a>
+                    </li>
 
     </ul>
   </div>
