@@ -29,12 +29,14 @@
             </form>
 
         </nav>
-    </header>
+    </header> 
+    <main class="mainProd">
     <?php
-    
+
+
     $prod = Product::showProduct();
     foreach ($prod as $product) { ?>
-    <main class="mainProd">
+   
         <form method="get" action=Article.php class="formProd" >
             <div class="card" >
                 <a href="./Article/<?= $product['id'] ?>">
