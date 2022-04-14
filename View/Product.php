@@ -11,24 +11,38 @@
 <?php ?>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <h1>GASHIDO</h1>
-            <ul>
-                <li><a href='./Product'>product</a></li>
-                <li><a href='./SignUp'>inscription</a></li>
-                <li><a href='./SignIn'>connexion</a></li>
-                <li><a href='./Product'>product</a></li>
-                <li><a href='./Admin'>admin</a></li>
-                <li><a href='./Profil'>profil</a></li>
-                <li><a href='./Deconnexion'>deconnexion</a></li>
-            </ul>
-            <form action="" method="post" class="search">
-                <input type="text" name="query" />
-                <input type="submit" value="Search" />
-            </form>
+<header style="color: white;">
 
-        </nav>
+    <nav class="navbar navbar-expand-lg ">
+  <a  href="#">GASHIDO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Acceuil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Les produits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">inscription</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">admin</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
     </header>
     <main class="mainProd">
     

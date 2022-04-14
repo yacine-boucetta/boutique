@@ -187,8 +187,9 @@ input{
     
     }
     header{
-        height: 120px;
         background-color:#2e2d2c;
+        height: 5% !important;
+        width: 100% !important;
     }
     header h1{
         text-align: center;
@@ -353,7 +354,7 @@ input{
         justify-content: center;
     }
 }
-@media (min-width: 360px) and (max-width: 1079px) {
+@media (min-width: 360px) and (max-width: 425px) {
     body{
         background-color: #2c2c2c;
     }

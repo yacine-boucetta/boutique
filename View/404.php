@@ -13,26 +13,41 @@
     <link rel="stylesheet" href="./assets/css/homeMobile.css">
     <title>Document</title>
 </head>
-<?php ?>
+<header>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">GASHIDO</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Acceuil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Les produits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">inscription</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">connexion</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">profil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">admin</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+    </header>
 <body>
-    <header style="width:100%;">
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#2c2c2c;" >
-        <a class="" href="#">GASHIDO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-            <a class="" href="#">inscription <span class="sr-only">(current)</span></a>
-            <a class="" href="#">connexion</a>
-            <a class="" href="#">product</a>
-            <a class="" href="#">admin</a>
-            <a class="" href="#">profil</a>
-            <a class="" href="#">deconnexion</a>
-        </div>
-    </div>
-    </nav>
+
     <main>
         <div id="page404">
 
