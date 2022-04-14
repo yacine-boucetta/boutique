@@ -18,7 +18,7 @@ class SignUp
     {$message='';
     
         if (isset($_POST['sign_up'])) {   
-            if(empty($_POST['password'])||empty($_POST['login'])||empty($_POST['email'])||empty($_POST['firstname'])){
+            if(empty($_POST['password'])||empty($_POST['login'])||empty($_POST['email'])||empty($_POST['firstname']||empty($_POST['lastName']))){
                 $message='veuillez remplir tout les champs';
             return $message;
         }
