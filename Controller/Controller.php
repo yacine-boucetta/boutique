@@ -89,7 +89,7 @@ public static function index($url){
 
     public static function adminSession()
     {
-        if ($_SESSION['user']['id_droits'] = 1) {
+        if ($_SESSION['user']['id_droits'] == 1) {
             header('Location:./');
         }
     }
