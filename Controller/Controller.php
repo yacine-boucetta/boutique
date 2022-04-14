@@ -29,6 +29,7 @@ public static function index($url){
         Product::deleteProducts();
         Admin::adminView();
         //Product::updateProduct();
+        Product::showProductByCategory();
         Product::updateCategorie();
         Product::updateImage();
         Product::addImg();
@@ -87,12 +88,12 @@ public static function index($url){
         }
     }
 
-    public static function adminSession()
-    {
-        if ($_SESSION['user']['id_droits'] == 1) {
-            header('Location:./');
-        }
-    }
+    // public static function adminSession()
+    // {
+    //     if ($_SESSION['user']['id_droits'] == 1) {
+    //         header('Location:./');
+    //     }
+    // }
     public static function disconnect()
     {
         session_unset();

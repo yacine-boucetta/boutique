@@ -316,18 +316,16 @@ public static function addUpImg(){
                     
     }
 }
+    public static function showProduct(){
+        $affiche=new Model;
+        $prod=$affiche->getProd();
+        return $prod;    
+        }
 
-
-
-
-
-
-
-
-        public static function showProduct(){
-            $affiche=new Model;
-            $prod=$affiche->getProd();
-            return $prod;    
+        public static function showProductByCategory(){
+            $showProd = new Products;
+            $produits=$showProd->getProdByCateg($_POST['selectCateg']);
+            return $produits;
         }
 
 

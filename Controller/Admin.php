@@ -8,9 +8,9 @@
 
         public static function adminView()
         {
-            $right = new Controller();
-            $right->adminSession();
-            
+            // $right = new Controller();
+            // $right->adminSession();
+
             $resulta=Product::insertProduct();
             $results=Admin::addCat();
             $message=Admin::addSubCat();

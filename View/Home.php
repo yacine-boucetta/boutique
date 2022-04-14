@@ -58,12 +58,6 @@
     </header>
     <div class="border">
     <main class="home">
-        <section class="produit">
-            <h2>LES Produits</h2>
-            <a href='./Product'>
-                <img src="./assets/images/gashidopattern (3).png" alt="img"></img>
-            </a>
-        </section>
         <div class="couteau">
             <h2 >LE COUTAL</h2>
             <a href='./Product'>
