@@ -22,27 +22,16 @@ public static function index($url){
         Profil::viewProfil();
     }  elseif ($url[0] == 'Admin') {   
         
-        //Admin::addCat();
-        //Admin::addSubCat();
         Admin::deleteCateg();
         Admin::deleteSubCateg();
         Product::deleteProducts();
         Admin::adminView();
-        //Product::updateProduct();
         Product::showProductByCategory();
         Product::updateCategorie();
         Product::updateImage();
         Product::addImg();
         Admin::deleteUser();
         Admin::modUser();
-        //Product::displayUpdate();
-    // } elseif ($url[0] == 'product') {
-    //     require 'view/product.php';
-    // } elseif ($url[0] == 'admin') {
-    //     require 'view/admin.php';
-    // } else {
-    //     require 'view/404.php';
-    // }
     }
     elseif ($url[0]== 'order') {
         $order=new Order;
@@ -74,9 +63,6 @@ public static function index($url){
             $cart->MontantGlobal();
             $cart->supprimerArticle($_SESSION['panier']['libelleProduit']);
             $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'],$_SESSION['panier']['qteProduit']);
-         
-            
-
         }
     }
 
@@ -88,12 +74,12 @@ public static function index($url){
         }
     }
 
-    // public static function adminSession()
-    // {
-    //     if ($_SESSION['user']['id_droits'] == 1) {
-    //         header('Location:./');
-    //     }
-    // }
+    public static function adminSession()
+    {
+        if ($_SESSION['user']['id_droits'] == 1 || !isset($_SESSION['user'])) {
+            header('Location:./');
+        }
+    }
     public static function disconnect()
     {
         session_unset();

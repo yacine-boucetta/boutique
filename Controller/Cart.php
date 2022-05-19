@@ -102,7 +102,7 @@ class Cart
                   <input type="submit" name="paye" value="paimment">
                </form>
             </div>
-          </div>
+         </div>
 <?php
             if (isset($_POST['paye'])) {
                Cart::payCart();

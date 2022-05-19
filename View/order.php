@@ -77,8 +77,8 @@ $cart = new Cart;
                 <input type="number" name="cp" placeholder="code postale">
                 <input type="text" name="ville" placeholder="ville">
                 <input type="text" name="pays" placeholder="pays">
-                <input type="number" value="<?= $cart->countProd()?>" name="totalProd" disabled>
-                <input type="number" value="<?= $cart->MontantGlobal() ?>" name="totalPrix"disabled>
+                <input type="number" value="<?= $cart->countProd()?>" name="totalProd">
+                <input type="number" value="<?= $cart->MontantGlobal() ?>" name="totalPrix">
                 </div>
                 <?php $intent = $order->OrderPay() ?>
                 <div class="carte">

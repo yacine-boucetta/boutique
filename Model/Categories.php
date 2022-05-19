@@ -15,7 +15,6 @@
             $insertCat = $this->db->prepare("INSERT INTO `categories`(`nom`) VALUES (:nom)");
             $insertCat->bindValue(':nom',$nom, PDO::PARAM_STR);
             $insertCat->execute();
-            //echo 'cat model';
         }
 //-------------------------------------------Display Categories--------------------------------------------------
         public function getCat(){
@@ -59,7 +58,8 @@
     }
 //------------------------------------------new Sub Categories------------------------------------------------------
         public function insertSubCat($nom, $idSubCat){
-            $insertSubCat = $this->db->prepare("INSERT INTO sous_categories (nom_sous_cat, id_categories) VALUES (:nom, :id_categories)");
+            $insertSubCat = $this->db->prepare("INSERT INTO sous_categories (nom_sous_cat, id_categories) 
+            VALUES (:nom, :id_categories)");
             $insertSubCat->bindParam(':nom',$nom, PDO::PARAM_STR);
             $insertSubCat->bindParam(':id_categories', $idSubCat, PDO::PARAM_STR);
             $insertSubCat->execute();

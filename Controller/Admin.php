@@ -8,8 +8,8 @@
 
         public static function adminView()
         {
-            // $right = new Controller();
-            // $right->adminSession();
+            $right = new Controller();
+            $right->adminSession();
 
             $resulta=Product::insertProduct();
             $results=Admin::addCat();
@@ -43,11 +43,6 @@
             //$choice = new Admin;
             $choice = new Categories();
             $tab = $choice->getCat();
-            //$tab = $choice->selectCategorie();
-            // echo '<pre>';
-            // var_dump($tab);
-            // echo '</pre>';
-            //var_dump($tab);
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
                 //return $result;
@@ -127,7 +122,8 @@ public static function displayNameCat(){
                     return $message;
                 }else{
                 $create = new Categories;
-                $create->insertSubCat(htmlspecialchars($_POST['catSubName']), htmlspecialchars($_POST['idCatForSub']));
+                $create->insertSubCat(htmlspecialchars($_POST['catSubName']),
+                htmlspecialchars($_POST['idCatForSub']));
                 //header ('Location:./Admin');
             }
         }

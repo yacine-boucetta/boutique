@@ -89,7 +89,8 @@
             return $result;
         }
         public function getProdByCateg($id){
-            $getProdByCateg = $this->db->prepare("SELECT * FROM `produits` INNER JOIN categories ON produits.id_categories = categories.id WHERE categories.id = :id");
+            $getProdByCateg = $this->db->prepare("SELECT * FROM `produits` 
+            INNER JOIN categories ON produits.id_categories = categories.id WHERE categories.id = :id");
             $getProdByCateg->bindValue(':id', $id,  PDO::PARAM_INT);
             $getProdByCateg->execute();
             $result = $getProdByCateg->fetch(PDO::FETCH_ASSOC);
