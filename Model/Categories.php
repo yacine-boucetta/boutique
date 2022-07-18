@@ -27,7 +27,8 @@
         }
 //-----------------------------------------display cat by id----------------------------------------------------
         public function getCatById($id){
-            $getCat = $this->db->prepare("SELECT * FROM categories INNER JOIN produits ON categories.id = produits.id_categories WHERE categorie.id = :id");
+            $getCat = $this->db->prepare("SELECT * FROM categories INNER JOIN produits 
+            ON categories.id = produits.id_categories WHERE categorie.id = :id");
             $getCat->bindValue(':id', $id, PDO::PARAM_STR);
             $getCat->execute();
             $result = $getCat->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +44,8 @@
 }
 //-----------------------------------------display sub cat update ----------------------------------------------------------------
     public function updateSubCat(){
-        $getCatName = $this->db->prepare("SELECT sous_categories.id, sous_categories.nom_sous_cat, id_categories, nom FROM sous_categories INNER JOIN categories ON sous_categories.id_categories = categories.id");
+        $getCatName = $this->db->prepare("SELECT sous_categories.id, sous_categories.nom_sous_cat, id_categories, nom FROM
+         sous_categories INNER JOIN categories ON sous_categories.id_categories = categories.id");
         $getCatName->execute();
         $result = $getCatName->fetchAll(PDO::FETCH_ASSOC);
         return $result;
@@ -51,7 +53,8 @@
     }
 //-----------------------------------------Update Cat  ----------------------------------------------------------------
     public function updateCat($id, $idCat, $idSubCat){
-        $updateCat = $this->db->prepare("UPDATE produits SET id_categories=:id_categories, id_sous_categories=:id_sous_categories WHERE id = :id");
+        $updateCat = $this->db->prepare("UPDATE produits SET id_categories=:id_categories,
+        id_sous_categories=:id_sous_categories WHERE id = :id");
         $updateCat->bindValue(':id', $id, PDO::PARAM_INT);
         $updateCat->bindValue(':id_categories', $idCat, PDO::PARAM_INT);
         $updateCat->bindValue(':id_sous_categories', $idSubCat, PDO::PARAM_INT);

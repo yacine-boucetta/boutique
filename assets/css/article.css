@@ -52,3 +52,36 @@ ul li a{
     align-items: center;
     flex-direction: column;
 }
+@media (max-width: 425px) {
+    form {
+        background-color: #2e2d2c;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5%;
+        border: 1px solid white;
+    }
+
+    form img {
+        width: 75%;
+    }
+ p{
+    color: rgb(255, 255, 255); 
+ }
+    h1 {
+        color: rgb(255, 255, 255);
+    }
+
+    input{
+        background-color: #303087;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+}

@@ -97,10 +97,10 @@ class Product{
 
 
         if(isset($_POST['addProd'])){
-            //$idCat = $_POST['addSlect'];
+
             $insert = new Products();
             $a = $insert->countProd($_POST['nom']);
-            //var_dump($a);
+
             if($a > 0){
                 $resulta = doublonError();
                 echo $resulta;
@@ -113,13 +113,14 @@ class Product{
                 return $resulta;
             }
             $insert = new Product();         
-            //$message = $insert->priceProd();
+
             $image = $insert->addImg();
             $insert = new Products();
-            $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
+            $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),
+            htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
             
         
-        //return $message; 
+        
         }
     }
 //-----------------------------------------------------Old info for update------------------------------------------------------------

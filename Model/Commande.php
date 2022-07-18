@@ -36,20 +36,28 @@ class Commande extends Model
         $insert->bindValue(':adresse', $adresse, PDO::PARAM_STR);
         $insert->bindValue(':totalProd', $qteProd, PDO::PARAM_INT);
         $insert->bindValue(':totalPrix', $finalPrice, PDO::PARAM_INT);
-        var_dump($insert);
+        // var_dump($insert);
         $insert->execute();
         if ($insert = true) {
             $comm = $this->db->prepare("SELECT id FROM commandes where id=id");
             $comm->execute();
             $result = $comm->fetch();
-            var_dump($result);
+            // var_dump($result);
             foreach ($_SESSION['panier']['qteProduit'] as $key => $qte) {
             }
             foreach ($_SESSION['panier']['id'] as $id => $values) {
-                var_dump($values);
+                // var_dump($values);
                 $panier = $this->db->prepare("INSERT INTO panier (fk_id_commande,fk_id_produit,quantite_produit) VALUES($result[id],$values,$qte)");
                 $panier->execute();
             }
         }
+    }
+    public  function recupCom($idUser){
+        $recupCom = $this->db->prepare("SELECT adresse_livraison, code_postal,date,email,commandes.nom,pays,prix_total,qte_produits,ville,fk_id_commande,prix_unitaire,quantite_produit,produits.nom FROM commandes 
+         INNER JOIN panier ON commandes.id=panier.fk_id_commande INNER JOIN produits on panier.fk_id_produit=produits.id 
+         WHERE commandes.id_utilisateur=:id");
+        $recupCom->execute(array(':id' => $idUser));
+        $res= $recupCom->fetch();
+        return($res);
     }
 }

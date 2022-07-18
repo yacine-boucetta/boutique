@@ -37,17 +37,14 @@
         // }
 //----------------------------------------------------affichage Cat -------------------------------------
         public static function displayCat(){
-            //$choice = new Admin;
             $choice = new Categories();
             $tab = $choice->getCat();
-            //$tab = $choice->selectCategorie();
             // echo '<pre>';
             // var_dump($tab);
             // echo '</pre>';
             //var_dump($tab);
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
-                //return $result;
                 
             }
         }

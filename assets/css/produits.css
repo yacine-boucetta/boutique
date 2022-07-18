@@ -22,7 +22,7 @@ ul {
 }
 ul li a{
     text-decoration: none;
-    color: white;
+    /* color: white; */
 }
 .search{
     display: flex;
@@ -44,8 +44,53 @@ ul li a{
 .formProd a{
     text-decoration: none;
     color:white;
+    background-color:#2e2d2c ;
 }
 .mainProd h2 ,.mainProd p{
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+@media (max-width: 425px) { 
+    *{
+        margin: 0;
+        padding:0;
+
+    }
+    header{
+        z-index: 10;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        background-color: #2e2d2c;
+        width:100%;
+    }
+    main{
+        display: flex;
+        flex-direction: column;
+    }
+    .formProd{
+        width:100%;
+        height: auto;
+        background-color: #2e2d2c;
+    }
+    .formProd a{
+        background-color: #2e2d2c;
+        padding: 5%;
+    }
+    .formProd p{
+        color:whitesmoke;
+        background-color: #2e2d2c;
+        padding-top: 10px;
+    }
+    .formProd h2{
+        color:whitesmoke;
+        background-color: #2e2d2c;
+    }
+    .card img{
+        width: 100%;
+        height: auto;
+        background-color: #2e2d2c;
+    }
+
 }

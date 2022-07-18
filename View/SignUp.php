@@ -15,67 +15,94 @@
 </head>
 
 <body>
-  <header style="width:100%;">
-    <nav class="navbar navbar-expand-lg navbar-light " style="background-color:#2c2c2c;">
-      <a class="" href="#">GASHIDO</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  <header>
+
+    <nav class="navbar navbar-expand-lg bg-light ">
+      <a class="navbar-brand" href="#">GASHIDO</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="" href="#">inscription <span class="sr-only">(current)</span></a>
-          <a class="" href="#">connexion</a>
-          <a class="" href="#">product</a>
-          <a class="" href="#">admin</a>
-          <a class="" href="#">profil</a>
-          <a class="" href="#">deconnexion</a>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="./">Acceuil <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./Product">Les produits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./cart">Panier</a>
+          </li>
+          <?php
+          if (!(isset($_SESSION['user']))) {
+            echo "<li class='nav-item'>
+                                    <a class='nav-link' href='./SignUp'>inscription</a>
+                                </li>";
+          }
+          if (!(isset($_SESSION['user']))) {
+            echo "<li class='nav-item'>
+                                    <a class='nav-link' href='./SignIn'>connexion</a>
+                                </li>";
+          }
+          if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+            echo "<li class='nav-item'>
+                                    <a class='nav-link' href='./Profil'>profil</a>
+                                </li>";
+          }
+          if (isset($_SESSION['user']) && $_SESSION['user'] == "2") {
+            echo "<li class='nav-item'>
+                                    <a class='nav-link' href='./Admin'>admin</a>
+                                </li>";
+          }
+          ?>
+        </ul>
       </div>
     </nav>
+
   </header>
   <main class="">
     <form class="form" method="post">
-      
-
-        <p><?php echo $message; ?></p>
-        <div class='title'>
-          <h2>Inscription</h2>
-        </div>
-
-        <div class="input-container ic1">
-          <input id="name" class="input" type="text" placeholder=" " name="login" required />
-          <div class="cut"></div>
-          <label for="login" class="placeholder">Login</label>
-        </div>
-
-        <div class="input-container ic1">
-          <input id="firstname" class="input" type="text" placeholder=" " name="firstname" required />
-          <div class="cut"></div>
-          <label for="firstname" class="placeholder">Prenom</label>
-        </div>
 
 
-        <div class="input-container ic1">
-          <input id="lastname" class="input" type="text" placeholder=" " name="lastname" required />
-          <div class="cut"></div>
-          <label for="lastname" class="placeholder">nom</label>
-        </div>
+      <p><?php echo $message; ?></p>
+      <div class='title'>
+        <h2>Inscription</h2>
+      </div>
+
+      <div class="input-container ic1">
+        <input id="name" class="input" type="text" placeholder=" " name="login" required />
+        <div class="cut"></div>
+        <label for="login" class="placeholder">Login</label>
+      </div>
+
+      <div class="input-container ic1">
+        <input id="firstname" class="input" type="text" placeholder=" " name="firstname" required />
+        <div class="cut"></div>
+        <label for="firstname" class="placeholder">Prenom</label>
+      </div>
+
+
+      <div class="input-container ic1">
+        <input id="lastname" class="input" type="text" placeholder=" " name="lastname" required />
+        <div class="cut"></div>
+        <label for="lastname" class="placeholder">nom</label>
+      </div>
 
 
 
-        <div class="input-container ic1">
-          <input id="email" class="input" type="email" placeholder=" " name="email" required />
-          <div class="cut"></div>
-          <label for="email" class="placeholder">Email</label>
-        </div>
+      <div class="input-container ic1">
+        <input id="email" class="input" type="email" placeholder=" " name="email" required />
+        <div class="cut"></div>
+        <label for="email" class="placeholder">Email</label>
+      </div>
 
 
-        <div class="input-container ic1">
-          <input id="password" class="input" type="password" placeholder=" " name="password" required />
-          <div class="cut"></div>
-          <label for="password" class="placeholder">Password:6 caractère minimum</label>
-        </div>
-      
+      <div class="input-container ic1">
+        <input id="password" class="input" type="password" placeholder=" " name="password" required />
+        <div class="cut"></div>
+        <label for="password" class="placeholder">Password:6 caractère minimum</label>
+      </div>
+
 
 
       <div class="btn-block">

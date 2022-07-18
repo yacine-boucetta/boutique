@@ -28,8 +28,8 @@
                 $insertProd->bindValue(':prix', $prix, PDO::PARAM_STR);
                 $insertProd->bindValue(':image', $image, PDO::PARAM_STR);
                 $insertProd->execute();
-
         }
+        
         public function updateProd($id, $id_categories, $id_sous_categories, $nom ,$description , $prix){
 
             $insertProd = $this->db->prepare("UPDATE produits SET nom=:nom, description=:description ,id_sous_categories=:id_sous_categories ,id_categories=:id_categories ,prix=:prix WHERE id = :id");

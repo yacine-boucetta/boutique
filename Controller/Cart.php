@@ -3,10 +3,6 @@
 
 class Cart
 {
-
-
-
-
    public static function viewCart()
    {
       require('view/cart.php');
@@ -52,36 +48,32 @@ class Cart
             echo "<div class=error><h2>Votre panier est vide </h2></div>";
          else { ?>
             <div class="essaie">
-               <div class="test">
-               <table class="test">
+               <div >
+               <table >
                   <tbody>
 
                      <?php
                      for ($i = 0; $i < $nbArticles; $i++) { ?>
-                        
-
-                           <form method="POST" class="produit">
+                          
                               <tr>
-                                 <td>
+                                 <td >
                                     <img src="./assets/images/<?= $_SESSION['panier']['libelleProduit'][$i] ?>" alt="">
                                  </td>
                                  <td>
                                     <h2><?= $_SESSION['panier']['libelleProduit'][$i] ?></h2>
                                  </td>
-                                 <td> <input type="hidden" value=<?= $i ?> name="id"></td>
+                                 <form method="POST" class="produit">
+                                 <td > <input type="hidden" value=<?= $i ?> name="id"></td>
                                  <td> <input type="submit" value="-" name="delete" class="delete"></td>
-                                 <td> <input type="text" size="4" name="qteProd" value=<?= $_SESSION['panier']['qteProduit'][$i] ?>></td>
+                                 <td> <input type="text" size="4" name="qteProd" class="qd" value=<?= $_SESSION['panier']['qteProduit'][$i] ?>></td>
                                  <td> <input type=submit value="+" name="add" class="add"></td>
-
                                  <td>
                                     <p><?= $_SESSION['panier']['prixProduit'][$i] * $_SESSION['panier']['qteProduit'][$i] ?>€</p>
                                  </td>
-                                 <td> <input type="submit" name="supp" value="videz le panier"></td>
+                                 <td> <input type="submit" class="supp" name="supp" value="videz le panier"></td>
                               </tr>
-
                            </form>
                         <?php
-                        // echo $i;
                         if (isset($_POST['supp'])) {
                            $cart = new Cart;
                            $cart->supprimerArticle($_SESSION['panier']['libelleProduit'][$i]);
@@ -91,15 +83,15 @@ class Cart
                            $cart->modifierQteArticle($_SESSION['panier']['libelleProduit'][$i], $_SESSION['panier']['qteProduit'][$i]);
                         }
                         // var_dump($_SESSION['panier']);
-                     } ?>
+                     }?>
                   </tbody>
                </table>
                </div>
-            <div class="mg">
+               <div class="mg">
                <p class="montant">Montant Total </p>
                <p class="montant"> <?= Cart::MontantGlobal() ?>€</p>
                <form method="POST" class="pay">
-                  <input type="submit" name="paye" value="paimment">
+                  <input type="submit" name="paye" value="validez panier">
                </form>
             </div>
           </div>
@@ -110,6 +102,7 @@ class Cart
          }
       }
    }
+
    public function modifierQteArticle($libelleProduit, $qteProduit)
    {
       if (isset($_POST['delete'])) {
@@ -185,6 +178,7 @@ class Cart
    }
    public static function payCart()
    {
-      header("location: ./order");
+      echo "<script>window.location.href='./order';</script>";
+      exit;
    }
 }

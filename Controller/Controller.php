@@ -11,7 +11,6 @@ public static function index($url){
     if ($url[0] == '') {
     Home::getHomePage();
     }   
-    
     elseif ($url[0] == 'SignUp') {  
         SignUp::signUpView();
     } 
@@ -19,35 +18,28 @@ public static function index($url){
         SignIn::signInView();
     }
     elseif ($url[0] == 'Profil') {
+        // var_dump($test);
         Profil::viewProfil();
-    }  elseif ($url[0] == 'Admin') {   
         
-        //Admin::addCat();
-        //Admin::addSubCat();
+        
+    }  elseif ($url[0] == 'Admin') {   
         Admin::deleteCateg();
         Admin::deleteSubCateg();
         Product::deleteProducts();
         Admin::adminView();
-        //Product::updateProduct();
         Product::updateCategorie();
         Product::updateImage();
         Product::addImg();
         Admin::deleteUser();
         Admin::modUser();
-        //Product::displayUpdate();
-    // } elseif ($url[0] == 'product') {
-    //     require 'view/product.php';
-    // } elseif ($url[0] == 'admin') {
-    //     require 'view/admin.php';
-    // } else {
-    //     require 'view/404.php';
-    // }
     }
     elseif ($url[0]== 'order') {
         $order=new Order;
         Order::orderView();
-       @ $order->validation($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
-      
+        @ $order->validation(htmlspecialchars($_POST['idUser']),htmlspecialchars($_POST['prenom']),
+        htmlspecialchars($_POST['nom']),htmlspecialchars($_POST['email']),htmlspecialchars($_POST['adresse']),htmlspecialchars($_POST['cp']),
+        htmlspecialchars($_POST['ville']),htmlspecialchars($_POST['pays']),htmlspecialchars($_POST['date']),
+        htmlspecialchars($_POST['totalProd']),htmlspecialchars($_POST['totalPrix']));
         $intent=$order->OrderPay();
         return $intent;
     }
@@ -77,9 +69,12 @@ public static function index($url){
             
 
         }
+        elseif ($url[0]=='404') {
+            header('location: ./404');
+        }
     }
 
-
+    
     public static function checkoutSession()
     {
         if (!isset($_SESSION['user'])) {

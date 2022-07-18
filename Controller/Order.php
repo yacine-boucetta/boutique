@@ -30,19 +30,18 @@ class Order{
             return $intent;
         }
     }
-    public function addliaison($libelleProduit){
-        $libelleProduit=$_SESSION['panier']['id'];
-        var_dump($libelleProduit);
-        var_dump($_SESSION['panier']);
-        foreach ($libelleProduit as $article) {
-           
-        }
-    }
  public function validation($idUser,$nom,$prenom,$email,$adresse,$cp,$ville,$pays,$qteProd,$finalPrice){
      if (isset($_POST['payez'])) {
+         if(empty($_POST['prenom'])||empty($_POST['nom'])||empty($_POST['email'])||empty($_POST['adresse'])||empty($_POST['cp'])||empty($_POST['ville'])||empty($_POST['pays'])){
+             echo "veuillez remplir tous les champs";
+         }
+         else{
          $commande=new Commande;
-        $commande->saveOrder($_POST['idUser'],$_POST['prenom'],$_POST['nom'],$_POST['email'],$_POST['adresse'],$_POST['cp'],$_POST['ville'],$_POST['pays'],$_POST['date'],$_POST['totalProd'],$_POST['totalPrix']);
-        var_dump($_POST);
+       @ $commande->saveOrder(htmlspecialchars($_POST['idUser']),htmlspecialchars($_POST['prenom']),htmlspecialchars($_POST['nom']),htmlspecialchars($_POST['email']),htmlspecialchars($_POST['adresse']),htmlspecialchars($_POST['cp']),htmlspecialchars($_POST['ville']),htmlspecialchars($_POST['pays']),htmlspecialchars($_POST['date']),htmlspecialchars($_POST['totalProd']),htmlspecialchars($_POST['totalPrix']));
+       echo "<script>window.location.href='./';</script>";
+       exit;
+        
+         }
 
      }
  }

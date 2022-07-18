@@ -1,7 +1,7 @@
 <?php
 
 require('model/User.php');
-
+require('model/Commande.php');
 class Profil
 {
 
@@ -106,5 +106,9 @@ class Profil
         $update = new User();
         $update->lastNamedUpdate(htmlspecialchars($_POST['lastName'], ENT_QUOTES, "ISO-8859-1"));
     }
-
+    public static function commandHistory($id){
+        $id=$_SESSION['user']['id'];
+        $commande=new Commande;
+        $commande->recupCom($id);
+    }
 }
