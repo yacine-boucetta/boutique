@@ -39,10 +39,6 @@
         public static function displayCat(){
             $choice = new Categories();
             $tab = $choice->getCat();
-            // echo '<pre>';
-            // var_dump($tab);
-            // echo '</pre>';
-            //var_dump($tab);
             foreach($tab as $values){
                 echo '<option value="' . $values['id'] . '">' . $values['nom'] . '</option>';
                 

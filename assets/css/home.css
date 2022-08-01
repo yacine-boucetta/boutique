@@ -223,3 +223,45 @@ header{
     }
   
     }  
+    #presentation{
+        height: 150%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .textPres{
+        width: 100%;
+        height: 100%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 64px;
+
+    }
+    #forgeron{
+        background-image: url("../images/forgeron.jpeg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 98%;
+        height: 100%;
+        margin-bottom: 5%;
+    }
+    #damas{
+        background-image: url("../images/damas.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 98%;
+        height: 100%;
+        margin-bottom: 5%;
+    }
+    .presen{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }

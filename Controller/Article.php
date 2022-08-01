@@ -22,14 +22,12 @@ class Article
                     <p><?= $key['description'] ?></p>
                     <p><?= $key['prix'] ?>€</p>
                     </div>
-                    <input type="submit" name="addToCart">
+                    <input type="submit" name="addToCart" value="ajouter au panier">
                     </div>
                 </form>
             </div><?php
                 
                 if (isset($_POST['addToCart'])) {
-
-
                     $cart=new Cart;
                     $cart->addToCart($key['id'],$key['nom'],1,$key['prix']);
 

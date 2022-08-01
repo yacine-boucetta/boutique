@@ -7,7 +7,6 @@ class Cart
    {
       require('view/cart.php');
    }
-
    public static function creationPanier()
    {
       if (!isset($_SESSION['panier'])) {
@@ -56,9 +55,7 @@ class Cart
                      for ($i = 0; $i < $nbArticles; $i++) { ?>
                           
                               <tr>
-                                 <td >
-                                    <img src="./assets/images/<?= $_SESSION['panier']['libelleProduit'][$i] ?>" alt="">
-                                 </td>
+
                                  <td>
                                     <h2><?= $_SESSION['panier']['libelleProduit'][$i] ?></h2>
                                  </td>

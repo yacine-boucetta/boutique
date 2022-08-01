@@ -17,7 +17,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg bg-light ">
-      <a class="navbar-brand" href="#">GASHIDO</a>
+    <a class="navbar-brand" href="./">GASHIDO</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,6 +48,11 @@
                                     <a class='nav-link' href='./Profil'>profil</a>
                                 </li>";
           }
+          if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+            echo "<li class='nav-item'>
+                        <a class='nav-link' href='View/deconnexion.php'>Deconnexion</a>
+                    </li>";
+        }
           if (isset($_SESSION['user']) && $_SESSION['user'] == "2") {
             echo "<li class='nav-item'>
                                     <a class='nav-link' href='./Admin'>admin</a>
@@ -120,24 +125,25 @@
       <div class="row">
         <!--Grid column-->
         <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
+          <h5 class="text-uppercase">Gashido</h5>
 
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-            aliquam voluptatem veniam, est atque cumque eum delectus sint!
-          </p>
-        </div>
-        <!--Grid column-->
+          Gashido knife makers offers you a wide range of japanesse pocket knives 
+                    handmade in France.
+                    </p>
+                </div>
+                <!--Grid column-->
 
-        <!--Grid column-->
-        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase">Footer text</h5>
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Gashido</h5>
 
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-            aliquam voluptatem veniam, est atque cumque eum delectus sint!
+                    <p>
+                        
+                    Welcome to our 3rd edition of the USAknifemaker.com catalog. 
+                    This release weighs in at nearly double the page count of our 
+                    first catalog with the addition of thousands of new items since our first release.
+                    Our goal is simple. We want to be the very best supplier for you in your knife making hobby or profession.
           </p>
         </div>
         <!--Grid column-->

@@ -18,7 +18,7 @@
   <header>
 
     <nav class="navbar navbar-expand-lg bg-light ">
-      <a class="navbar-brand" href="#">GASHIDO</a>
+      <a class="navbar-brand" href="./">GASHIDO</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,6 +49,11 @@
                                     <a class='nav-link' href='./Profil'>profil</a>
                                 </li>";
           }
+          if (isset($_SESSION['user']) && $_SESSION['user'] != "") {
+            echo "<li class='nav-item'>
+                        <a class='nav-link' href='View/deconnexion.php'>Deconnexion</a>
+                    </li>";
+        }
           if (isset($_SESSION['user']) && $_SESSION['user'] == "2") {
             echo "<li class='nav-item'>
                                     <a class='nav-link' href='./Admin'>admin</a>

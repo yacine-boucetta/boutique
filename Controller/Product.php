@@ -116,8 +116,11 @@ class Product{
 
             $image = $insert->addImg();
             $insert = new Products();
-            $insert->insertProd(htmlspecialchars($_POST['nom']), htmlspecialchars($_POST['description']),
-            htmlspecialchars($_POST['idSousCat']),htmlspecialchars($_POST['addSelect']),htmlspecialchars($_POST['prix']), $image);
+            $insert->insertProd(htmlspecialchars($_POST['nom']),
+            htmlspecialchars($_POST['description']),
+            htmlspecialchars($_POST['idSousCat']),
+            htmlspecialchars($_POST['addSelect']),
+            htmlspecialchars($_POST['prix']), $image);
             
         
         
