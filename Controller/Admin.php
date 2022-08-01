@@ -194,6 +194,9 @@ public static function deleteUser(){
         $delete->userDelete($_POST['idDelete']);
         header ('Location:./Admin');
     }
+    else{
+        echo "Vous n'avez pas les droits pour supprimer un Administrateur";
+    }
 }
 //----------------------------------------------------------------update right --------------------------------------------------------------
 

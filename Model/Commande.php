@@ -53,7 +53,7 @@ class Commande extends Model
         }
     }
     public  function recupCom($idUser){
-        $recupCom = $this->db->prepare("SELECT adresse_livraison, code_postal,date,email,commandes.nom,pays,prix_total,qte_produits,ville,fk_id_commande,prix_unitaire,quantite_produit,produits.nom FROM commandes 
+        $recupCom = $this->db->prepare("SELECT adresse_livraison, code_postal,date,email,commandes.nom,pays,prix_total,qte_produits,ville,fk_id_commande,quantite_produit,produits.nom FROM commandes 
          INNER JOIN panier ON commandes.id=panier.fk_id_commande INNER JOIN produits on panier.fk_id_produit=produits.id 
          WHERE commandes.id_utilisateur=:id");
         $recupCom->execute(array(':id' => $idUser));

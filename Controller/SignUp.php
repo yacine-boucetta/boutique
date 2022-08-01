@@ -44,6 +44,7 @@ class SignUp
                 $newLastName = htmlspecialchars($_POST['lastname'], ENT_QUOTES, "ISO-8859-1");
                 $newUser = new User();
                 $newUser->setUser($newLogin, $password, $newEmail, $newFirstName, $newLastName);
+                header('Location:./SignIn');
             }
         }
         return $message; 

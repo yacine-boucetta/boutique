@@ -10,6 +10,9 @@ header{
     height: 120px;
     background-color:#2e2d2c;
 }
+footer{
+    margin-top: 5%;
+}
 header h1{
     text-align: center;
     color: white;
@@ -22,7 +25,20 @@ ul {
 }
 ul li a{
     text-decoration: none;
-    color: white;
+}
+#mybuton{
+    box-shadow:inset 0px 34px 0px -15px #b54b3a;
+	background-color:#a73f2d;
+	border:1px solid #241d13;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:9px 23px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #7a2a1d;
 }
 .search{
     display: flex;

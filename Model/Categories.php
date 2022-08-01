@@ -45,7 +45,7 @@
 //-----------------------------------------display sub cat update ----------------------------------------------------------------
     public function updateSubCat(){
         $getCatName = $this->db->prepare("SELECT sous_categories.id, sous_categories.nom_sous_cat, id_categories, nom FROM
-         sous_categories INNER JOIN categories ON sous_categories.id_categories = categories.id");
+        sous_categories INNER JOIN categories ON sous_categories.id_categories = categories.id");
         $getCatName->execute();
         $result = $getCatName->fetchAll(PDO::FETCH_ASSOC);
         return $result;
