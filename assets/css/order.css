@@ -83,6 +83,9 @@ h2{
         background-color: #2e2d2c;
 
     }
+    .navbar-toggler{
+        background-color: brown;
+    }
    form{
        position: relative;
        left:5%;

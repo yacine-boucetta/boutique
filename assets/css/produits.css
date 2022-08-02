@@ -74,6 +74,9 @@ ul li a{
     header{
         z-index: 10;
     }
+    .navbar-toggler{
+        background-color: brown;
+    }
     body{
         display: flex;
         flex-direction: column;

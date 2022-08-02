@@ -147,7 +147,12 @@ body {
     max-width: 425px;
     text-align: center;
 }
-
+header {
+  color: blue;
+}
+.navbar-toggler{
+  background-color: brown;
+}
 body a {
 
     color: rgb(255, 255, 255);

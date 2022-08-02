@@ -18,7 +18,7 @@
 <body>
     <header>
 
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-lg bg-dark">
         <a class="navbar-brand" href="./">GASHIDO</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -175,6 +175,19 @@
                 <input class='inputProd' type='text' name='prix' placeholder="Prix du produit"></input>
                 <input class='inputProd' type='file' name='image'></input>
                 <input type='submit' name='addProd'></input>
+                </form>
+            </article>
+            <article id='deleteProd'>
+                <h2>Suppresion de produit</h2>
+                <form method="post" name='deleteProd' class='formAdmin'>
+                    <select name="idProdDel">
+                        <option value='' disabled selected>Choisiez un produit a supprimer</option>
+                        <?php
+                            $option = new Admin();
+                            $option->prodSelect();
+                        ?>
+                    </select>
+                    <input type="submit" name="deleteProd"></input>
                 </form>
             </article>
             <article id='updateProd'>

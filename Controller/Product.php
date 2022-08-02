@@ -236,7 +236,7 @@ class Product{
             if(isset($_POST['deleteProd']))
 
             
-            $delete->deleteProd($_POST['idDel']);
+            $delete->deleteProd($_POST['idProdDel']);
             //echo 'coucou2';
         }
 //----------------------------------------------------ajouts d'img----------------------------------------------------

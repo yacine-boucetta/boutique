@@ -135,6 +135,14 @@ input{
     flex-wrap: wrap;
     justify-content: center;
 }
+#deleteProd{
+    background-color:#828181;
+    height: 20%;
+    border: 1px solid;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 #artaddProd{
     background-color:#828181;
     height: 33%;
@@ -177,7 +185,7 @@ input{
 }
 footer{
     height: 150px;
-    margin-top: 3%;
+    margin-top: 15%;
 }
 @media (min-width: 1080px) {
     body{

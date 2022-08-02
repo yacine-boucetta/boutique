@@ -198,6 +198,7 @@ public static function deleteUser(){
         echo "Vous n'avez pas les droits pour supprimer un Administrateur";
     }
 }
+
 //----------------------------------------------------------------update right --------------------------------------------------------------
 
 public static function modUser(){

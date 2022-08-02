@@ -16,7 +16,9 @@ body {
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+.navbar-toggler{
+    background-color: brown;
+}
 body a {
     
     color: rgb(255, 255, 255);

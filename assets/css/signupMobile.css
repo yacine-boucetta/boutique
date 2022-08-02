@@ -148,7 +148,9 @@
       max-width: 80%;
       text-align: center;
     }
-    
+    .navbar-toggler{
+      background-color: brown;
+  }
     body a {
         /* color: rgb(255, 255, 255); */
         height: auto;

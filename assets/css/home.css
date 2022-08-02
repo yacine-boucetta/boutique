@@ -17,7 +17,12 @@ body {
     margin: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+header{
+    background-color: #2c2c2c;
+}
+.navbar-toggler{
+    background-color: brown;
+}
 body a {
     
     color: rgb(255, 255, 255);
@@ -69,9 +74,7 @@ transition: background-image 0.3s, background-color 0.3s, filter 0.3s
     -webkit-filter: blur(0px);
 }
 
-header{
-    color:white;
-}
+
 .bg-light{
     background-color: #2c2c2c;
 }

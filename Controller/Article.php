@@ -14,7 +14,7 @@ class Article
 ?>      <main>
             <div class="article">
             <h1><?= $key['nom'] ?></h1>
-                <form action="" method="POST">
+                <form action="" id="formArt" method="POST">
                     <input type="hidden" value="<?= $key['id'] ?>" >
                     <div class="article2">
                     <img src=".<?= $key['image'] ?>">

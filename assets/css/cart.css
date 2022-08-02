@@ -116,7 +116,9 @@ td img{
         text-align: center;
         color: white;
     }
-    
+    .navbar-toggler{
+        background-color: brown;
+    }
     .produit p{
         color: white;
         margin-right:5%;

@@ -45,7 +45,7 @@
         }
         public function deleteProd($id){
 
-            $deleteProd = $this->db->prepare("DELETE * FROM produits WHERE id = :id");
+            $deleteProd = $this->db->prepare("DELETE FROM produits WHERE id = :id");
             $deleteProd->bindValue(':id', $id, PDO::PARAM_STR);
             $deleteProd->execute();
 
